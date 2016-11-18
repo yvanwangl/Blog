@@ -8,6 +8,9 @@ var Comment = require('../models/comments');
 
 router.route('/')
         .post(function(req, res){
+            /**
+             * 新增一条评论
+             */
             var commentData = req.body;
             var comment = new Comment({
                 parentId:commentData['parentId'],
@@ -28,23 +31,13 @@ router.route('/')
                     });
                 }
             });
-        })
-        .delete(function(req, res){
-            Comment.remove({
-                _id:req.body.commentId
-            }, function(err, comment){
-                if(err){
-                    res.send(err);
-                }else {
-                    res.send({
-                        commentId:comment['_id']
-                    });
-                }
-            })
         });
 
 router.route('/:comment_id')
         .post(function (req, res) {
+            /**
+             * 修改评论的赞同和不赞同数量
+             */
             var commentData = req.body;
             Comment.findById(req.params.comment_id,function(err, comment){
                 if(err){
@@ -68,6 +61,38 @@ router.route('/:comment_id')
                     });
                 }
             });
+        })
+        .delete(function(req, res){
+            /**
+             * 删除评论
+             */
+            var parentId = req.body.commentId;
+            /**
+             * 删除子评论
+             */
+            Comment.findByParentId(parentId, function (err, comments) {
+                if(err){
+                    res.send(err);
+                }
+                comments.forEach(function (comment) {
+                    comment.remove();
+                });
+            });
+            /**
+             * 删除当前评论
+             */
+            Comment.remove({
+                _id:parentId
+            }, function(err, comment){
+                if(err){
+                    res.send(err);
+                }else {
+                    res.send({
+                        is_success:true,
+                        commentId:comment['_id']
+                    });
+                }
+            })
         });
 
 module.exports = router;

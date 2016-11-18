@@ -56,7 +56,7 @@ class BlogContent extends Component {
     }
 
     render() {
-        let {blogContent, comments, commentActions} = this.props;
+        let {blogContent, comments, commentActions, login} = this.props;
         if(!isEmptyObject(blogContent)){
             return (
                 <div className="blogContentWrap container">
@@ -68,7 +68,7 @@ class BlogContent extends Component {
                         customStyleMap={styleMap}
                         readOnly={true}/>
                     <div className="comment">
-                        <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions}/>
+                        <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions} isLogin={login.is_login}/>
                     </div>
                 </div>
             );
@@ -83,7 +83,8 @@ function mapStateToProps(state) {
     return {
         blogs: state.blogs.blogs,
         blogContent: state.blogs.blog,
-        comments: state.comments.comments
+        comments: state.comments.comments,
+        login: state.login,
     };
 }
 

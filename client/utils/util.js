@@ -45,6 +45,6 @@ export function formatComments(comments) {
 
 function sortComments(comments) {
     return comments.sort(function (commentA, commentB) {
-        return new Date(commentA['commentTime']).getTime()-new Date(commentB['commentTime']).getTime();
+        return new Date(commentB['commentTime']).getTime()-new Date(commentA['commentTime']).getTime();
     });
 }

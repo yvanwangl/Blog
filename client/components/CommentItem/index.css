@@ -16,8 +16,11 @@
     margin: 20px 0; }
   .commentItem .commentAction {
     margin-top: 20px;
-    text-align: right; }
-    .commentItem .commentAction .agree, .commentItem .commentAction .disagree, .commentItem .commentAction .reply {
+    text-align: right;
+    color: #ccc; }
+    .commentItem .commentAction:hover {
+      color: #000; }
+    .commentItem .commentAction .agree, .commentItem .commentAction .disagree, .commentItem .commentAction .reply, .commentItem .commentAction .delete {
       display: inline-block;
       width: 100px;
       text-align: center;
@@ -25,12 +28,9 @@
       height: 30px;
       line-height: 30px;
       cursor: pointer;
-      color: #ccc;
       transition: all ease-in-out .3s; }
-      .commentItem .commentAction .agree .icon, .commentItem .commentAction .disagree .icon, .commentItem .commentAction .reply .icon {
+      .commentItem .commentAction .agree .icon, .commentItem .commentAction .disagree .icon, .commentItem .commentAction .reply .icon, .commentItem .commentAction .delete .icon {
         margin-right: 12px; }
-      .commentItem .commentAction .agree:hover, .commentItem .commentAction .disagree:hover, .commentItem .commentAction .reply:hover {
-        color: #000; }
 
 .commentItem.childComment {
   border-left: 3px solid rgba(0, 0, 0, 0.2);

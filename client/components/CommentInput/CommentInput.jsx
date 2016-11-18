@@ -68,7 +68,7 @@ export default class CommentInput extends Component {
         let {parentId, parentName} = this.props;
         if(parentId!=''){
             this.setState({
-                contentPlaceholder:'回复 @'+parentName
+                contentPlaceholder:`回复 @${parentName}：`
             });
         }
     }

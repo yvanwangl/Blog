@@ -29,7 +29,7 @@ export function saveComment(comment,callback){
 
 export function deleteComment(commentId) {
     return (dispatch)=>{
-        fetch('/comment',{
+        fetch('/comment/'+commentId,{
             method:'DELETE',
             mode:'cors',
             Origin:'*',
@@ -42,7 +42,7 @@ export function deleteComment(commentId) {
         })
             .then(response=>response.json())
             .then(json=>{
-                if(json.save_success){
+                if(json.is_success){
                     dispatch(deleteCommentSuccess(commentId));
                 }else {
                     console.log('save fail');

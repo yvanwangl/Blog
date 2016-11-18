@@ -7,14 +7,14 @@
         & textarea {
             width: 100%;
             font-size: 16px;
-            text-indent: 15px;
         }
         & input {
+            text-indent: 15px;
             height:40px;
             line-height: 40px;
         }
         & textarea {
-            padding: 15px 0;
+            padding: 15px;
         }
     }
     & label {

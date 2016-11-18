@@ -24,9 +24,14 @@
     & .commentAction {
         margin-top: 20px;
         text-align: right;
+        color: #ccc;
+        &:hover {
+            color: #000;
+        }
         & .agree,
         & .disagree,
-        & .reply {
+        & .reply,
+        & .delete {
             display: inline-block;
             width: 100px;
             text-align: center;
@@ -34,13 +39,9 @@
             height: 30px;
             line-height: 30px;
             cursor: pointer;
-            color: #ccc;
             transition: all ease-in-out .3s;
             & .icon {
                 margin-right: 12px;
-            }
-            &:hover {
-                color: #000;
             }
         }
     }

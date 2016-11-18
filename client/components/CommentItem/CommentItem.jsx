@@ -16,6 +16,7 @@ export default class CommentItem extends Component {
         this.replyClick = (event)=>this._replyClick(event);
         this.agreeClick = (event)=>this._agreeClick(event);
         this.disAgreeClick = (event)=>this._disAgreeClick(event);
+        this.deleteClick = (event)=>this._deleteClick(event);
     }
 
     _replyClick(event) {
@@ -64,6 +65,11 @@ export default class CommentItem extends Component {
         });
     }
 
+    _deleteClick(event){
+        let {comment, commentActions} = this.props;
+        commentActions.deleteComment(comment['_id']);
+    }
+
     closeInput(is_success) {
         if (is_success) {
             this.setState({
@@ -77,7 +83,7 @@ export default class CommentItem extends Component {
     }
 
     render() {
-        let {comment, blogId, commentActions, parentName} = this.props;
+        let {comment, blogId, commentActions, parentName, showDeleteButton} = this.props;
         var agreeClick = !this.state.agreeClick ? this.agreeClick : null;
         var disAgreeClick = !this.state.disAgreeClick ? this.disAgreeClick : null;
         var commentItem = comment['parentId']==''?'commentItem':'commentItem childComment';
@@ -92,9 +98,27 @@ export default class CommentItem extends Component {
                     {comment['commentContent']}
                 </p>
                 <div className="commentAction">
-                    <span className="agree" onClick={agreeClick}><Icon type="like" className="icon"/>赞同( {comment['agree']} )</span>
-                    <span className="disagree" onClick={disAgreeClick}><Icon type="dislike" className="icon"/>反对( {comment['disagree']} )</span>
-                    <span className="reply" onClick={this.replyClick}><Icon type="message" className="icon"/>回复</span>
+                    <span className="agree" onClick={agreeClick}>
+                        <Icon type="like" className="icon"/>
+                        赞同( {comment['agree']} )
+                    </span>
+                    <span className="disagree" onClick={disAgreeClick}>
+                        <Icon type="dislike" className="icon"/>
+                        反对( {comment['disagree']} )
+                    </span>
+                    <span className="reply" onClick={this.replyClick}>
+                        <Icon type="message" className="icon"/>
+                        回复
+                    </span>
+                    {/*<span className="delete" onClick={this.deleteClick}><Icon type="close" className="icon"/>删除</span>*/}
+                    {
+                        showDeleteButton?
+                        <span className="delete" onClick={this.deleteClick}>
+                            <Icon type="close" className="icon"/>
+                            删除
+                        </span>
+                        :null
+                    }
                 </div>
                 {
                     this.state.addChildComment ?

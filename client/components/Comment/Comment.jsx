@@ -4,12 +4,12 @@ import CommentItem from '../CommentItem/CommentItem';
 import {formatComments} from '../../utils/util';
 require('./index.css');
 
-function commentIterator(childComments, commentItems, commentActions, blogId, parentName){
+function commentIterator(childComments, commentItems, commentActions, blogId, parentName, showDeleteButton){
     if(childComments) {
         childComments.map((childComment)=>{
-            commentItems.push(<CommentItem key={childComment['_id']} comment={childComment} blogId={blogId} commentActions={commentActions} parentName={parentName}/>)
+            commentItems.push(<CommentItem key={childComment['_id']} comment={childComment} blogId={blogId} commentActions={commentActions} parentName={parentName} showDeleteButton={showDeleteButton}/>)
             if(childComment['children']){
-                commentIterator(childComment['children'], commentItems, commentActions, blogId, childComment['name']);
+                commentIterator(childComment['children'], commentItems, commentActions, blogId, childComment['name'], showDeleteButton);
             }
         });
     }
@@ -21,8 +21,9 @@ export default class Comment extends Component {
     }
 
     render() {
-        let {comments , commentActions, blogId} = this.props;
+        let {comments , commentActions, blogId, isLogin} = this.props;
         let commentItems = [];
+        let showDeleteButton = isLogin;
         /**
          * 对评论进行序列化操作
          * 对评论按日期进行倒叙
@@ -30,13 +31,13 @@ export default class Comment extends Component {
          */
         let newComments = formatComments(comments);
         newComments.map((comment)=>{
-            commentItems.push(<CommentItem key={comment['_id']} comment={comment} blogId={blogId} commentActions={commentActions} parentName={''}/>);
+            commentItems.push(<CommentItem key={comment['_id']} comment={comment} blogId={blogId} commentActions={commentActions} parentName={''} showDeleteButton={showDeleteButton}/>);
             /*if(comment['children']) {
                 comment['children'].map((childComment)=>{
                     commentItems.push(<CommentItem key={childComment['_id']} comment={childComment} blogId={blogId} commentActions={commentActions}/>)
                 })
             }*/
-            commentIterator(comment['children'], commentItems , commentActions, blogId, comment['name']);
+            commentIterator(comment['children'], commentItems , commentActions, blogId, comment['name'],showDeleteButton);
         });
         return (
             <div className="commentWrap">

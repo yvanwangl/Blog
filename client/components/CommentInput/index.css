@@ -5,13 +5,13 @@
     margin-bottom: 20px; }
     .commentInput .formItem input, .commentInput .formItem textarea {
       width: 100%;
-      font-size: 16px;
-      text-indent: 15px; }
+      font-size: 16px; }
     .commentInput .formItem input {
+      text-indent: 15px;
       height: 40px;
       line-height: 40px; }
     .commentInput .formItem textarea {
-      padding: 15px 0; }
+      padding: 15px; }
   .commentInput label {
     font-size: 16px;
     display: none; }

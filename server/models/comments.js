@@ -17,5 +17,8 @@ var commentSchema = new Schema({
 /**
  *here can add same methods or statics
  */
+commentSchema.statics.findByParentId = function (parentId, callback) {
+    return this.find({parentId:parentId}, callback);
+};
 
 module.exports = mongoose.model('Comment', commentSchema);

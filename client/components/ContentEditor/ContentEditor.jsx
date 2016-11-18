@@ -1,12 +1,21 @@
 import React, {Component} from 'react';
-import Draft, {EditorState, RichUtils} from 'draft-js';
-import Editor from 'draft-js-plugins-editor';
+import Draft,
+{
+    Editor,
+    EditorState,
+    Entity,
+    RichUtils,
+    ContentState,
+    CompositeDecorator,
+    AtomicBlockUtils
+} from 'draft-js';
+/*import Editor from 'draft-js-plugins-editor';*/
 import EditorToolBar from '../EditorComponents/EditorToolBar/EditorToolBar';
 import {browserHistory} from 'react-router';
 require('./index.css');
 require('./Draft.css');
-import createRichButtonsPlugin from 'draft-js-richbuttons-plugin';
-const richButtonsPlugin = createRichButtonsPlugin();
+/*import createRichButtonsPlugin from 'draft-js-richbuttons-plugin';
+const richButtonsPlugin = createRichButtonsPlugin();*/
 
 function getBlockStyle(contentBlock){
     const blockType = contentBlock.getType();
@@ -43,6 +52,9 @@ export default class ContentEditor extends Component {
         this.setTitle = (event)=>this._setTitle(event);
         this.setAuthor = (event)=>this._setAuthor(event);
         this.setBlogStatus = (event)=> this._setBlogStatus(event);
+        this.handleUploadImage = (event)=> this._handleUploadImage(event);
+        this.handleFileInput = (event)=> this._handleFileInput(event);
+        this.insertImage = (file)=> this._insertImage(file);
     }
 
 
@@ -104,6 +116,25 @@ export default class ContentEditor extends Component {
         });
     }
 
+    _handleUploadImage(event){
+        this.refs.fileInput.click();
+    }
+
+    _handleFileInput(event){
+        const fileList = event.target.files;
+        const file = fileList[0];
+        this.insertImage(file);
+    }
+
+    _insertImage(file) {
+        const entityKey = Entity.create('atomic', 'IMMUTABLE', {src: URL.createObjectURL(file)});
+        this.onChange(AtomicBlockUtils.insertAtomicBlock(
+            this.state.editorState,
+            entityKey,
+            ' '
+        ));
+    }
+
     componentWillMount(){
         let {editData} = this.props;
         if(editData){
@@ -122,7 +153,8 @@ export default class ContentEditor extends Component {
         const onToggle = {
             changeFontStyle:this.changeFontStyle,
             toggleBlockType:this.toggleBlockType,
-            toggleInlineStyle:this.toggleInlineStyle
+            toggleInlineStyle:this.toggleInlineStyle,
+            handleUploadImage:this.handleUploadImage
         };
         // If the user changes block type before entering any text, we can
         // either style the placeholder or hide it. Let's just hide it now.
@@ -170,8 +202,9 @@ export default class ContentEditor extends Component {
                         customStyleMap={styleMap}
                         placeholder="Tell a story..."
                         spellCheck={true}
-                        plugins={[richButtonsPlugin]}
                     />
+                    <input type="file" ref="fileInput" style={{display: 'none'}}
+                           onChange={this.handleFileInput} />
                 </div>
                 <div className="bottomBar">
                     <span className="saveButton" onClick={()=>this.saveBlog(id,rowData,plaintext)}>保存</span>
