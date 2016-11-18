@@ -1,0 +1,72 @@
+.rootContainer {
+	height: 100%;
+}
+.resumeWrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    background-color: #2a2f3a;
+}
+.resumeContianer {
+	/*background: url("./images/background.jpg") no-repeat fixed;
+	background-size: cover;*/
+    position: relative;
+    width: 100%;
+	background-color: rgb(42, 47, 58);
+    text-align: center;
+    padding-top: 30px;
+    transition: all ease-in-out .5s;
+    img {
+        width:150px;
+        height:150px;
+        -webkit-border-radius:50%;
+        -moz-border-radius:50%;
+        border-radius:50%;
+    }
+    p {
+        font-size: 18px;
+    }
+}
+.resumeContianer .resumeTitle {
+	line-height: 2;
+	font-size: 44px;
+	color: darken(#83A3C3, 5%);
+	text-align: center;
+	font-family: 'RobotoThin';
+}
+.resumeContianer .personalInfo {
+	width: 80%;
+	margin: 0 auto;
+	color:#83A3C3;
+	line-height: 2;
+}
+$lineHeight: 80px;
+.resumeContianer .currentState {
+	width: 100%;
+	height: $lineHeight;
+	line-height: $lineHeight;
+	margin-top: 200px;
+	text-align: center;
+	color: #fff;
+	background: rgba(255,255,255,.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+	//box-shadow: 0 5px 5px rgba(47,47,47,0.98);
+}
+.buttons {
+    margin-top: 180px;
+    padding-bottom: 50px;
+}
+.button {
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 20px 20px;
+    border-radius: 10px;
+}

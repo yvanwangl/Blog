@@ -1,0 +1,66 @@
+$paddingTop: 30px;
+$lineHeight: 3.5;
+$white: #fff;
+@function getMarginBottom($bottom: 20){
+	@return (10+$bottom)+px;
+}
+@function getLineHeight($lineHeight: 0.5){
+	@return 0.5+$lineHeight;
+}
+.blogItem {
+	position: relative;
+	width: 100%;
+	padding:  $paddingTop 5%;
+	margin-bottom: getMarginBottom();
+	background: $white;
+	box-sizing: border-box;
+	border-radius: 10px;
+	box-shadow: 0 10px 20px rgba(0,0,0,.05);
+	font-size:16px;
+	cursor: pointer;
+	& h1 {
+		font-size: 24px;
+		font-weight: normal;
+		line-height: getLineHeight(3);
+		color:#000;
+	}
+
+	& p.blogContent {
+		line-height: getLineHeight(1.5);
+		color: #000;
+		max-height: 145px;
+		overflow: hidden;
+		white-space: normal;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		font-size: 18px;
+	}
+
+	& p.blogInfo {
+		line-height: getLineHeight(1.5);
+		color: darken(#ccc, 10%);
+		margin-top: 24px;
+	}
+
+	& .editButton {
+		position: absolute;
+		top: 30px;
+		right:30px;
+		width: 100px;
+		height: 40px;
+		line-height: 40px;
+		font-size: 14px;
+		background-color: rgba(0,0,0,.4);
+		text-align: center;
+		color: #fff;
+		opacity: 0;
+		border-radius:5px;
+		transition: all ease-in-out .2s;
+	}
+
+	&:hover .editButton {
+		opacity: 1;
+	}
+}

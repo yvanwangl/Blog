@@ -1,0 +1,31 @@
+.blogContentWrap {
+  width: 60%;
+  padding: 20px 40px 40px;
+  margin-left: 40%;
+  background: #fff;
+  color: #333; }
+  .blogContentWrap .spliter {
+    display: inline-block;
+    width: 20px; }
+
+.blogTitle {
+  text-align: center;
+  font-size: 24px;
+  line-height: 70px; }
+
+.authorInfo {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 30px; }
+
+.DraftEditor-root {
+  font-size: 18px; }
+
+.public-DraftStyleDefault-block {
+  line-height: 40px; }
+
+.blogContentWrap .disqus {
+  margin-top: 30px;
+  background-color: #D4E3F3; }
+
+/*# sourceMappingURL=index.css.map */
