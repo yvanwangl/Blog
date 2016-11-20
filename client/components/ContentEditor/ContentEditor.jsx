@@ -12,6 +12,7 @@ import Draft,
 /*import Editor from 'draft-js-plugins-editor';*/
 import EditorToolBar from '../EditorComponents/EditorToolBar/EditorToolBar';
 import {browserHistory} from 'react-router';
+import ImageComponent from '../ImageComponent/ImageComponent';
 require('./index.css');
 require('./Draft.css');
 /*import createRichButtonsPlugin from 'draft-js-richbuttons-plugin';
@@ -55,6 +56,14 @@ export default class ContentEditor extends Component {
         this.handleUploadImage = (event)=> this._handleUploadImage(event);
         this.handleFileInput = (event)=> this._handleFileInput(event);
         this.insertImage = (file)=> this._insertImage(file);
+        this.blockRenderer = (block) => {
+            if (block.getType() === 'atomic') {
+                return {
+                    component: ImageComponent
+                };
+            }
+            return null;
+        }
     }
 
 
@@ -198,6 +207,7 @@ export default class ContentEditor extends Component {
                         editorState={editorState}
                         handleKeyCommand={this.handleKeyCommand}
                         onChange={this.onChange}
+                        blockRendererFn={this.blockRenderer}
                         blockStyleFn={getBlockStyle}
                         customStyleMap={styleMap}
                         placeholder="Tell a story..."
