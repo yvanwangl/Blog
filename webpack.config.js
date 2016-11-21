@@ -27,7 +27,7 @@ var baseConfig = {
         chunkFilename: '[id].[chunkhash:5].chunk.js',
         publicPath: '/__build__/'
     },
-    devtool: '#source-map',
+    //devtool: '#source-map',
     module: {
         loaders: [
             {
