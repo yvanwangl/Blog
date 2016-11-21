@@ -1,11 +1,11 @@
 var rucksack = require('rucksack-css');
 var webpack = require('webpack');
 var path = require('path');
-//var hotMiddlewareScript = process.env.NODE_ENV=='development'?'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true':'';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 
 var entry = {};
 var plugins = [];
+var devTools = '';
 if(process.env.NODE_ENV=='production') {
     console.log(process.env.NODE_ENV+'webpack');
     entry={
@@ -33,6 +33,7 @@ if(process.env.NODE_ENV=='production') {
         new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.NoErrorsPlugin()
     ];
+    devTools='';
 }else {
     entry={
         jsx: ['./index.js', hotMiddlewareScript],
@@ -57,6 +58,7 @@ if(process.env.NODE_ENV=='production') {
         new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ];
+    devTools='#source-map';
 }
 /* baseConfig */
 var baseConfig = {
@@ -68,7 +70,7 @@ var baseConfig = {
         chunkFilename: '[id].[chunkhash:5].chunk.js',
         publicPath: '/__build__/'
     },
-    //devtool: '#source-map',
+    devtool: devTools,
     module: {
         loaders: [
             {
