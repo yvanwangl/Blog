@@ -1,7 +1,7 @@
 var rucksack = require('rucksack-css');
 var webpack = require('webpack');
 var path = require('path');
-var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
+var hotMiddlewareScript = process.env.NODE_ENV=='development'?'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true':'';
 
 /* baseConfig */
 var baseConfig = {
