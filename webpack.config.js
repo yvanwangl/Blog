@@ -4,9 +4,9 @@ var path = require('path');
 //var hotMiddlewareScript = process.env.NODE_ENV=='development'?'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true':'';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 
-console.log(process.env.NODE_ENV+'webpack');
 var entry = {};
 if(process.env.NODE_ENV=='production') {
+    console.log(process.env.NODE_ENV+'webpack');
     entry={
         jsx: ['./index.js'],
             html: ['./index.html'],
