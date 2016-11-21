@@ -52,18 +52,18 @@
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
     "redux-actions": "^0.9.1",
-    "redux-logger": "^2.6.1",
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.2",
+    "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "rucksack-css": "^0.8.5",
     "style-loader": "^0.13.0",
     "url-loader": "latest",
     "webpack": "^1.12.14",
+    "webpack-dev-middleware": "latest",
     "webpack-dev-server": "^1.14.1",
-    "webpack-hot-middleware": "^2.7.1",
-    "webpack-dev-middleware": "latest"
+    "webpack-hot-middleware": "^2.7.1"
   },
   "dependencies": {
     "antd": "^2.0.1",
