@@ -24,6 +24,7 @@ var comment = require('./routes/comment');
 
 var app = express();
 
+app.use(compression());
 //set staticResource resource
 app.use(express.static(path.join(__dirname, '../client')));
 // view engine setup
