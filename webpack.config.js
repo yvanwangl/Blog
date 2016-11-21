@@ -4,10 +4,25 @@ var path = require('path');
 //var hotMiddlewareScript = process.env.NODE_ENV=='development'?'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true':'';
 var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 
-/* baseConfig */
-var baseConfig = {
-    context: path.join(__dirname, './client'),
-    entry: {
+console.log(process.env.NODE_ENV+'webpack');
+var entry = {};
+if(process.env.NODE_ENV=='production') {
+    entry={
+        jsx: ['./index.js'],
+            html: ['./index.html'],
+            vendor: [
+            'react',
+            'react-dom',
+            'react-redux',
+            'react-router',
+            'react-router-redux',
+            'redux',
+            'antd',
+            'draft-js'
+        ]
+    }
+}else {
+    entry={
         jsx: ['./index.js', hotMiddlewareScript],
         html: ['./index.html', hotMiddlewareScript],
         vendor: [
@@ -21,7 +36,12 @@ var baseConfig = {
             'draft-js',
             hotMiddlewareScript
         ]
-    },
+    }
+}
+/* baseConfig */
+var baseConfig = {
+    context: path.join(__dirname, './client'),
+    entry: entry,
     output: {
         path: path.join(__dirname, './staticResource'),
         filename: '[name].js',

@@ -9,6 +9,5 @@ const enhancer = compose(
 );
 
 export default function configStore(initialState) {
-    console.log('product');
     return createStore(rootReducer, initialState, enhancer);
 }
