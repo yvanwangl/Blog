@@ -5,6 +5,7 @@ var path = require('path');
 var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 
 var entry = {};
+var plugins = [];
 if(process.env.NODE_ENV=='production') {
     console.log(process.env.NODE_ENV+'webpack');
     entry={
@@ -20,7 +21,18 @@ if(process.env.NODE_ENV=='production') {
             'antd',
             'draft-js'
         ]
-    }
+    };
+    plugins=[
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
+        new webpack.DefinePlugin({
+            'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')}
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.AggressiveMergingPlugin(),
+        new webpack.NoErrorsPlugin()
+    ];
 }else {
     entry={
         jsx: ['./index.js', hotMiddlewareScript],
@@ -36,7 +48,15 @@ if(process.env.NODE_ENV=='production') {
             'draft-js',
             hotMiddlewareScript
         ]
-    }
+    };
+    plugins=[
+        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
+        new webpack.DefinePlugin({
+            'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')}
+        }),
+        new webpack.NoErrorsPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ];
 }
 /* baseConfig */
 var baseConfig = {
@@ -81,14 +101,7 @@ var baseConfig = {
             autoprefixer: true
         })
     ],
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
-        new webpack.DefinePlugin({
-            'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')}
-        }),
-        new webpack.NoErrorsPlugin(),
-        new webpack.HotModuleReplacementPlugin()
-    ]
+    plugins: plugins
 };
 /* end baseConfig */
 
