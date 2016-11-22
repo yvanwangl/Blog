@@ -64,3 +64,6 @@ $white: #fff;
 		opacity: 1;
 	}
 }
+.blogItem:nth-last-child(-n+1) {
+    margin-bottom: 0;
+}

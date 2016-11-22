@@ -39,6 +39,8 @@
   margin: 0 auto;
   color: #83A3C3;
   line-height: 2; }
+  .resumeContianer .personalInfo .personPage {
+    color: #13c5e4; }
 
 .resumeContianer .currentState {
   width: 100%;
@@ -64,6 +66,7 @@
   color: #fff;
   background-color: rgba(0, 0, 0, 0.3);
   margin: 20px 20px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  cursor: pointer; }
 
 /*# sourceMappingURL=index.css.map */

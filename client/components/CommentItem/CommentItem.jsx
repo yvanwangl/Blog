@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import defaultImg from './images/default.png';
 import CommentInput from '../CommentInput/CommentInput';
-import {Icon} from 'antd';
+import Icon from '../Icon/Icon';
 import {dateFormat} from '../../utils/util';
 require('./index.css');
 
@@ -100,22 +100,22 @@ export default class CommentItem extends Component {
                 <div className="commentAction">
                     <span className="agree" onClick={agreeClick}>
                         <Icon type="like" className="icon"/>
-                        赞同( {comment['agree']} )
+                        <i>赞同( {comment['agree']} )</i>
                     </span>
                     <span className="disagree" onClick={disAgreeClick}>
                         <Icon type="dislike" className="icon"/>
-                        反对( {comment['disagree']} )
+                        <i>反对( {comment['disagree']} )</i>
                     </span>
                     <span className="reply" onClick={this.replyClick}>
                         <Icon type="message" className="icon"/>
-                        回复
+                        <i>回复</i>
                     </span>
                     {/*<span className="delete" onClick={this.deleteClick}><Icon type="close" className="icon"/>删除</span>*/}
                     {
                         showDeleteButton?
                         <span className="delete" onClick={this.deleteClick}>
                             <Icon type="close" className="icon"/>
-                            删除
+                            <i>删除</i>
                         </span>
                         :null
                     }

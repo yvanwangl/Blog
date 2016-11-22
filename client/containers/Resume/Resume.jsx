@@ -7,10 +7,8 @@ import { bindActionCreators } from 'redux';
 import * as Actions from '../../actions/Resume';
 import {logOut} from '../../actions/Login';
 import avatarFei  from './images/logo.jpg';
-import avatarHuan  from './images/background.jpg';
 import NavLink from '../../components/NavLink/NavLink';
 import {browserHistory} from 'react-router';
-import $ from 'jquery';
 require ('./index.css');
 require ('./images/logo.jpg');
 
@@ -30,17 +28,16 @@ class Resume extends Component {
     }
 
 	onHoverEvent(event){
-	    let windowHeight = $(window).height();
+	    let windowHeight = window.innerHeight;
 	    let halfWindowHeight = windowHeight/2;
         let pageY = event.pageY;
         let resumeContianer = this.refs.resumeContianer;
-        let $resumeContianer = $(resumeContianer);
-        let resumeContianerHeight = $resumeContianer.innerHeight();
+        let resumeContianerHeight = resumeContianer.scrollHeight;
         let diffHeight = resumeContianerHeight-windowHeight;
         if(pageY>halfWindowHeight){
-            $resumeContianer.css({top:-diffHeight+"px"});
+            resumeContianer.style.top = -diffHeight+"px";
         }else {
-            $resumeContianer.css({top:0});
+            resumeContianer.style.top = 0;
         }
 	}
 
@@ -50,9 +47,9 @@ class Resume extends Component {
 			<div className="rootContainer">
                 <div className="resumeWrap">
                     <div className="resumeContianer" ref="resumeContianer" onMouseOver={this.onHoverEvent.bind(this)}>
-                        <img src={resumeInfo.page=='huan'?avatarHuan:avatarFei} alt="me"/>
+                        <img src={resumeInfo.page=='huan'?avatarFei:avatarFei} alt="me"/>
                         <h1 className='resumeTitle'>{resumeInfo.resumeTitle}</h1>
-                        <p className='personalInfo'>{resumeInfo.personalInfo}{resumeInfo.page=='huan'?'':<a href="http://www.yvanwang.com">个人网站</a>}</p>
+                        <p className='personalInfo'>{resumeInfo.personalInfo}{resumeInfo.page=='huan'?'':<a href="http://www.yvanwang.com" className="personPage">个人网站</a>}</p>
                         <p className="currentState">{resumeInfo.currentState}</p>
                         <div className="buttons">
                             <NavLink className="indexPage button" to='/'>首页</NavLink>

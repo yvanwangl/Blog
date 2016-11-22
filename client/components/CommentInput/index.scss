@@ -1,5 +1,8 @@
 .commentInput {
     margin-top: 20px;
+    & * {
+        box-sizing: border-box;
+    }
     & .formItem {
         position: relative;
         margin-bottom: 20px;
@@ -35,6 +38,11 @@
         transition: all ease-in-out .3s;
         &:hover {
             background: lighten(#12B9D6, 3%);
+        }
+        & .check {
+            width: 34px;
+            height: 34px;
+            line-height: 52px;
         }
     }
 

@@ -46,4 +46,7 @@
   .blogItem:hover .editButton {
     opacity: 1; }
 
+.blogItem:nth-last-child(-n+1) {
+  margin-bottom: 0; }
+
 /*# sourceMappingURL=index.css.map */

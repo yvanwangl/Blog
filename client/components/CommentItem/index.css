@@ -1,7 +1,8 @@
 .commentItem {
   padding: 15px 0;
   font-size: 16px;
-  border-bottom: 1px dashed #ccc; }
+  border-bottom: 1px dashed #ccc;
+  line-height: 30px; }
   .commentItem .commentatorInfo {
     font-size: 18px; }
     .commentItem .commentatorInfo .commentTime {
@@ -13,16 +14,18 @@
     border-radius: 100%;
     margin-right: 20px; }
   .commentItem .commentContent {
-    margin: 20px 0; }
+    margin: 20px 0 0; }
   .commentItem .commentAction {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: right;
     color: #ccc; }
     .commentItem .commentAction:hover {
       color: #000; }
+    .commentItem .commentAction:hover .icon svg {
+      fill: #000; }
     .commentItem .commentAction .agree, .commentItem .commentAction .disagree, .commentItem .commentAction .reply, .commentItem .commentAction .delete {
       display: inline-block;
-      width: 100px;
+      padding: 0 10px;
       text-align: center;
       font-size: 14px;
       height: 30px;
@@ -30,7 +33,15 @@
       cursor: pointer;
       transition: all ease-in-out .3s; }
       .commentItem .commentAction .agree .icon, .commentItem .commentAction .disagree .icon, .commentItem .commentAction .reply .icon, .commentItem .commentAction .delete .icon {
-        margin-right: 12px; }
+        margin-right: 6px; }
+        .commentItem .commentAction .agree .icon svg, .commentItem .commentAction .disagree .icon svg, .commentItem .commentAction .reply .icon svg, .commentItem .commentAction .delete .icon svg {
+          fill: #ccc;
+          transition: all ease-in-out .3s; }
+      .commentItem .commentAction .agree i, .commentItem .commentAction .disagree i, .commentItem .commentAction .reply i, .commentItem .commentAction .delete i {
+        font-style: normal;
+        vertical-align: middle; }
+  .commentItem .commentAction:hover .icon svg {
+    fill: #000; }
 
 .commentItem.childComment {
   border-left: 3px solid rgba(0, 0, 0, 0.2);

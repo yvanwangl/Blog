@@ -10,17 +10,17 @@ if(process.env.NODE_ENV=='production') {
     console.log(process.env.NODE_ENV+'webpack');
     entry={
         jsx: ['./index.js'],
-            html: ['./index.html'],
-            vendor: [
+        html: ['./index.html'],
+        /*vendor: [
             'react',
             'react-dom',
             'react-redux',
             'react-router',
             'react-router-redux',
             'redux',
-            'antd',
+            'react-router',
             'draft-js'
-        ]
+        ]*/
     };
     plugins=[
         new webpack.optimize.UglifyJsPlugin(),
@@ -38,17 +38,17 @@ if(process.env.NODE_ENV=='production') {
     entry={
         jsx: ['./index.js', hotMiddlewareScript],
         html: ['./index.html', hotMiddlewareScript],
-        vendor: [
+        /*vendor: [
             'react',
             'react-dom',
             'react-redux',
             'react-router',
             'react-router-redux',
             'redux',
-            'antd',
+            'react-router',
             'draft-js',
             hotMiddlewareScript
-        ]
+        ]*/
     };
     plugins=[
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
@@ -65,7 +65,7 @@ var baseConfig = {
     context: path.join(__dirname, './client'),
     entry: entry,
     output: {
-        path: path.join(__dirname, './staticResource'),
+        path: path.join(__dirname, './static'),
         filename: '[name].js',
         chunkFilename: '[id].[chunkhash:5].chunk.js',
         publicPath: '/__build__/'
@@ -93,6 +93,7 @@ var baseConfig = {
                     'babel-loader'
                 ]
             },
+            { test: /\.svg$/, loader: 'babel?presets[]=es2015,presets[]=react!svg-react' }
         ],
     },
     resolve: {
@@ -103,7 +104,17 @@ var baseConfig = {
             autoprefixer: true
         })
     ],
-    plugins: plugins
+    plugins: plugins,
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+        'redux': 'Redux',
+        'redux-thunk': 'ReduxThunk',
+        'react-redux': 'ReactRedux',
+        'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup',
+        'react-router': 'ReactRouter',
+        'draft-js': 'Draft'
+    },
 };
 /* end baseConfig */
 

@@ -3,7 +3,8 @@
   padding: 20px 40px 40px;
   margin-left: 40%;
   background: #fff;
-  color: #333; }
+  color: #333;
+  box-sizing: border-box; }
   .blogContentWrap .spliter {
     display: inline-block;
     width: 20px; }

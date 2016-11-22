@@ -12,22 +12,61 @@
     left:50%;
     transform: translate(-50%,-50%);
     width: 40%;
-    padding: 30px;
+    max-width: 620px;
+    padding: 30px 40px;
     background: #ffffff;
     border-radius: 10px;
     & .loginButton {
         margin: 20px;
     }
-}
-.ant-form-item-label label {
-    font-size: 18px;
-}
+    & .userName,
+    & .pass {
+        text-align: left;
+        padding:20px;
+        & input {
+            border: 1px solid #ccc;
+            height: 48px;
+            line-height: 48px;
+            font-size: 18px;
+            text-indent: 10px;
+            width: 80%;
+            border-radius: 5px;
+            &:focus {
+                outline: 0;
+                box-shadow: 0 0 0 2px rgba(45,183,245,.2);
+                border-color: #57c5f7;
+            }
+        }
+        & label {
+            font-size: 18px;
+            margin-right: 5px;
+            width: 80px;
+            display: inline-block;
+        }
+    }
+    & .buttonArea {
+        text-align: center;
+        & .loginButton {
+            width: 30%;
+            height: 40px;
+            line-height: 40px;
+            background-color: #2db7f5;
+            font-size: 18px;
+            text-align: center;
+            border: 1px solid #2db7f5;
+            color: #fff;
+            transition: all ease-in-out .3s;
+            cursor: pointer;
+            border-radius: 5px;
+            &:hover {
+                background-color: #57c5f7;
+                border: 1px solid #57c5f7;
+            }
+            & a {
+                color: #fff;
+            }
+        }
+    }
 
-.ant-input-lg {
-    height:48px;
-    font-size:18px;
-}
-.ant-btn-lg {
-    width:200px;
-    font-size: 18px;
+
 }

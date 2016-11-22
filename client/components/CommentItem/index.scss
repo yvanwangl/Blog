@@ -2,6 +2,7 @@
     padding: 15px 0;
     font-size: 16px;
     border-bottom: 1px dashed #ccc;
+    line-height: 30px;
     & .commentatorInfo {
         font-size: 18px;
         & .commentTime {
@@ -18,22 +19,25 @@
     }
 
     & .commentContent {
-        margin: 20px 0;
+        margin: 20px 0 0;
     }
 
     & .commentAction {
-        margin-top: 20px;
+        margin-top: 15px;
         text-align: right;
         color: #ccc;
         &:hover {
             color: #000;
+        }
+        &:hover .icon svg {
+            fill: #000;
         }
         & .agree,
         & .disagree,
         & .reply,
         & .delete {
             display: inline-block;
-            width: 100px;
+            padding: 0 10px;
             text-align: center;
             font-size: 14px;
             height: 30px;
@@ -41,9 +45,20 @@
             cursor: pointer;
             transition: all ease-in-out .3s;
             & .icon {
-                margin-right: 12px;
+                margin-right: 6px;
+                & svg {
+                    fill: #ccc;
+                    transition: all ease-in-out .3s;
+                }
+            }
+            & i {
+                font-style: normal;
+                vertical-align: middle;
             }
         }
+    }
+    & .commentAction:hover .icon svg {
+        fill: #000;
     }
 }
 .commentItem.childComment {

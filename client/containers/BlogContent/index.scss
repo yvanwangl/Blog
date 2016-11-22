@@ -5,6 +5,7 @@ $white: #fff;
 	margin-left: 40%;
 	background: $white;
 	color: #333;
+	box-sizing: border-box;
 	& .spliter {
 		display: inline-block;
 		width: 20px;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Icon} from 'antd';
+import Icon from '../Icon/Icon';
 require('./index.css');
 
 export default class CommentInput extends Component {
@@ -87,7 +87,9 @@ export default class CommentInput extends Component {
                         </textarea>
                         <span className="error" ref="contentError"></span>
                     </div>
-                    <span className="saveComment" onClick={this.saveComment}><Icon type="check"/></span>
+                    <span className="saveComment" onClick={this.saveComment}>
+                        <Icon type="check" className="check"/>
+                    </span>
                 </form>
             </div>
         );

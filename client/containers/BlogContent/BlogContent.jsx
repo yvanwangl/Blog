@@ -32,12 +32,12 @@ class BlogContent extends Component {
     }
 
     componentWillMount() {
-        let {actions, blogs, blogContent} = this.props;
+        let {actions, blogs} = this.props;
         if(blogs.length>0){
             let targetBlog = blogs.filter((blog)=>blog['id']==this.props.params.id);
             /*actions.initBlogContent(targetBlog[0]['_id']);*/
             actions.saveBlogCount(targetBlog[0]['_id'], targetBlog[0]['count']+1);
-            console.log(JSON.stringify(blogContent));
+            //console.log(JSON.stringify(blogContent));
         }else {
             browserHistory.push('/');
         }

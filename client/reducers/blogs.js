@@ -81,7 +81,7 @@ let comments = [
 ];
 
 function saveBlogCount(state, blog) {
-    var blogData = Object.assign({},blog,{content:JSON.parse(blog['content']),comments:comments});
+    var blogData = Object.assign({},blog,{content:JSON.parse(blog['content'])});
 	return Object.assign({},state,{blog:blogData});
 }
 

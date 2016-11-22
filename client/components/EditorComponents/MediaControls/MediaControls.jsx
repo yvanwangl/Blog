@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Icon} from "antd";
+/*import {Icon} from "antd-local-icon";*/
 require('./index.css');
 
 export default class MediaControls extends Component {
@@ -11,11 +11,11 @@ export default class MediaControls extends Component {
         let {onUploadImage} = this.props;
         return (
             <div className="side-toolbar">
-                <Icon
+                {/*<Icon
                     type="picture"
                     onMouseDown={e => e.preventDefault()}
                     onClick={onUploadImage}
-                />
+                />*/}
             </div>
         );
     }

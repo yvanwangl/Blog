@@ -1,5 +1,7 @@
 .commentInput {
   margin-top: 20px; }
+  .commentInput * {
+    box-sizing: border-box; }
   .commentInput .formItem {
     position: relative;
     margin-bottom: 20px; }
@@ -29,6 +31,10 @@
     transition: all ease-in-out .3s; }
     .commentInput .saveComment:hover {
       background: #13c5e4; }
+    .commentInput .saveComment .check {
+      width: 34px;
+      height: 34px;
+      line-height: 52px; }
   .commentInput .error {
     position: absolute;
     right: 15px;
