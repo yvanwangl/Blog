@@ -82,10 +82,14 @@ var baseConfig = {
                 loader: 'style-loader!css-loader'
             },
             {
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                loader: 'url-loader?limit=50000&name=[path][name].[ext]'
+            },
+            /*{
                 test: /\.(png|jpg)$/,
                 loader: 'url-loader'
                 //loader: 'url-loader?limit=8192'
-            }, // inline base64 URLs for <=8k images, direct URLs for the rest
+            }, // inline base64 URLs for <=8k images, direct URLs for the rest*/
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
