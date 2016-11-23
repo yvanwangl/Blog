@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import ContentEditor from '../../components/ContentEditor/ContentEditor';
+import RichEditor from '../../components/RichEditor/RichEditor';
 import * as Actions from '../../actions/Blogs';
 require('./index.css');
 
@@ -31,7 +32,12 @@ class AdminManage extends Component {
                 <div className="titleWrap">
                     <div className="adminTitle">后台管理页面</div>
                 </div>
-                <ContentEditor saveBlog={actions.saveBlog} editData={editData}/>
+                <div ref="editorContainer"></div>
+                {/*<ContentEditor saveBlog={actions.saveBlog} editData={editData}/>*/}
+                <RichEditor
+                    id="editor1"
+                    saveBlog={actions.saveBlog}
+                    editData={editData}/>
             </div>
         );
     }
