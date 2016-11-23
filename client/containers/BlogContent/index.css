@@ -8,6 +8,8 @@
   .blogContentWrap .spliter {
     display: inline-block;
     width: 20px; }
+  .blogContentWrap .wangEditor-container, .blogContentWrap .wangEditor-menu-container {
+    border: none; }
 
 .blogTitle {
   text-align: center;
@@ -18,6 +20,9 @@
   text-align: center;
   font-size: 16px;
   margin-bottom: 30px; }
+
+#blogContent {
+  height: auto !important; }
 
 .DraftEditor-root {
   font-size: 18px; }

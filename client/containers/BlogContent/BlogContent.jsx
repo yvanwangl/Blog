@@ -3,32 +3,18 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import * as Actions from '../../actions/Blogs';
+import WangEditor from 'wangeditor';
 import * as commentActions from '../../actions/Comments';
-import Draft, {Editor, EditorState, ContentState, RichUtils} from 'draft-js';
 import Comment from '../../components/Comment/Comment';
 import {isEmptyObject} from '../../utils/util';
 require('./index.css');
 
-function getBlockStyle(contentBlock) {
-    const blockType = contentBlock.getType();
-    if (blockType === 'blockquote') {
-        return 'superFancyBlockquote';
-    }
-}
-
-const styleMap = {
-    'CODE': {
-        backgroundColor: 'rgba(0, 0, 0, 0.05)',
-        fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-        fontSize: 16,
-        padding: 2
-    }
-};
-
 class BlogContent extends Component {
     constructor(props) {
         super(props);
-        this.state = {editorState: EditorState.createEmpty()};
+        this.state = {
+            content:''
+        };
     }
 
     componentWillMount() {
@@ -47,12 +33,23 @@ class BlogContent extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps !== this.props) {
-            this.setState({editorState: EditorState.createWithContent(Draft.convertFromRaw(nextProps.blogContent['content']))});
+            this.setState({
+                content: nextProps.blogContent['content']
+            },()=>{
+                this.editor.$txt.html(this.state.content);
+            });
         }
     }
 
-    handleNewComment(){
-        console.log('ddd');
+    componentDidMount () {
+        var id = this.props.id;
+        this.editor = new WangEditor(id);
+        this.editor.config.menus = [];
+        this.editor.create();
+        this.editor.disable();
+
+        // 初始化内容
+        this.editor.$txt.html(this.state.content);
     }
 
     render() {
@@ -61,12 +58,12 @@ class BlogContent extends Component {
             return (
                 <div className="blogContentWrap container">
                     <h1 className="blogTitle">{blogContent['title']}</h1>
-                    <p className="authorInfo">作者：{blogContent['author']}<span className="spliter"></span>浏览量：{blogContent['count']}</p>
-                    <Editor
-                        editorState={this.state.editorState}
-                        blockStyleFn={getBlockStyle}
-                        customStyleMap={styleMap}
-                        readOnly={true}/>
+                    <p className="authorInfo">
+                        作者：{blogContent['author']}
+                        <span className="spliter"></span>
+                        浏览量：{blogContent['count']}
+                    </p>
+                    <div id={this.props.id} contentEditable="false"></div>
                     <div className="comment">
                         <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions} isLogin={login.is_login}/>
                     </div>
@@ -85,6 +82,7 @@ function mapStateToProps(state) {
         blogContent: state.blogs.blog,
         comments: state.comments.comments,
         login: state.login,
+        id:'blogContent'
     };
 }
 
