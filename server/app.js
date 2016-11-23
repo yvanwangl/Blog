@@ -21,6 +21,7 @@ var login = require('./routes/login');
 var blogList = require('./routes/blogList');
 var blogContent = require('./routes/blogContent');
 var comment = require('./routes/comment');
+var upload = require('./routes/upload');
 
 var app = express();
 
@@ -80,6 +81,7 @@ app.use('/test', test);
 app.use('/login',login);
 app.use('/blog',blogContent);
 app.use('/comment',comment);
+app.use('/upload',upload);
 app.get('*', function (request, response){
     response.sendFile(path.resolve(__dirname,'../client','index.html'));
 });
