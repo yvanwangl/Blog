@@ -8,7 +8,7 @@ var fs = require('fs');
 var path = require('path');
 
 //139.224.195.74
-var server = 'localhost';
+var server = '139.224.195.74';
 var port = 3000;
 // 文件将要上传到哪个文件夹下面
 var uploadfoldername = 'uploadfiles';
