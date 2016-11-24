@@ -81,6 +81,8 @@
     "lodash": "^4.17.2",
     "mongoose": "^4.6.6",
     "morgan": "~1.7.0",
+    "plupload": "^2.2.1",
+    "qiniu-js": "^1.0.14-beta",
     "redux-form": "^6.2.0",
     "serve-favicon": "~2.3.0",
     "svg-react-loader": "^0.3.7",

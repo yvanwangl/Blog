@@ -12,7 +12,7 @@ var server = 'localhost';
 var port = 3000;
 // 文件将要上传到哪个文件夹下面
 var uploadfoldername = 'uploadfiles';
-var uploadfolderpath = path.join(__dirname, '../',uploadfoldername);
+var uploadfolderpath = path.join(__dirname, '../../client/',uploadfoldername);
 
 router.route('/')
     .post(function (req, res, next) {
@@ -79,7 +79,7 @@ router.route('/')
                         // 保存成功
                         console.log('fs.rename done');
                         // 拼接图片url地址
-                        result = 'http://' + server + ':' + port + '/server/' + uploadfoldername + '/' + filename;
+                        result = 'http://' + server + ':' + port + '/' + uploadfoldername + '/' + filename;
                     }
 
                     // 返回结果
