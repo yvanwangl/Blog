@@ -53,7 +53,7 @@ var httpServer = http.createServer(function (req, res) {
     console.log("client ip:" + ip + ", host:" + host);
     switch (host) {
         case 'yvanwang.com':
-            proxy.web(req, res, {target: 'https://yvanwang.com'});
+            proxy.web(req, res, {target: 'https://localhost:443'});
             break;
         case 'www.yvanwang.com':
             proxy.web(req, res, {target: 'https://www.yvanwang.com'});
