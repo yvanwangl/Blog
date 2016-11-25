@@ -62,7 +62,8 @@ httpProxy.createServer(function (req, res, proxy) {
                 host: 'https://yvanwang.com',
                 port: 443,
                 target: {
-                    https: true
+                    https: true,
+                    url:'https://yvanwang.com'
                 }
             });
             break;
