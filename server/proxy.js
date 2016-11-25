@@ -47,18 +47,38 @@ var httpsServer = https.createServer(options, function (req, res) {
     }
 });
 
-/*var httpServer = http.createServer(function (req, res) {
+var httpServer = http.createServer(function (req, res) {
     // 在这里可以自定义你的路由分发
+    var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    console.log("client ip:" + ip + ", host:" + host);
+    switch (host) {
+        case 'yvanwang.com':
+            res.redirect('https://www.yvanwang.com');
+            break;
+        case 'www.yvanwang.com':
+            res.redirect('https://www.yvanwang.com');
+            break;
+        case 'blog.yvanwang.com':
+            res.redirect('https://blog.yvanwang.com');
+            break;
+        case 'sunnyhuan.yvanwang.com':
+            res.redirect('https://sunnyhuan.yvanwang.com');
+            break;
+        default:
+            res.writeHead(200, {
+                'Content-Type': 'text/plain'
+            });
+            res.end("Welcome to my yvanwang's blog!");
+    }
+});
 
-});*/
-
-httpProxy.createProxyServer({
+/*httpProxy.createProxyServer({
     target: 'https://blog.yvanwang.com',
     agent  : https.globalAgent,
     headers: {
         host: 'blog.yvanwang.com'
     }
-}).listen(80);
+}).listen(80);*/
 
 /*httpProxy.createServer(function (req, res, proxy) {
     // Inspect request and decide whether to proxy, then...
@@ -95,5 +115,5 @@ httpProxy.createProxyServer({
 console.log("httpsServer listening on port 443");
 httpsServer.listen(443);
 
-/*console.log("httpServer listening on port 80");
-httpServer.listen(80);*/
+console.log("httpServer listening on port 80");
+httpServer.listen(80);
