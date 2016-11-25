@@ -41,6 +41,7 @@
   .loginWrapper .buttonArea {
     text-align: center; }
     .loginWrapper .buttonArea .loginButton {
+      display: inline-block;
       width: 30%;
       height: 40px;
       line-height: 40px;

@@ -1,7 +1,7 @@
 import { ADD_BLOG } from '../constants/ActionTypes';
 
 var currentHost = window.location.href;
-var sunnyhuanPage = 'http://sunnyhuan.yvanwang.com/';   //'http://localhost:3000/'
+var sunnyhuanPage = 'https://sunnyhuan.yvanwang.com/';   //'http://localhost:3000/'
 const initState = currentHost==sunnyhuanPage
     ?{
         resumeTitle: `Li Huan`,
