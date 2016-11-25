@@ -19,7 +19,11 @@ var server = require('http').createServer(function(req, res) {
   var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;  
   console.log("client ip:" + ip + ", host:" + host);  
     
-  switch(host){  
+  switch(host){
+     case 'yvanwang.com':
+          proxy.web(req, res, { target: 'http://localhost:3000' });
+    case 'www.yvanwang.com':
+          proxy.web(req, res, { target: 'http://localhost:3000' });
     case 'blog.yvanwang.com':
         proxy.web(req, res, { target: 'http://localhost:3000' });
     break;
