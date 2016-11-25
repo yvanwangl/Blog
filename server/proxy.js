@@ -59,5 +59,5 @@ var server = https.createServer(options, function(req, res) {
   }  
 });  
   
-console.log("listening on port 80");
-server.listen(80);
+console.log("listening on port 443");
+server.listen(443);
