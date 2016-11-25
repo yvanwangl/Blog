@@ -47,20 +47,20 @@ var httpsServer = https.createServer(options, function (req, res) {
     }
 });
 
-var httpServer = http.createServer(function (req, res) {
+/*var httpServer = http.createServer(function (req, res) {
     // 在这里可以自定义你的路由分发
 
-});
+});*/
 
-/*httpProxy.createProxyServer({
+httpProxy.createProxyServer({
     target: 'https://yvanwang.com',
     agent  : https.globalAgent,
     headers: {
         host: 'yvanwang.com'
     }
-}).listen(8011);*/
+}).listen(80);
 
-httpProxy.createServer(function (req, res, proxy) {
+/*httpProxy.createServer(function (req, res, proxy) {
     // Inspect request and decide whether to proxy, then...
     var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log("client ip:" + ip + ", host:" + host);
@@ -89,7 +89,7 @@ httpProxy.createServer(function (req, res, proxy) {
             });
             res.end("Welcome to my yvanwang's blog!");
     }
-}).listen(80);
+}).listen(80);*/
 
 
 console.log("httpsServer listening on port 443");
