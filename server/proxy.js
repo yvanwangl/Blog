@@ -26,17 +26,17 @@ var httpsServer = https.createServer(options, function (req, res) {
     // 在这里可以自定义你的路由分发
     var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log("client ip:" + ip + ", host:" + host);
-    proxyWeb(host);
+    proxyWeb(req, res,host);
 });
 
 var httpServer = http.createServer(function (req, res) {
     // 在这里可以自定义你的路由分发
     var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log("client ip:" + ip + ", host:" + host);
-    proxyWeb(host);
+    proxyWeb(req, res,host);
 });
 
-function proxyWeb(host) {
+function proxyWeb(req, res,host) {
     switch (host) {
         case 'yvanwang.com':
             proxy.web(req, res, {target: 'http://localhost:3000'});
