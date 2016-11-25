@@ -2,10 +2,11 @@ var http = require('http'),
 	httpProxy = require('http-proxy');
 var https = require('https');
 var fs = require('fs');
+var path = require('path');
 var options = {
-    ca: fs.readFileSync('./www_yvanwang_com/www_yvanwang_com.ca-bundle'),
-    key: fs.readFileSync('./www_yvanwang_com/www_yvanwang_com.key'),
-    cert: fs.readFileSync('./www_yvanwang_com/www_yvanwang_com.crt'),
+    ca: fs.readFileSync(path.join(__dirname,'www_yvanwang_com/www_yvanwang_com.ca-bundle')),
+    key: fs.readFileSync(path.join(__dirname,'www_yvanwang_com/www_yvanwang_com.key')),
+    cert: fs.readFileSync(path.join(__dirname,'www_yvanwang_com/www_yvanwang_com.crt')),
 };
 	
 // 新建一个代理 Proxy Server 对象
