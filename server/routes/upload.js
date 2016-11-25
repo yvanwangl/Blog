@@ -79,7 +79,7 @@ router.route('/')
                         // 保存成功
                         console.log('fs.rename done');
                         // 拼接图片url地址
-                        result = 'http://' + server  + '/' + uploadfoldername + '/' + filename;
+                        result = 'https://' + server  + '/' + uploadfoldername + '/' + filename;
                     }
 
                     // 返回结果
