@@ -3,7 +3,7 @@
  */
 export default function toggle() {
     var currentHost = window.location.href;
-    var sunnyhuanPage = 'http://sunnyhuan.yvanwang.com/';   //'http://localhost:3000/'
+    var sunnyhuanPage = 'https://sunnyhuan.yvanwang.com/';   //'http://localhost:3000/'
     console.log(currentHost == sunnyhuanPage);
     if (currentHost == sunnyhuanPage) {
         var huanStyle = document.createElement('link');
