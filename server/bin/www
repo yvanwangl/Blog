@@ -4,11 +4,13 @@
  * Module dependencies.
  */
 
+const hostname='blog.yvanwang.com';
 var app = require('../app');
 var debug = require('debug')('server:server');
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
+
 
 var options = {
     ca: fs.readFileSync('../www_yvanwang_com/www_yvanwang_com.ca-bundle'),
