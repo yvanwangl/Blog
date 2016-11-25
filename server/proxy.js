@@ -4,9 +4,9 @@ var https = require('https');
 var fs = require('fs');
 var path = require('path');
 var options = {
-    ca: fs.readFileSync(path.join(__dirname,'www_yvanwang_com/www_yvanwang_com.ca-bundle')),
-    key: fs.readFileSync(path.join(__dirname,'www_yvanwang_com/www_yvanwang_com.key')),
-    cert: fs.readFileSync(path.join(__dirname,'www_yvanwang_com/www_yvanwang_com.crt')),
+    ca: fs.readFileSync(path.join(__dirname,'/www_yvanwang_com/www_yvanwang_com.ca-bundle')),
+    key: fs.readFileSync(path.join(__dirname,'/www_yvanwang_com/www_yvanwang_com.key')),
+    cert: fs.readFileSync(path.join(__dirname,'/www_yvanwang_com/www_yvanwang_com.crt')),
 };
 	
 // 新建一个代理 Proxy Server 对象
@@ -29,19 +29,19 @@ var server = https.createServer(options, function(req, res) {
     
   switch(host){
      case 'yvanwang.com':
-          proxy.web(req, res, { target: 'https://localhost:3000' });
+          proxy.web(req, res, { target: 'http://localhost:3000' });
          break;
     case 'www.yvanwang.com':
-          proxy.web(req, res, { target: 'https://localhost:3000' });
+          proxy.web(req, res, { target: 'http://localhost:3000' });
         break;
     case 'blog.yvanwang.com':
-        proxy.web(req, res, { target: 'https://localhost:3000' });
+        proxy.web(req, res, { target: 'http://localhost:3000' });
     break;
     case 'sunnyhuan.yvanwang.com':
-        proxy.web(req, res, { target: 'https://localhost:3000' });
+        proxy.web(req, res, { target: 'http://localhost:3000' });
     break;  
     case 'vps.cccc.com':  
-        proxy.web(req, res, { target: 'https://xyd.bbbbb.com:8080' });
+        proxy.web(req, res, { target: 'http://xyd.bbbbb.com:8080' });
     break;  
     case 'dddd.com':  
     case 'www.dddd.com':  
