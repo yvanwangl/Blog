@@ -26,17 +26,6 @@ var httpsServer = https.createServer(options, function (req, res) {
     // 在这里可以自定义你的路由分发
     var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log("client ip:" + ip + ", host:" + host);
-    proxyWeb(req, res,host);
-});
-
-var httpServer = http.createServer(function (req, res) {
-    // 在这里可以自定义你的路由分发
-    var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    console.log("client ip:" + ip + ", host:" + host);
-    proxyWeb(req, res,host);
-});
-
-function proxyWeb(req, res,host) {
     switch (host) {
         case 'yvanwang.com':
             proxy.web(req, res, {target: 'http://localhost:3000'});
@@ -50,24 +39,39 @@ function proxyWeb(req, res,host) {
         case 'sunnyhuan.yvanwang.com':
             proxy.web(req, res, {target: 'http://localhost:3000'});
             break;
-        case 'vps.cccc.com':
-            proxy.web(req, res, {target: 'http://xyd.bbbbb.com:8080'});
+        default:
+            res.writeHead(200, {
+                'Content-Type': 'text/plain'
+            });
+            res.end("Welcome to my yvanwang's blog!");
+    }
+});
+
+var httpServer = http.createServer(function (req, res) {
+    // 在这里可以自定义你的路由分发
+    var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    console.log("client ip:" + ip + ", host:" + host);
+    switch (host) {
+        case 'yvanwang.com':
+            proxy.web(req, res, {target: 'https://yvanwang.com'});
             break;
-        case 'dddd.com':
-        case 'www.dddd.com':
-            proxy.web(req, res, {target: 'http://localhost:81'});
+        case 'www.yvanwang.com':
+            proxy.web(req, res, {target: 'https://www.yvanwang.com'});
             break;
-        case 'eeeeee.com.cn':
-        case 'www.eeee.com.cn':
-            proxy.web(req, res, {target: 'http://eeeee.com.cn:8082'});
+        case 'blog.yvanwang.com':
+            proxy.web(req, res, {target: 'https://blog.yvanwang.com'});
+            break;
+        case 'sunnyhuan.yvanwang.com':
+            proxy.web(req, res, {target: 'https://sunnyhuan.yvanwang.com'});
             break;
         default:
             res.writeHead(200, {
                 'Content-Type': 'text/plain'
             });
-            res.end('Welcome to my server!');
+            res.end("Welcome to my yvanwang's blog!");
     }
-}
+});
+
 
 console.log("httpsServer listening on port 443");
 httpsServer.listen(443);
