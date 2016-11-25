@@ -52,6 +52,14 @@ var httpServer = http.createServer(function (req, res) {
 
 });
 
+/*httpProxy.createProxyServer({
+    target: 'https://yvanwang.com',
+    agent  : https.globalAgent,
+    headers: {
+        host: 'yvanwang.com'
+    }
+}).listen(8011);*/
+
 httpProxy.createServer(function (req, res, proxy) {
     // Inspect request and decide whether to proxy, then...
     var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -59,11 +67,10 @@ httpProxy.createServer(function (req, res, proxy) {
     switch (host) {
         case 'yvanwang.com':
             proxy.proxyRequest(req, res, {
-                host: 'https://yvanwang.com',
-                port: 443,
-                target: {
-                    https: true,
-                    url:'https://yvanwang.com'
+                target: 'https://yvanwang.com',
+                agent  : https.globalAgent,
+                headers: {
+                    host: 'yvanwang.com'
                 }
             });
             break;
