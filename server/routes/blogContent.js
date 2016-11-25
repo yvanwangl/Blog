@@ -53,8 +53,14 @@ router.post('/save',function(req, res, next){
             saveBlog(blog, res);
         }else {
             Blog.find(function(err, blogList){
+                var id;
+                if(blogList.length==0){
+                    id = 1;
+                }else {
+                    id = blogList[blogList.length-1]['id']+1;
+                }
                 var blog = new Blog({
-                    id:blogList[blogList.length-1]['id']+1,
+                    id:id,
                     title:blogData['title'],
                     author:blogData['author'],
                     content:JSON.stringify(blogData['rowData']),
