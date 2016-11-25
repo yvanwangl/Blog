@@ -53,10 +53,10 @@ var httpsServer = https.createServer(options, function (req, res) {
 });*/
 
 httpProxy.createProxyServer({
-    target: 'https://yvanwang.com',
+    target: 'https://blog.yvanwang.com',
     agent  : https.globalAgent,
     headers: {
-        host: 'yvanwang.com'
+        host: 'blog.yvanwang.com'
     }
 }).listen(80);
 
