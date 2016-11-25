@@ -53,16 +53,28 @@ var httpServer = http.createServer(function (req, res) {
     console.log("client ip:" + ip + ", host:" + host);
     switch (host) {
         case 'yvanwang.com':
-            res.redirect('https://www.yvanwang.com');
+            res.writeHead(302, {
+                'Location': 'https://www.yvanwang.com'
+            });
+            res.end();
             break;
         case 'www.yvanwang.com':
-            res.redirect('https://www.yvanwang.com');
+            res.writeHead(302, {
+                'Location': 'https://www.yvanwang.com'
+            });
+            res.end();
             break;
         case 'blog.yvanwang.com':
-            res.redirect('https://blog.yvanwang.com');
+            res.writeHead(302, {
+                'Location': 'https://blog.yvanwang.com'
+            });
+            res.end();
             break;
         case 'sunnyhuan.yvanwang.com':
-            res.redirect('https://sunnyhuan.yvanwang.com');
+            res.writeHead(302, {
+                'Location': 'https://sunnyhuan.yvanwang.com'
+            });
+            res.end();
             break;
         default:
             res.writeHead(200, {
