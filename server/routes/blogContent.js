@@ -60,7 +60,8 @@ router.post('/save',function(req, res, next){
                     content:JSON.stringify(blogData['rowData']),
                     plaintext:blogData['plaintext'],
                     publishDate:new Date(),
-                    blogStatus:blogData['blogStatus']
+                    blogStatus:blogData['blogStatus'],
+                    count:1
                 });
                 saveBlog(blog, res);
             });
