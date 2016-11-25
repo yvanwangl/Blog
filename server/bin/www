@@ -12,11 +12,11 @@ var https = require('https');
 var fs = require('fs');
 
 
-var options = {
+/*var options = {
     ca: fs.readFileSync('../www_yvanwang_com/www_yvanwang_com.ca-bundle'),
     key: fs.readFileSync('../www_yvanwang_com/www_yvanwang_com.key'),
     cert: fs.readFileSync('../www_yvanwang_com/www_yvanwang_com.crt'),
-};
+};*/
 
 /**
  * Get port from environment and store in Express.

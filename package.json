@@ -82,6 +82,7 @@
     "mongoose": "^4.6.6",
     "morgan": "~1.7.0",
     "plupload": "^2.2.1",
+    "pm2": "^2.1.5",
     "qiniu-js": "^1.0.14-beta",
     "redux-form": "^6.2.0",
     "serve-favicon": "~2.3.0",
