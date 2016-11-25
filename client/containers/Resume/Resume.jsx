@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import * as Actions from '../../actions/Resume';
 import {logOut} from '../../actions/Login';
 import avatarFei  from './images/logo.jpg';
+import avatarHuan  from './images/huanimg.jpg';
 import NavLink from '../../components/NavLink/NavLink';
 import {browserHistory} from 'react-router';
 require ('./index.css');
@@ -47,7 +48,7 @@ class Resume extends Component {
 			<div className="rootContainer">
                 <div className="resumeWrap">
                     <div className="resumeContianer" ref="resumeContianer" onMouseOver={this.onHoverEvent.bind(this)}>
-                        <img src={resumeInfo.page=='huan'?avatarFei:avatarFei} alt="me"/>
+                        <img src={resumeInfo.page=='huan'?avatarHuan:avatarFei} alt="me"/>
                         <h1 className='resumeTitle'>{resumeInfo.resumeTitle}</h1>
                         <p className='personalInfo'>{resumeInfo.personalInfo}{resumeInfo.page=='huan'?'':<a href="http://www.yvanwang.com" className="personPage">个人网站</a>}</p>
                         <p className="currentState">{resumeInfo.currentState}</p>
