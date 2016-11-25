@@ -37,7 +37,9 @@ class AdminManage extends Component {
                 <RichEditor
                     id="editor1"
                     saveBlog={actions.saveBlog}
-                    editData={editData}/>
+                    editData={editData}
+                    readOnly={false}
+                />
             </div>
         );
     }

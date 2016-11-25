@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import * as Actions from '../../actions/Blogs';
-import WangEditor from 'wangeditor';
 import * as commentActions from '../../actions/Comments';
 import Comment from '../../components/Comment/Comment';
+import ReadEditor from '../../components/ReadEditor/ReadEditor';
 import {isEmptyObject} from '../../utils/util';
 require('./index.css');
 
@@ -35,21 +35,8 @@ class BlogContent extends Component {
         if (nextProps !== this.props) {
             this.setState({
                 content: nextProps.blogContent['content']
-            },()=>{
-                this.editor.$txt.html(this.state.content);
             });
         }
-    }
-
-    componentDidMount () {
-        var id = this.props.id;
-        this.editor = new WangEditor(id);
-        this.editor.config.menus = [];
-        this.editor.create();
-        this.editor.disable();
-
-        // 初始化内容
-        this.editor.$txt.html(this.state.content);
     }
 
     render() {
@@ -63,7 +50,7 @@ class BlogContent extends Component {
                         <span className="spliter"></span>
                         浏览量：{blogContent['count']}
                     </p>
-                    <div id={this.props.id} contentEditable="false"></div>
+                    <ReadEditor id={this.props.id} content={blogContent['content']}/>
                     <div className="comment">
                         <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions} isLogin={login.is_login}/>
                     </div>
