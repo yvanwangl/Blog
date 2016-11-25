@@ -1,3 +1,4 @@
+ /**
  * Created by wyf on 2016/11/23.
  */
 var express = require('express');
@@ -7,7 +8,7 @@ var fs = require('fs');
 var path = require('path');
 
 //139.224.195.74
-var server = 'localhost';
+var server = 'blog.yvanwang.com';
 var port = 3000;
 // 文件将要上传到哪个文件夹下面
 var uploadfoldername = 'uploadfiles';
@@ -78,7 +79,7 @@ router.route('/')
                         // 保存成功
                         console.log('fs.rename done');
                         // 拼接图片url地址
-                        result = 'http://' + server + ':' + port + '/' + uploadfoldername + '/' + filename;
+                        result = 'http://' + server  + '/' + uploadfoldername + '/' + filename;
                     }
 
                     // 返回结果
