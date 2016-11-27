@@ -117,7 +117,8 @@ var baseConfig = {
         'react-redux': 'ReactRedux',
         'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup',
         'react-router': 'ReactRouter',
-        'draft-js': 'Draft'
+        'draft-js': 'Draft',
+        'wangeditor': 'wangEditor'
     },
 };
 /* end baseConfig */
