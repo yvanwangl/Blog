@@ -74,6 +74,8 @@ if (app.get('env') === 'development') {
             log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
         }));
     })();
+}else {
+    console.log('this is production ENV');
 }
 
 //set routers
