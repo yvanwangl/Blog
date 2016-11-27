@@ -77,6 +77,7 @@ if (app.get('env') === 'development') {
 }else {
     console.log('this is production ENV');
 }
+console.log(app.get('env'));
 
 //set routers
 app.use('/bloglist', blogList);
