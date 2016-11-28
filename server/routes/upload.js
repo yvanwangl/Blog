@@ -18,7 +18,7 @@ router.route('/')
     .post(function (req, res, next) {
         // 使用第三方的 formidable 插件初始化一个 form 对象
         var form = new formidable.IncomingForm();
-        form.uploadDir='../tmp';
+        form.uploadDir=path.join(__dirname, '../','tmp');
 
         form.parse(req, function (err, fields, files) {
             if(err){
