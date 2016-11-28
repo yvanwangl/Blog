@@ -5,7 +5,8 @@
   padding-bottom: 110px; }
   .contentEditor .wangEditor-container {
     width: 90%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    overflow-y: scroll; }
 
 .contentEditor .blogInfo {
   width: 90%;

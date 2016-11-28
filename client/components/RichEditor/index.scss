@@ -7,6 +7,7 @@ $width90: 90%;
     & .wangEditor-container {
         width: $width90;
         margin: 0 auto;
+        overflow-y: scroll;
     }
 }
 .contentEditor .blogInfo {
