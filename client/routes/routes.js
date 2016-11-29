@@ -27,7 +27,7 @@ const rootRoute = {
     /*匹配/路由的页面*/
     getComponent(nextState, callback) {
         require.ensure([], function (require) {
-            callback(null, require('../containers/Resume/Resume').default)
+            callback(null, require('../containers/Index/Index').default)
         })
     },
 
@@ -44,6 +44,7 @@ const rootRoute = {
     getChildRoutes(partialNextState, callback) {
         require.ensure([], function (require) {
             callback(null, [
+            	require('./resume/index'),
                 require('./blog/index'),
                 require('./admin/index'),
                 require('./login/index'),

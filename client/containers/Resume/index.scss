@@ -1,48 +1,111 @@
 .rootContainer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right:0;
+    transform: translate(100%, 0);
 	height: 100%;
+    transition: all ease-in-out .5s;
+    z-index: 999;
+}
+.rootContainer.showResume {
+    transform: translate(0, 0);
+    z-index: 999;
 }
 .resumeWrap {
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
-    width: 40%;
-    background-color: #2a2f3a;
-}
-.resumeContianer {
-	/*background: url("./images/background.jpg") no-repeat fixed;
-	background-size: cover;*/
-    position: relative;
+    right:0;
     width: 100%;
-	background-color: rgb(42, 47, 58);
-    text-align: center;
-    padding-top: 30px;
-    transition: all ease-in-out .5s;
-    img {
-        width:150px;
-        height:150px;
-        -webkit-border-radius:50%;
-        -moz-border-radius:50%;
-        border-radius:50%;
+    background: url('https://blog.yvanwang.com/uploadfiles/resumebg.png') no-repeat ;
+    background-size: cover;
+    & .linearContainer {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right:0;
+        opacity: 0.9;
+        background-image: linear-gradient(242deg, #7474bf, #7175c0 4%, #7175c0 4%, #448cd5 76%, #3593dc);
     }
-    p {
-        font-size: 18px;
+    & .closeContainer {
+        position: absolute;
+        top: 40px;
+        right: 60px;
+        width: 38px;
+        height: 38px;
+        cursor: pointer;
+        & .closeIcon {
+            width: 100%;
+            height: 100%;
+            margin-top: 50%;
+            transform: translate(0,-50%);
+        }
     }
-}
-.resumeContianer .resumeTitle {
-	line-height: 2;
-	font-size: 44px;
-	color: darken(#83A3C3, 5%);
-	text-align: center;
-	font-family: 'RobotoThin';
-}
-.resumeContianer .personalInfo {
-	width: 80%;
-	margin: 0 auto;
-	color:#83A3C3;
-	line-height: 2;
-    & .personPage {
-        color: #13c5e4;
+    & .resumeContianer {
+        position: absolute;
+        width: 40%;
+        text-align: left;
+        padding-top: 30px;
+        transition: all ease-in-out .5s;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        z-index: 999;
+        top: 50%;
+        left: 50%;
+        img {
+            position: absolute;
+            left: -192px;
+            transform: translate(0, -50%);
+            width:150px;
+            height:150px;
+            -webkit-border-radius:50%;
+            -moz-border-radius:50%;
+            border-radius:50%;
+        }
+        p {
+            font-size: 18px;
+        }
+        & .resumeTitle {
+            margin-bottom: 20px;
+            line-height: 1;
+            font-size: 44px;
+            text-align: left;
+            font-family: 'RobotoThin';
+        }
+        & .personalInfo {
+            width: 100%;
+            margin: 0 auto 40px;
+            line-height: 2;
+            & .personPage {
+                color: #f5a623;
+            }
+        }
+        & .skillContainer {
+            font-family: 'RobotoThin';
+            margin-bottom: 140px;
+        }
+        & .linkContainer {
+            position: relative;
+            & .loginContainer {
+                position: absolute;
+                right: 0;
+                top:50%;
+                transform: translate(0,-50%);
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                & .logIcon {
+                    width: 100%;
+                    height: 100%;
+                    margin-top: 50%;
+                    transform: translate(0,-50%);
+                }
+            }
+        }
     }
 }
 $lineHeight: 80px;

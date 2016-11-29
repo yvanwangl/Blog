@@ -2,13 +2,17 @@
     color: #000;
     background-color: #EEEEEE;
     position: relative;
+    width: 80%;
+    max-width: 1024px;
+    margin: 0 auto;
 }
 .titleWrap {
     position: fixed;
     top: 0;
-    width:60%;
+    width: 80%;
+    max-width: 1024px;
     background: #EEEEEE;
-    z-index: 999;
+    z-index: 666;
 }
 .adminTitle {
     width:100%;

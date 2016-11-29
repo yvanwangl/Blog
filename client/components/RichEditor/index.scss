@@ -43,14 +43,14 @@ $width90: 90%;
 }
 .bottomBar {
     position: fixed;
-    right: 0;
     bottom: 0;
-    width: 60%;
+    width: 80%;
+    max-width: 1024px;
     height:80px;
     line-height: 80px;
     background-color: #265783;
     text-align: center;
-    z-index: 999;
+    z-index: 666;
     & .saveButton {
         width: 200px;
         font-size: 20px;

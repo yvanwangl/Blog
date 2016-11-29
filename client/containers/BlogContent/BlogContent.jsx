@@ -6,6 +6,7 @@ import * as Actions from '../../actions/Blogs';
 import * as commentActions from '../../actions/Comments';
 import Comment from '../../components/Comment/Comment';
 import ReadEditor from '../../components/ReadEditor/ReadEditor';
+import Icon from '../../components/Icon/Icon';
 import {isEmptyObject} from '../../utils/util';
 require('./index.css');
 
@@ -15,6 +16,11 @@ class BlogContent extends Component {
         this.state = {
             content:''
         };
+        this.backClick = (event)=>this._backClick(event);
+    }
+
+    _backClick(event){
+        browserHistory.push('/');
     }
 
     componentWillMount() {
@@ -44,6 +50,10 @@ class BlogContent extends Component {
         if(!isEmptyObject(blogContent)){
             return (
                 <div className="blogContentWrap container">
+                    <div className="backButton" onClick={this.backClick}>
+                        <Icon type="back" className="backIcon"/>
+                        <span className="backText">返回</span>
+                    </div>
                     <h1 className="blogTitle">{blogContent['title']}</h1>
                     <p className="authorInfo">
                         作者：{blogContent['author']}

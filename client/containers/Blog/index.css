@@ -1,9 +1,9 @@
 .blogsContainer {
-  width: 60%;
+  width: 80%;
+  max-width: 1024px;
   height: auto;
   min-height: 100%;
   padding-top: 20px;
-  margin-left: 40%;
-  background: #fff; }
+  margin: 0 auto; }
 
 /*# sourceMappingURL=index.css.map */

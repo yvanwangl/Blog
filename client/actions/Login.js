@@ -1,7 +1,7 @@
 /**
  * Created by wyf on 2016/10/29.
  */
-import {LOGIN_SUCCESS, LOGIN_FAIL,LOG_OUT} from '../constants/LoginActions';
+import {LOGIN_SUCCESS, LOGIN_FAIL,LOG_OUT, SHOW_LOGIN_DIALOG, HIDE_LOGIN_DIALOG} from '../constants/LoginActions';
 import fetch from 'isomorphic-fetch';
 
 export function login(values, callback) {
@@ -45,5 +45,17 @@ export function loginFail(){
 export function logOut(){
     return {
         type:LOG_OUT
+    }
+}
+
+export function showLoginDialog(){
+    return {
+        type:SHOW_LOGIN_DIALOG
+    }
+}
+
+export function hideLoginDialog(){
+    return {
+        type:HIDE_LOGIN_DIALOG
     }
 }

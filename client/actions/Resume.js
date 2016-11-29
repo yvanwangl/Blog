@@ -1,7 +1,13 @@
-import { ADD_BLOG } from '../constants/ActionTypes';
+import { SHOW_RESUME, HIDE_RESUME } from '../constants/ResumeActions';
 
-export function add(){
+export function showResume(){
 	return {
-		type: ADD_BLOG
+		type: SHOW_RESUME
+	}
+}
+
+export function hideResume(){
+	return {
+		type: HIDE_RESUME
 	}
 }

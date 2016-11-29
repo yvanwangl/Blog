@@ -5,30 +5,41 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../../actions/Resume';
-import {logOut} from '../../actions/Login';
-import avatarFei  from './images/logo.jpg';
+import * as LogActions from '../../actions/Login';
+import avatarFei  from './images/fei.png';
 import avatarHuan  from './images/huanimg.jpg';
 import NavLink from '../../components/NavLink/NavLink';
+import SkillItem from '../../components/SkillItem/SkillItem';
+import LinkItem from '../../components/LinkItem/LinkItem';
+import Icon from '../../components/Icon/Icon';
+import LoginDialog from '../../components/LoginDialog/LoginDialog';
 import {browserHistory} from 'react-router';
 require ('./index.css');
 require ('./images/logo.jpg');
 
 class Resume extends Component {
-	constructor(props){
-		super(props);
-	}
+	constructor(props) {
+        super(props);
+        this.hideResume = (event)=>this._hideResume(event);
+        this.logClick = (event)=>this._logClick(event);
+    }
 
-    logClick(){
-        const {login, logOut} = this.props;
+    _hideResume(event){
+        let {actions} = this.props;
+        actions.hideResume();
+    }
+
+    _logClick(event){
+        const {login, logActions} = this.props;
         if(login.is_login){
-            logOut();
+            logActions.logOut();
             browserHistory.push('/');
         }else {
-            browserHistory.push('/login');
+            logActions.showLoginDialog();
         }
     }
 
-	onHoverEvent(event){
+	/*onHoverEvent(event){
 	    let windowHeight = window.innerHeight;
 	    let halfWindowHeight = windowHeight/2;
         let pageY = event.pageY;
@@ -40,25 +51,43 @@ class Resume extends Component {
         }else {
             resumeContianer.style.top = 0;
         }
-	}
+	}*/
 
 	render(){
 		const { resumeInfo,login, actions } = this.props;
-		return (
-			<div className="rootContainer">
+        let rootClassName = resumeInfo.showResume? 'rootContainer showResume':'rootContainer';
+        let skillItems = [];
+        let linkItems = [];
+        resumeInfo.skills.map((skill, index)=>skillItems.push(<SkillItem key={index} skillName={skill.name}/>));
+        resumeInfo.links.map((link, index)=>linkItems.push(<LinkItem key={index} iconType={link.name} target={link.target}/>));
+        return (
+			<div className={rootClassName}>
                 <div className="resumeWrap">
-                    <div className="resumeContianer" ref="resumeContianer" onMouseOver={this.onHoverEvent.bind(this)}>
+                    {login.showLoginDialog? <LoginDialog />:null}
+                    <div className="linearContainer"></div>
+                    <div className="resumeContianer" ref="resumeContianer" >
                         <img src={resumeInfo.page=='huan'?avatarHuan:avatarFei} alt="me"/>
                         <h1 className='resumeTitle'>{resumeInfo.resumeTitle}</h1>
                         <p className='personalInfo'>{resumeInfo.personalInfo}{resumeInfo.page=='huan'?'':<a href="http://www.yvanwang.com" className="personPage">个人网站</a>}</p>
-                        <p className="currentState">{resumeInfo.currentState}</p>
-                        <div className="buttons">
+                        {/*<p className="currentState">{resumeInfo.currentState}</p>*/}
+                        <div className="skillContainer">
+                            {skillItems}
+                        </div>
+                        <div className="linkContainer">
+                            {linkItems}
+                            <span className="loginContainer" onClick={this.logClick}>
+                                <Icon type={login.is_login?'logout':'login'} className="logIcon"/>
+                            </span>
+                        </div>
+                       {/* <div className="buttons">
                             <NavLink className="indexPage button" to='/'>首页</NavLink>
                             <NavLink className="login button" onClick={this.logClick.bind(this)}>{login.is_login?'退出':'登录'}</NavLink>
-                        </div>
+                        </div>*/}
                     </div>
+                    <span className="closeContainer" onClick={this.hideResume}>
+                        <Icon type="close" className="closeIcon"/>
+                    </span>
                 </div>
-				{this.props.children}
 			</div>
 
 		);
@@ -75,7 +104,7 @@ function mapStateToProps(state) {
 function mapActionsToProps(dispatch){
 	return {
 		actions: bindActionCreators(Actions, dispatch),
-        logOut:bindActionCreators(logOut, dispatch)
+        logActions:bindActionCreators(LogActions, dispatch)
 	};
 }
 

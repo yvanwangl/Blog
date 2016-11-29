@@ -1,3 +1,5 @@
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOG_OUT = 'LOG_OUT';
+export const SHOW_LOGIN_DIALOG = 'SHOW_LOGIN_DIALOG';
+export const HIDE_LOGIN_DIALOG = 'HIDE_LOGIN_DIALOG';

@@ -1,10 +1,28 @@
 .blogContentWrap {
-  width: 60%;
+  width: 80%;
+  max-width: 1024px;
   padding: 20px 40px 40px;
-  margin-left: 40%;
+  margin: 0 auto;
   background: #fff;
   color: #333;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  position: relative; }
+  .blogContentWrap .backButton {
+    position: absolute;
+    top: 30px;
+    left: -30px;
+    color: #3593dc;
+    font-size: 18px;
+    cursor: pointer; }
+    .blogContentWrap .backButton .backIcon {
+      margin-right: 6px;
+      width: 30px;
+      height: 22px;
+      vertical-align: middle; }
+      .blogContentWrap .backButton .backIcon svg {
+        fill: #3593dc; }
+    .blogContentWrap .backButton .backText {
+      vertical-align: middle; }
   .blogContentWrap .spliter {
     display: inline-block;
     width: 20px; }

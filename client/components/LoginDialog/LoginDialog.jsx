@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as Actions from '../../actions/Login';
+import * as ResumeActions from '../../actions/Resume';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
@@ -33,7 +34,7 @@ class LoginDialog extends Component {
 
     _handleSubmit(e){
         "use strict";
-        let {login, actions} = this.props;
+        let {login, actions, resumeActions} = this.props;
         var values = {
             userName:this.state.userName,
             pass:this.state.pass
@@ -43,12 +44,16 @@ class LoginDialog extends Component {
         if(!login.is_login){
             actions.login(values, ()=>{
                 console.log('callback 成功');
-                browserHistory.push('/admin');
+                actions.hideLoginDialog();
+                resumeActions.hideResume();
+                browserHistory.push('/');
             });
         }
     }
 
     _cancelClick(event){
+        let {actions} = this.props;
+        actions.hideLoginDialog();
         browserHistory.push('/');
     }
 
@@ -67,8 +72,8 @@ class LoginDialog extends Component {
                             <input type="password" placeholder="请输入密码" name="pass" value={this.state.pass} onChange={this.setPass}/>
                         </div>
                         <div className="buttonArea">
-                            <span className="loginButton" onClick={this.handleSubmit}>确定</span>
                             <span className="loginButton" onClick={this.cancelClick}>取消</span>
+                            <span className="loginButton" onClick={this.handleSubmit}>确定</span>
                         </div>
                      </form>
                 </div>
@@ -85,7 +90,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return {
-        actions:bindActionCreators(Actions,dispatch)
+        actions:bindActionCreators(Actions,dispatch),
+        resumeActions:bindActionCreators(ResumeActions,dispatch)
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoginDialog);

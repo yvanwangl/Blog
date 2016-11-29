@@ -1,18 +1,19 @@
 .blogItem {
   position: relative;
   width: 100%;
-  padding: 30px 5%;
-  margin-bottom: 30px;
+  padding: 20px 5%;
   background: #fff;
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  /*box-shadow: 0 10px 20px rgba(0,0,0,.05);*/
+  border-bottom: 1px dashed #c1c1c1;
   font-size: 16px;
   cursor: pointer; }
   .blogItem h1 {
     font-size: 24px;
     font-weight: normal;
-    line-height: 3.5;
+    line-height: 1;
+    margin-bottom: 24px;
     color: #000; }
   .blogItem p.blogContent {
     line-height: 2;
