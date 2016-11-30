@@ -16,6 +16,8 @@ import Login from '-!babel!svg-react!./images/login.svg?name=login';
 import Logout from '-!babel!svg-react!./images/logout.svg?name=logout';
 import Back from '-!babel!svg-react!./images/back.svg?name=back';
 import Feather from '-!babel!svg-react!./images/feather.svg?name=feather';
+import Lofter from '-!babel!svg-react!./images/lofter.svg?name=lofter';
+import UiChina from '-!babel!svg-react!./images/UiChina.svg?name=UiChina';
 require('./index.css');
 
 function getComponent(type){
@@ -53,6 +55,12 @@ function getComponent(type){
             break;
         case 'gitHub':
             childComponent=<GitHub />;
+            break;
+        case 'lofter':
+            childComponent=<Lofter />;
+            break;
+        case 'UiChina':
+            childComponent=<UiChina />;
             break;
         case 'email':
             childComponent=<Email />;

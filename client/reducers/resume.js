@@ -7,6 +7,39 @@ const initState = currentHost==sunnyhuanPage
         resumeTitle: `Li Huan`,
         personalInfo: `我是一名交互设计师，爱好旅游和写作。`,
         currentState: '北京科技大学，设计艺术学硕士',
+        skills:[
+            {
+                name:'Interactive Design'
+            },
+            {
+                name:'UI Design'
+            },
+            {
+                name:'HTML+CSS'
+            }
+        ],
+        links:[
+            {
+                name:'weiChat',
+                target:''
+            },
+            {
+                name:'weiBo',
+                target:'http://weibo.com/u/5406991206?sudaref=sunnyhuan.lofter.com&retcode=6102&is_hot=1'
+            },
+            {
+                name:'UiChina',
+                target:'http://i.ui.cn/ucenter/178007.html'
+            },
+            {
+                name:'lofter',
+                target:'http://sunnyhuan.lofter.com/'
+            },
+            {
+                name:'email',
+                target:'https://github.com/yvanwangl'
+            }
+        ],
         page: 'huan',
         showResume:false
     }:{
