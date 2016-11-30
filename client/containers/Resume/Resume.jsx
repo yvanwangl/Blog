@@ -75,18 +75,18 @@ class Resume extends Component {
                         </div>
                         <div className="linkContainer">
                             {linkItems}
-                            <span className="loginContainer" onClick={this.logClick}>
-                                <Icon type={login.is_login?'logout':'login'} className="logIcon"/>
-                            </span>
                         </div>
                        {/* <div className="buttons">
                             <NavLink className="indexPage button" to='/'>首页</NavLink>
                             <NavLink className="login button" onClick={this.logClick.bind(this)}>{login.is_login?'退出':'登录'}</NavLink>
                         </div>*/}
                     </div>
-                    <span className="closeContainer" onClick={this.hideResume}>
-                        <Icon type="close" className="closeIcon"/>
+                    <span className="loginContainer" onClick={this.logClick}>
+                        <Icon type={login.is_login?'logout':'login'} className="logIcon"/>
                     </span>
+                    {/*<span className="closeContainer" onClick={this.hideResume}>
+                        <Icon type="close" className="closeIcon"/>
+                    </span>*/}
                 </div>
 			</div>
 

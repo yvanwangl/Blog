@@ -28,7 +28,7 @@ $white: #fff;
 
 	& p.blogContent {
 		line-height: getLineHeight(1.5);
-		color: #000;
+		color: #2c2c2c;
 		max-height: 145px;
 		overflow: hidden;
 		white-space: normal;
@@ -37,6 +37,7 @@ $white: #fff;
 		-webkit-line-clamp: 4;
 		-webkit-box-orient: vertical;
 		font-size: 18px;
+		letter-spacing: 1px;
 	}
 
 	& p.blogInfo {

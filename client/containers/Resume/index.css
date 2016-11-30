@@ -30,6 +30,22 @@
     right: 0;
     opacity: 0.9;
     background-image: linear-gradient(242deg, #7474bf, #7175c0 4%, #7175c0 4%, #448cd5 76%, #3593dc); }
+  .resumeWrap .loginContainer {
+    position: fixed;
+    right: 60px;
+    bottom: 40px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all ease-in-out 0.2s; }
+    .resumeWrap .loginContainer:hover {
+      opacity: 1; }
+    .resumeWrap .loginContainer .logIcon {
+      width: 100%;
+      height: 100%;
+      margin-top: 50%;
+      transform: translate(0, -50%); }
   .resumeWrap .closeContainer {
     position: absolute;
     top: 40px;
@@ -79,21 +95,6 @@
     .resumeWrap .resumeContianer .skillContainer {
       font-family: 'RobotoThin';
       margin-bottom: 140px; }
-    .resumeWrap .resumeContianer .linkContainer {
-      position: relative; }
-      .resumeWrap .resumeContianer .linkContainer .loginContainer {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translate(0, -50%);
-        width: 30px;
-        height: 30px;
-        cursor: pointer; }
-        .resumeWrap .resumeContianer .linkContainer .loginContainer .logIcon {
-          width: 100%;
-          height: 100%;
-          margin-top: 50%;
-          transform: translate(0, -50%); }
 
 .resumeContianer .currentState {
   width: 100%;

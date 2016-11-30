@@ -6,6 +6,7 @@ import * as NavActions from '../../actions/Nav';
 import Icon from '../../components/Icon/Icon';
 import Resume from '../Resume/Resume';
 import NavItem from '../../components/NavItem/NavItem';
+import ListButton from '../../components/ListButton/ListButton';
 import {browserHistory} from 'react-router';
 require('./index.css');
 
@@ -30,7 +31,8 @@ class Index extends Component {
         super(props);
         this.state = {
             filter:'all',
-            currentPage:'index'
+            currentPage:'index',
+            resumeOpen:false
         };
         this.openResumeClick = (event)=> this._openResumeClick(event);
         this.openAdminClick = (event)=> this._openAdminClick(event);
@@ -39,7 +41,14 @@ class Index extends Component {
 
     _openResumeClick(event){
         let {actions} = this.props;
-        actions.showResume();
+        this.setState({
+            resumeOpen: !this.state.resumeOpen
+        });
+        if(this.state.resumeOpen){
+            actions.hideResume();
+        }else {
+            actions.showResume();
+        }
     }
 
     _openAdminClick(event){
@@ -93,9 +102,10 @@ class Index extends Component {
                     </div>
                     :null
                 }
-                <div className="openResume" onClick={this.openResumeClick}>
+{/*                <div className="openResume" onClick={this.openResumeClick}>
                     <Icon type="list" className="resumeIcon"/>
-                </div>
+                </div>*/}
+                <ListButton listClassName={this.state.resumeOpen?'close':'list'} onButtonClick={this.openResumeClick}/>
                 <Resume />
                 {this.props.children}
             </div>
