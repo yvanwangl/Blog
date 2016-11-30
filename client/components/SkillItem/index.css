@@ -8,6 +8,9 @@
     width: 16px;
     height: 16px;
     margin-right: 10px;
-    opacity: 0.6; }
+    opacity: 0.6;
+    vertical-align: middle; }
+  .skillItem .skillName {
+    vertical-align: middle; }
 
 /*# sourceMappingURL=index.css.map */

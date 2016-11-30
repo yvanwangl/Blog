@@ -37,7 +37,7 @@ const initState = currentHost==sunnyhuanPage
             },
             {
                 name:'email',
-                target:'https://github.com/yvanwangl'
+                target:'https://mail.qq.com/cgi-bin/frame_html?sid=ugp68Xyv7riGVmoy&t=newwin_frame&url=%2fcgi-bin%2fladdr_detail%3ft%3dcompose%26view%3dqq%26s%3dclientwrite%26mode%3dqqaddr%26email%3d1783019413%40qq.com&r=04964bd3db2f1de5793256c69d76f3aa'
             }
         ],
         page: 'huan',
@@ -76,7 +76,7 @@ const initState = currentHost==sunnyhuanPage
             },
             {
                 name:'email',
-                target:'https://github.com/yvanwangl'
+                target:'https://mail.qq.com/cgi-bin/frame_html?sid=Wcy8kyTwuP7ABmw0&t=newwin_frame&url=%2fcgi-bin%2fladdr_detail%3ft%3dcompose%26view%3dqq%26s%3dclientwrite%26mode%3dqqaddr%26email%3d1012305328%40qq.com&r=652c0674a3d90fdf26fb49897aa222e3'
             }
         ],
         page: 'fei',

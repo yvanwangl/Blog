@@ -11,7 +11,7 @@ export default class SkillItem extends Component {
         return (
             <div className="skillItem">
                 <Icon type="skill" className="skillIcon"/>
-                {this.props.skillName}
+                <span className="skillName">{this.props.skillName}</span>
             </div>
         );
     }
