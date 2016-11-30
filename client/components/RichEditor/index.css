@@ -16,7 +16,7 @@
   padding: 30px;
   font-size: 18px;
   box-sizing: border-box; }
-  .contentEditor .blogInfo .title, .contentEditor .blogInfo .author {
+  .contentEditor .blogInfo .title, .contentEditor .blogInfo .author, .contentEditor .blogInfo .blogType {
     margin-bottom: 20px; }
   .contentEditor .blogInfo label {
     font-size: 18px; }

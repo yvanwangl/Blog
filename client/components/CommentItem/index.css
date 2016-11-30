@@ -5,16 +5,21 @@
   line-height: 30px; }
   .commentItem .commentatorInfo {
     font-size: 18px; }
+    .commentItem .commentatorInfo .commentatorName {
+      color: #3593dc; }
     .commentItem .commentatorInfo .commentTime {
-      font-size: 16px; }
+      font-size: 16px;
+      color: #9f9f9f; }
   .commentItem .avator {
     float: left;
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
     border-radius: 100%;
-    margin-right: 20px; }
+    margin-right: 20px;
+    margin-top: 9px; }
   .commentItem .commentContent {
-    margin: 20px 0 0; }
+    margin: 20px 0 0;
+    color: #666666; }
   .commentItem .commentAction {
     margin-top: 15px;
     text-align: right;

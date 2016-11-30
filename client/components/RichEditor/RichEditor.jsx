@@ -10,12 +10,14 @@ export default class RichEditor extends Component {
             title:'博客',
             author:'yvan',
             blogStatus:'draft',
+            blogType:'design',
             content:'Tell a story...'
         };
         this.saveBlog = (id, contentState, plaintext)=>this._saveBlog(id, contentState, plaintext);
         this.setTitle = (event)=>this._setTitle(event);
         this.setAuthor = (event)=>this._setAuthor(event);
         this.setBlogStatus = (event)=> this._setBlogStatus(event);
+        this.setBlogType = (event)=> this._setBlogType(event);
         this.getContent = ()=>this._getContent();
     }
 
@@ -23,11 +25,15 @@ export default class RichEditor extends Component {
         const {saveBlog} = this.props;
         var rowData = this.editor.$txt.html();
         var plaintext = this.editor.$txt.formatText();
+        if(plaintext.length>200){
+            plaintext = plaintext.substring(0, 200);
+        }
         let blogData = {
             id:id,
             author:this.state.author,
             title: this.state.title,
             blogStatus: this.state.blogStatus,
+            type:this.state.blogType,
             rowData:rowData,
             plaintext: plaintext
         };
@@ -52,6 +58,12 @@ export default class RichEditor extends Component {
     _setBlogStatus(event){
         this.setState({
             blogStatus:event.target.value
+        });
+    }
+
+    _setBlogType(event){
+        this.setState({
+            blogType:event.target.value
         });
     }
     // 获取内容
@@ -110,6 +122,13 @@ export default class RichEditor extends Component {
                     <div className="author">
                         <label htmlFor="title">作者：</label>
                         <input type="text" value={this.state.author} onChange={this.setAuthor}/>
+                    </div>
+                    <div className="blogType">
+                        <lable htmlFor="blogType">类别：</lable>
+                        <select value={this.state.blogType} onChange={this.setBlogType}>
+                            <option value="design">设计</option>
+                            <option value="develop">前端</option>
+                        </select>
                     </div>
                     <div className="blogStatus">
                         <lable htmlFor="blogStatus">状态：</lable>

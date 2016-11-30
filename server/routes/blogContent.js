@@ -39,7 +39,8 @@ router.post('/save',function(req, res, next){
                 content:JSON.stringify(blogData['rowData']),
                 plaintext:blogData['plaintext'],
                 publishDate:new Date(),
-                blogStatus:blogData['blogStatus']
+                blogStatus:blogData['blogStatus'],
+                type:blogData['type']
             };
             console.log(blog);
             //var blog = Object.assign({}, blogList[0], modifyData);
@@ -49,6 +50,7 @@ router.post('/save',function(req, res, next){
             blog['plaintext'] = blogData['plaintext'];
             blog['publishDate'] = new Date();
             blog['blogStatus'] = blogData['blogStatus'];
+            blog['type'] = blogData['type'];
             console.log(blog);
             saveBlog(blog, res);
         }else {
@@ -67,6 +69,7 @@ router.post('/save',function(req, res, next){
                     plaintext:blogData['plaintext'],
                     publishDate:new Date(),
                     blogStatus:blogData['blogStatus'],
+                    type:blogData['type'],
                     count:1
                 });
                 saveBlog(blog, res);

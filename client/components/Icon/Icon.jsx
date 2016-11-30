@@ -15,6 +15,7 @@ import List from '-!babel!svg-react!./images/list.svg?name=list';
 import Login from '-!babel!svg-react!./images/login.svg?name=login';
 import Logout from '-!babel!svg-react!./images/logout.svg?name=logout';
 import Back from '-!babel!svg-react!./images/back.svg?name=back';
+import Feather from '-!babel!svg-react!./images/feather.svg?name=feather';
 require('./index.css');
 
 function getComponent(type){
@@ -67,6 +68,9 @@ function getComponent(type){
             break;
         case 'back':
             childComponent=<Back />;
+            break;
+        case 'feather':
+            childComponent=<Feather />;
             break;
     }
     return childComponent;

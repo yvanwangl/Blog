@@ -19,7 +19,8 @@ $width90: 90%;
     font-size: 18px;
     box-sizing: border-box;
     & .title,
-    & .author {
+    & .author,
+    & .blogType {
         margin-bottom: 20px;
     }
     & label {

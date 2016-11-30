@@ -11,6 +11,11 @@
     background-color: #fff;
     padding: 20px 0;
     box-sizing: border-box;
+    & .navList {
+        position: fixed;
+        top: 300px;
+        left: 0;
+    }
     & .openResume {
         position: fixed;
         top: 40px;
@@ -25,6 +30,31 @@
             transform: translate(0,-50%);
             & svg {
                 fill: #000;
+            }
+        }
+    }
+    & .adminButton {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        text-align: center;
+        background-color: #3593dc;
+        box-shadow: 0 0 20px rgba(0,0,0,.3);
+        transition: all ease-in-out 0.2s;
+        &:hover {
+            background-color: #3DAAFF;
+        }
+        & .featherIcon {
+            width: 70%;
+            height: 70%;
+            margin-top: 50%;
+            transform: translate(0,-50%);
+            & svg {
+                fill: #fff;
             }
         }
     }

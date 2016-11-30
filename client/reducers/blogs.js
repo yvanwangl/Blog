@@ -1,4 +1,5 @@
 import { INIT_BLOG_LIST_SUCCESS, INIT_BLOG_LIST_FAIL, SHOW_BLOG_CONTENT, SAVE_BLOG_SUCCESS, DELETE_BLOG, SAVE_BLOG_COUNTER } from '../constants/ActionTypes';
+import { FILTER_BLOG } from '../constants/NavActions';
 
 const initState = {
 	blogs:[
@@ -85,6 +86,19 @@ function saveBlogCount(state, blog) {
 	return Object.assign({},state,{blog:blogData});
 }
 
+
+const filterFuns = {
+    all:()=>true,
+    design:(blog)=>blog['type']=='design',
+    develop:(blog)=>blog['type']=='develop'
+};
+
+function filterBlogs(state, blogType) {
+    let originBlogs = state.originBlogs || state.blogs;
+    let newBlogs = originBlogs.filter(filterFuns[blogType]);
+    return Object.assign({}, state, {blogs: newBlogs, originBlogs: originBlogs});
+}
+
 export default function blogs(state={blogs:[],blog:{}}, action){
 	switch(action.type){
 		case INIT_BLOG_LIST_SUCCESS:
@@ -99,6 +113,8 @@ export default function blogs(state={blogs:[],blog:{}}, action){
 			return deleteBlog(state, action['blog']);
 		case SAVE_BLOG_COUNTER:
 			return saveBlogCount(state, action['blog']);
+        case FILTER_BLOG:
+            return filterBlogs(state, action['blogType']);
 		default:
 			return state;
 	}
