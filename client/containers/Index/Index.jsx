@@ -31,8 +31,7 @@ class Index extends Component {
         super(props);
         this.state = {
             filter:'all',
-            currentPage:'index',
-            resumeOpen:false
+            currentPage:'index'
         };
         this.openResumeClick = (event)=> this._openResumeClick(event);
         this.openAdminClick = (event)=> this._openAdminClick(event);
@@ -40,11 +39,8 @@ class Index extends Component {
     }
 
     _openResumeClick(event){
-        let {actions} = this.props;
-        this.setState({
-            resumeOpen: !this.state.resumeOpen
-        });
-        if(this.state.resumeOpen){
+        let {actions, resumeInfo} = this.props;
+        if(resumeInfo.showResume){
             actions.hideResume();
         }else {
             actions.showResume();
@@ -63,7 +59,6 @@ class Index extends Component {
                 currentPage:'index'
             });
         }
-
     }
 
     _navItemClick(blogType){
@@ -78,7 +73,7 @@ class Index extends Component {
     }
 
     render() {
-        let {login} = this.props;
+        let {resumeInfo, login} = this.props;
         let navItems = [];
         NavItems.map((nav, index)=>
             navItems.push(
@@ -105,7 +100,7 @@ class Index extends Component {
 {/*                <div className="openResume" onClick={this.openResumeClick}>
                     <Icon type="list" className="resumeIcon"/>
                 </div>*/}
-                <ListButton listClassName={this.state.resumeOpen?'close':'list'} onButtonClick={this.openResumeClick}/>
+                <ListButton listClassName={resumeInfo.showResume?'close':'list'} onButtonClick={this.openResumeClick}/>
                 <Resume />
                 {this.props.children}
             </div>
