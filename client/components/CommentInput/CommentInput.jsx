@@ -8,7 +8,8 @@ export default class CommentInput extends Component {
         this.state = {
             name:'',
             commentContent:'',
-            contentPlaceholder:'回复一下：'
+            contentPlaceholder:'回复一下：',
+            remainWords:200
         };
         this.setName = (event)=>this._setName(event);
         this.setContent = (event)=>this._setContent(event);
@@ -22,8 +23,10 @@ export default class CommentInput extends Component {
     }
 
     _setContent(event){
+        var commentContent = event.target.value;
         this.setState({
-            commentContent:event.target.value
+            commentContent:commentContent,
+            remainWords: 200-commentContent.length
         });
         this.refs.contentError.innerHTML=null;
     }
@@ -57,7 +60,8 @@ export default class CommentInput extends Component {
                 //回复文章要重置输入框
                 that.setState({
                     name:'',
-                    commentContent:''
+                    commentContent:'',
+                    remainWords:200
                 });
             }
         });
@@ -78,18 +82,22 @@ export default class CommentInput extends Component {
             <div className="commentInput">
                 <form className="commentForm">
                     <div className="name formItem">
-                        <label htmlFor="name">称呼：</label>
-                        <input type="text" name="name" value={this.state.name} placeholder="称呼" onChange={this.setName}/>
+                        <label htmlFor="name">昵称：</label>
+                        <input type="text" name="name" value={this.state.name} placeholder="昵称：" onChange={this.setName}/>
                     </div>
-                    <div className="commentContent formItem">
+                    <div className="commentWords formItem">
                         <label htmlFor="content">回复：</label>
-                        <textarea name="content" cols="30" rows="5" value={this.state.commentContent} placeholder={this.state.contentPlaceholder} onChange={this.setContent}>
+                        <textarea name="content" value={this.state.commentContent} placeholder={this.state.contentPlaceholder} onChange={this.setContent}>
                         </textarea>
                         <span className="error" ref="contentError"></span>
                     </div>
-                    <span className="saveComment" onClick={this.saveComment}>
-                        <Icon type="check" className="check"/>
-                    </span>
+                    <div className="commentInfo">
+                        <span className="remainWords">还可以输入<span>{this.state.remainWords}</span>字</span>
+                        <span className="saveComment" onClick={this.saveComment}>
+                            发布
+                        </span>
+                    </div>
+
                 </form>
             </div>
         );

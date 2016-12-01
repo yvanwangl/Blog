@@ -96,6 +96,46 @@
       font-family: 'RobotoThin';
       margin-bottom: 140px; }
 
+@media screen and (max-width: 860px) {
+  .resumeWrap .resumeContianer {
+    width: 70%;
+    text-align: center;
+    padding-top: 0; }
+    .resumeWrap .resumeContianer .resumeTitle {
+      text-align: center; }
+    .resumeWrap .resumeContianer img {
+      position: relative;
+      left: 0;
+      transform: translate(0, 0);
+      width: 120px;
+      height: 120px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 30px; }
+    .resumeWrap .resumeContianer .skillContainer {
+      margin-bottom: 60px; } }
+@media screen and (max-width: 560px) {
+  .resumeWrap .resumeContianer {
+    width: 86%;
+    text-align: center;
+    padding-top: 0; }
+    .resumeWrap .resumeContianer .resumeTitle {
+      text-align: center; }
+    .resumeWrap .resumeContianer .skillContainer {
+      text-align: center; }
+      .resumeWrap .resumeContianer .skillContainer .skillItem {
+        margin-bottom: 20px; }
+    .resumeWrap .resumeContianer .linkContainer .linkItem {
+      margin: 20px 30px 20px 0; } }
+@media screen and (max-width: 420px) {
+  .resumeWrap .resumeContianer {
+    width: 90%;
+    text-align: center;
+    padding-top: 0; }
+    .resumeWrap .resumeContianer .resumeTitle {
+      text-align: center; } }
 .resumeContianer .currentState {
   width: 100%;
   height: 80px;

@@ -28,6 +28,13 @@
     width: 20px; }
   .blogContentWrap .wangEditor-container, .blogContentWrap .wangEditor-menu-container {
     border: none; }
+  .blogContentWrap .warning {
+    border-top: 1px dashed #000;
+    line-height: 1.8;
+    color: #9b9b9b;
+    font-size: 18px;
+    padding: 12px 0;
+    text-align: right; }
 
 .blogTitle {
   text-align: center;
@@ -38,6 +45,20 @@
   text-align: center;
   font-size: 16px;
   margin-bottom: 30px; }
+  .authorInfo .icon {
+    vertical-align: middle;
+    margin-right: 3px; }
+    .authorInfo .icon svg {
+      fill: #acbbc6; }
+  .authorInfo .scanerIcon {
+    width: 22px;
+    height: 22px; }
+  .authorInfo .text {
+    color: #acbbc6;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle; }
 
 #blogContent {
   height: auto !important; }
@@ -51,5 +72,12 @@
 .blogContentWrap .disqus {
   margin-top: 30px;
   background-color: #D4E3F3; }
+
+@media screen and (max-width: 680px) {
+  .blogContentWrap {
+    width: 90%;
+    padding: 20px 0 40px; }
+    .blogContentWrap .backButton {
+      left: 0; } }
 
 /*# sourceMappingURL=index.css.map */

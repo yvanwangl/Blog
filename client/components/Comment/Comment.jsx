@@ -42,6 +42,7 @@ export default class Comment extends Component {
         return (
             <div className="commentWrap">
                 <h2 className="commentTitle">[ 评论一角 ]</h2>
+                {comments.length==0?<p className="commentInitInfo">还没有评论，沙发等你来！</p>:null}
                 <CommentInput blogId={blogId} saveComment={commentActions.saveComment} parentId={''}/>
                 {commentItems}
             </div>

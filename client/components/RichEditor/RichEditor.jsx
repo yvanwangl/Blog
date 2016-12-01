@@ -25,8 +25,8 @@ export default class RichEditor extends Component {
         const {saveBlog} = this.props;
         var rowData = this.editor.$txt.html();
         var plaintext = this.editor.$txt.formatText();
-        if(plaintext.length>200){
-            plaintext = plaintext.substring(0, 200);
+        if(plaintext.length>300){
+            plaintext = plaintext.substring(0, 300);
         }
         let blogData = {
             id:id,

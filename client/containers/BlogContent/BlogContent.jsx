@@ -33,11 +33,19 @@ class BlogContent extends Component {
                 </div>
                 <h1 className="blogTitle">{blogContent['title']}</h1>
                 <p className="authorInfo">
-                    作者：{blogContent['author']}
+                    <Icon type="feather" className="authorIcon icon"/>
+                    <span className="author text">{blogContent['author']}</span>
                     <span className="spliter"></span>
-                    浏览量：{blogContent['count']}
+                    <Icon type="scaner" className="scanerIcon icon"/>
+                    <span className="scaner text">{blogContent['count']}</span>
+                    <span className="spliter"></span>
+                    <Icon type="comment" className="commentIcon icon"/>
+                    <span className="commentCount text">{comments.length}</span>
                 </p>
                 <ReadEditor id={this.props.id} content={blogContent['content']}/>
+                <p className="warning">
+                    原创文章作者：{blogContent['author']} ( 如若转载，请注明出处 )
+                </p>
                 <div className="comment">
                     <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions} isLogin={login.is_login}/>
                 </div>

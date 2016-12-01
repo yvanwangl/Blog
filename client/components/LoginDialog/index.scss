@@ -12,32 +12,45 @@
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    width: 40%;
-    min-width: 570px;
-    max-width: 620px;
+    width: 90%;
+    max-width: 540px;
     padding: 30px 40px;
     background: #ffffff;
     border-radius: 10px;
-    & .loginButton {
-        margin: 20px;
+    box-sizing: border-box;
+    & .loginTitle {
+        color: #3593dc;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 40px;
     }
     & .userName,
     & .pass {
         text-align: left;
-        padding:20px;
+        margin: 0 auto 20px;
+        border: solid 1px #c1c1c1;
+        height: 48px;
+        line-height: 48px;
+        border-radius: 6px;
+        & .userIcon,
+        & .passIcon {
+            width: 30px;
+            height: 48px;
+            vertical-align: middle;
+            margin-top: -7px;
+            padding: 0 10px;
+            & svg {
+                fill: #acbbc6
+            }
+        }
         & input {
-            border: 1px solid #ccc;
+            border: none;
             height: 48px;
             line-height: 48px;
             font-size: 18px;
-            text-indent: 10px;
             width: 80%;
             border-radius: 5px;
-            &:focus {
-                outline: 0;
-                box-shadow: 0 0 0 2px rgba(45,183,245,.2);
-                border-color: #57c5f7;
-            }
+            outline: 0;
         }
         & label {
             font-size: 18px;
@@ -50,7 +63,7 @@
         text-align: center;
         & .loginButton {
             display: inline-block;
-            width: 30%;
+            width: 100%;
             height: 40px;
             line-height: 40px;
             background-color: #2db7f5;
@@ -61,6 +74,7 @@
             transition: all ease-in-out .3s;
             cursor: pointer;
             border-radius: 5px;
+            margin-bottom: 20px;
             &:hover {
                 background-color: #57c5f7;
                 border: 1px solid #57c5f7;
@@ -70,6 +84,34 @@
             }
         }
     }
+    & .closeButton {
+        position: absolute;
+        top: -16px;
+        right: -16px;
+        width: 32px;
+        height: 32px;
+        background-color: #4a4a4a;
+        border-radius: 50%;
+        text-align: center;
+        & .closeIcon {
+            margin-top: 50%;
+            transform: translate(0,-50%);
+        }
+        & .closeButton:hover {
+            & svg {
+                fill: #ea5114;
+            }
+        }
+    }
 
-
+}
+@media screen and (max-width: 370px){
+    .loginWrapper {
+        & .userName,
+        & .pass {
+            & input {
+                width: 74%;
+            }
+        }
+    }
 }

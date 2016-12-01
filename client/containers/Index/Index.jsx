@@ -88,7 +88,9 @@ class Index extends Component {
         return (
             <div className="indexPage">
                 <div className="navList">
-                    {navItems}
+                    <div className="navWrap">
+                        {navItems}
+                    </div>
                 </div>
                 {
                     login.is_login?

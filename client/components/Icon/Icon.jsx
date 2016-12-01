@@ -18,6 +18,10 @@ import Back from '-!babel!svg-react!./images/back.svg?name=back';
 import Feather from '-!babel!svg-react!./images/feather.svg?name=feather';
 import Lofter from '-!babel!svg-react!./images/lofter.svg?name=lofter';
 import UiChina from '-!babel!svg-react!./images/UiChina.svg?name=UiChina';
+import Scaner from '-!babel!svg-react!./images/scaner.svg?name=scaner';
+import CommentIcon from '-!babel!svg-react!./images/comment.svg?name=comment';
+import User from '-!babel!svg-react!./images/user.svg?name=user';
+import Pass from '-!babel!svg-react!./images/pass.svg?name=pass';
 require('./index.css');
 
 function getComponent(type){
@@ -79,6 +83,18 @@ function getComponent(type){
             break;
         case 'feather':
             childComponent=<Feather />;
+            break;
+        case 'scaner':
+            childComponent=<Scaner />;
+            break;
+        case 'comment':
+            childComponent=<CommentIcon />;
+            break;
+        case 'user':
+            childComponent=<User />;
+            break;
+        case 'pass':
+            childComponent=<Pass />;
             break;
     }
     return childComponent;

@@ -10,6 +10,8 @@
       <w>devtool</w>
       <w>dirname</w>
       <w>postcss</w>
+      <w>scaner</w>
+      <w>spliter</w>
       <w>sunnyhuan</w>
     </words>
   </dictionary>

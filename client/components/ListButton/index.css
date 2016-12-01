@@ -8,8 +8,10 @@
   top: 0;
   z-index: 1001; }
   .listContainer svg {
-    width: 200px;
-    height: 150px;
+    /*width: 200px;
+    height: 150px;*/
+    width: 180px;
+    height: 110px;
     cursor: pointer;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
@@ -43,5 +45,12 @@
 .listContainer.cross path#middle {
   stroke-dashoffset: -115px;
   stroke-dasharray: 1px 220px; }
+
+@media screen and (max-width: 680px) {
+  .listContainer {
+    position: absolute; } }
+@media screen and (max-width: 380px) {
+  .listContainer {
+    right: -40px; } }
 
 /*# sourceMappingURL=index.css.map */

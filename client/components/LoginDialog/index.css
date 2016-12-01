@@ -12,29 +12,40 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
-  min-width: 570px;
-  max-width: 620px;
+  width: 90%;
+  max-width: 540px;
   padding: 30px 40px;
   background: #ffffff;
-  border-radius: 10px; }
-  .loginWrapper .loginButton {
-    margin: 20px; }
+  border-radius: 10px;
+  box-sizing: border-box; }
+  .loginWrapper .loginTitle {
+    color: #3593dc;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 40px; }
   .loginWrapper .userName, .loginWrapper .pass {
     text-align: left;
-    padding: 20px; }
+    margin: 0 auto 20px;
+    border: solid 1px #c1c1c1;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 6px; }
+    .loginWrapper .userName .userIcon, .loginWrapper .userName .passIcon, .loginWrapper .pass .userIcon, .loginWrapper .pass .passIcon {
+      width: 30px;
+      height: 48px;
+      vertical-align: middle;
+      margin-top: -7px;
+      padding: 0 10px; }
+      .loginWrapper .userName .userIcon svg, .loginWrapper .userName .passIcon svg, .loginWrapper .pass .userIcon svg, .loginWrapper .pass .passIcon svg {
+        fill: #acbbc6; }
     .loginWrapper .userName input, .loginWrapper .pass input {
-      border: 1px solid #ccc;
+      border: none;
       height: 48px;
       line-height: 48px;
       font-size: 18px;
-      text-indent: 10px;
       width: 80%;
-      border-radius: 5px; }
-      .loginWrapper .userName input:focus, .loginWrapper .pass input:focus {
-        outline: 0;
-        box-shadow: 0 0 0 2px rgba(45, 183, 245, 0.2);
-        border-color: #57c5f7; }
+      border-radius: 5px;
+      outline: 0; }
     .loginWrapper .userName label, .loginWrapper .pass label {
       font-size: 18px;
       margin-right: 5px;
@@ -44,7 +55,7 @@
     text-align: center; }
     .loginWrapper .buttonArea .loginButton {
       display: inline-block;
-      width: 30%;
+      width: 100%;
       height: 40px;
       line-height: 40px;
       background-color: #2db7f5;
@@ -54,11 +65,30 @@
       color: #fff;
       transition: all ease-in-out .3s;
       cursor: pointer;
-      border-radius: 5px; }
+      border-radius: 5px;
+      margin-bottom: 20px; }
       .loginWrapper .buttonArea .loginButton:hover {
         background-color: #57c5f7;
         border: 1px solid #57c5f7; }
       .loginWrapper .buttonArea .loginButton a {
         color: #fff; }
+  .loginWrapper .closeButton {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 32px;
+    height: 32px;
+    background-color: #4a4a4a;
+    border-radius: 50%;
+    text-align: center; }
+    .loginWrapper .closeButton .closeIcon {
+      margin-top: 50%;
+      transform: translate(0, -50%); }
+    .loginWrapper .closeButton .closeButton:hover svg {
+      fill: #ea5114; }
+
+@media screen and (max-width: 370px) {
+  .loginWrapper .userName input, .loginWrapper .pass input {
+    width: 74%; } }
 
 /*# sourceMappingURL=index.css.map */

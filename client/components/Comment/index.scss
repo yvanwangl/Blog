@@ -1,9 +1,14 @@
 .commentWrap {
     margin-top: 200px;
+    & .commentInitInfo {
+        text-align: center;
+        font-size: 14px;
+        color: #9b9b9b;
+    }
     & .commentTitle {
         text-align: center;
         font-size: 20px;
-        border-top: 1px dashed #000;
+        //border-top: 1px dashed #000;
         line-height: 60px;
         color: #5A5A5A;
     }

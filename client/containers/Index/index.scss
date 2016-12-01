@@ -15,6 +15,7 @@
         position: fixed;
         top: 300px;
         left: 0;
+        z-index: 333;
     }
     & .openResume {
         position: fixed;
@@ -56,6 +57,31 @@
             & svg {
                 fill: #fff;
             }
+        }
+    }
+}
+@media screen and (max-width: 740px) {
+    .indexPage {
+        & .navList {
+            top: auto;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            & .navWrap {
+                display: flex;
+                & .navItem {
+                    flex: 1;
+                    margin: 0;
+                    padding: 0;
+                    display: inline-block;
+                    border-radius: 0;
+                    transform: translate(0,0);
+                    text-align: center;
+                    height: 64px;
+                    line-height: 64px;
+                }
+            }
+
         }
     }
 }

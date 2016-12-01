@@ -109,6 +109,66 @@
         }
     }
 }
+@media screen and (max-width: 860px) {
+    .resumeWrap {
+        & .resumeContianer {
+            width: 70%;
+            text-align: center;
+            padding-top: 0;
+            & .resumeTitle {
+                text-align: center;
+            }
+            img {
+                position: relative;
+                left: 0;
+                transform: translate(0,0);
+                width: 120px;
+                height: 120px;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                display: block;
+                margin: 0 auto 30px;
+            }
+            & .skillContainer {
+                margin-bottom: 60px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 560px) {
+    .resumeWrap {
+        & .resumeContianer {
+            width: 86%;
+            text-align: center;
+            padding-top: 0;
+            & .resumeTitle {
+                text-align: center;
+            }
+            & .skillContainer {
+                text-align: center;
+                & .skillItem {
+                    margin-bottom: 20px;
+                }
+            }
+            & .linkContainer .linkItem {
+                margin: 20px 30px 20px 0;
+            }
+        }
+    }
+}
+@media screen and (max-width: 420px) {
+    .resumeWrap {
+        & .resumeContianer {
+            width: 90%;
+            text-align: center;
+            padding-top: 0;
+            & .resumeTitle {
+                text-align: center;
+            }
+        }
+    }
+}
 $lineHeight: 80px;
 .resumeContianer .currentState {
 	width: 100%;
