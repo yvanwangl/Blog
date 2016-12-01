@@ -23,53 +23,26 @@ class BlogContent extends Component {
         browserHistory.push('/');
     }
 
-    componentWillMount() {
-        let {actions, blogs} = this.props;
-        if(blogs.length>0){
-            let targetBlog = blogs.filter((blog)=>blog['id']==this.props.params.id);
-            /*actions.initBlogContent(targetBlog[0]['_id']);*/
-            actions.saveBlogCount(targetBlog[0]['_id'], targetBlog[0]['count']+1);
-            //console.log(JSON.stringify(blogContent));
-        }else {
-            browserHistory.push('/');
-        }
-
-        //this.setState({editorState: EditorState.createWithContent(ContentState.createFromBlockArray([blogContent]))});
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps !== this.props) {
-            this.setState({
-                content: nextProps.blogContent['content']
-            });
-        }
-    }
-
     render() {
         let {blogContent, comments, commentActions, login} = this.props;
-        if(!isEmptyObject(blogContent)){
-            return (
-                <div className="blogContentWrap container">
-                    <div className="backButton" onClick={this.backClick}>
-                        <Icon type="back" className="backIcon"/>
-                        <span className="backText">返回</span>
-                    </div>
-                    <h1 className="blogTitle">{blogContent['title']}</h1>
-                    <p className="authorInfo">
-                        作者：{blogContent['author']}
-                        <span className="spliter"></span>
-                        浏览量：{blogContent['count']}
-                    </p>
-                    <ReadEditor id={this.props.id} content={blogContent['content']}/>
-                    <div className="comment">
-                        <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions} isLogin={login.is_login}/>
-                    </div>
+        return (
+            <div className="blogContentWrap container">
+                <div className="backButton" onClick={this.backClick}>
+                    <Icon type="back" className="backIcon"/>
+                    <span className="backText">返回</span>
                 </div>
-            );
-        }else {
-            return null;
-        }
-
+                <h1 className="blogTitle">{blogContent['title']}</h1>
+                <p className="authorInfo">
+                    作者：{blogContent['author']}
+                    <span className="spliter"></span>
+                    浏览量：{blogContent['count']}
+                </p>
+                <ReadEditor id={this.props.id} content={blogContent['content']}/>
+                <div className="comment">
+                    <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions} isLogin={login.is_login}/>
+                </div>
+            </div>
+        );
     }
 }
 

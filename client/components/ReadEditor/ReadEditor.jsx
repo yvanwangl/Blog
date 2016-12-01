@@ -16,6 +16,10 @@ export default class ReadEditor extends Component {
         this.editor.$txt.html(this.props.content);
     }
 
+    componentWillReceiveProps(nextProps){
+        this.editor.$txt.html(nextProps.content);
+    }
+
     render() {
         return (
             <div id={this.props.id} contentEditable="false">

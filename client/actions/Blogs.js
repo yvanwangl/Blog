@@ -102,7 +102,7 @@ export function saveBlog(blogData,callback){
     }
 }
 
-export function saveBlogCount(blogId, count) {
+export function saveBlogCount(blogId, count, callback) {
     return (dispatch)=>{
         fetch('/blog/saveCount',{
             method:'POST',
@@ -121,6 +121,9 @@ export function saveBlogCount(blogId, count) {
                 if(json.save_success){
                     dispatch(saveBlogCounterSuccess(json.blog));
                     dispatch(initCommentListSuccess(json.comments));
+                    if(callback){
+                        callback();
+                    }
                 }else {
                     console.log('save fail');
                 }
