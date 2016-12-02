@@ -118,7 +118,8 @@ var baseConfig = {
         'react-addons-css-transition-group': 'React.addons.CSSTransitionGroup',
         'react-router': 'ReactRouter',
         'draft-js': 'Draft',
-        'wangeditor': 'wangEditor'
+        'wangeditor': 'wangEditor',
+        'jQuery':'jQuery'
     },
 };
 /* end baseConfig */

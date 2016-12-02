@@ -1,61 +1,75 @@
-.contentEditor {
+.richEditor {
   width: 100%;
-  margin: 60px auto 0;
+  margin: 0 auto;
   height: 100%;
   padding-bottom: 110px; }
-  .contentEditor .wangEditor-container {
-    width: 90%;
-    margin: 0 auto;
-    overflow-y: scroll; }
-
-.contentEditor .blogInfo {
-  width: 90%;
-  margin: 30px auto 20px;
-  background-color: #fff;
-  box-shadow: 0 0 0 0.75pt #d1d1d1,0 0 3pt 0.75pt #ccc;
-  padding: 30px;
-  font-size: 18px;
-  box-sizing: border-box; }
-  .contentEditor .blogInfo .title, .contentEditor .blogInfo .author, .contentEditor .blogInfo .blogType {
-    margin-bottom: 20px; }
-  .contentEditor .blogInfo label {
-    font-size: 18px; }
-  .contentEditor .blogInfo input, .contentEditor .blogInfo select {
-    width: 80%;
-    text-indent: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 40px;
-    line-height: 40px; }
+  .richEditor .blogInfo {
+    width: 100%;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    padding-top: 55px;
+    font-size: 18px;
+    box-sizing: border-box; }
+    .richEditor .blogInfo .title, .richEditor .blogInfo .author, .richEditor .blogInfo .blogType {
+      margin-bottom: 20px; }
+    .richEditor .blogInfo label {
+      font-size: 18px;
+      display: none; }
+    .richEditor .blogInfo input, .richEditor .blogInfo select {
+      width: 100%;
+      text-indent: 15px;
+      border: none;
+      background-color: rgba(216, 216, 216, 0.12);
+      border-radius: 5px;
+      height: 60px;
+      line-height: 60px; }
+    .richEditor .blogInfo select option {
+      height: 36px;
+      line-height: 36px; }
+  .richEditor .wangEditor-container {
+    width: 100%;
+    margin: 0 auto; }
+  .richEditor .wangEditor-container.toolFixed {
+    position: fixed;
+    overflow-y: scroll;
+    /*& .wangEditor-menu-container {
+        position: fixed !important;
+        top: 0 !important;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    & .wangEditor-drop-list {
+        position: fixed;
+    }*/ }
+  .richEditor .bottomBar {
+    position: relative;
+    text-align: right;
+    background-color: transparent;
+    bottom: 0;
+    width: 100%;
+    max-width: 1024px;
+    height: 80px;
+    line-height: 80px;
+    z-index: 666; }
+    .richEditor .bottomBar .saveButton {
+      width: 100px;
+      font-size: 18px;
+      color: #fff;
+      display: inline-block;
+      text-align: center;
+      cursor: pointer;
+      line-height: 36px;
+      transition: all ease-in-out .4s;
+      vertical-align: middle;
+      border-radius: 0;
+      background: #05bb76; }
+      .richEditor .bottomBar .saveButton:hover {
+        background: #06d486; }
+    .richEditor .bottomBar .saveButton:first-child {
+      margin-right: 32px; }
 
 #editor1 {
   min-height: 400px;
   height: auto !important;
   box-shadow: 0 0 0 0.75pt #d1d1d1,0 0 3pt 0.75pt #ccc; }
-
-.bottomBar {
-  position: fixed;
-  bottom: 0;
-  width: 80%;
-  max-width: 1024px;
-  height: 80px;
-  line-height: 80px;
-  background-color: #265783;
-  text-align: center;
-  z-index: 666; }
-  .bottomBar .saveButton {
-    width: 200px;
-    font-size: 20px;
-    color: #fff;
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
-    line-height: 40px;
-    transition: all ease-in-out .4s;
-    vertical-align: middle;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.3); }
-    .bottomBar .saveButton:hover {
-      color: #2db7f5; }
 
 /*# sourceMappingURL=index.css.map */

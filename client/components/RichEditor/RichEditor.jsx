@@ -7,13 +7,13 @@ export default class RichEditor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title:'博客',
-            author:'yvan',
+            title:'',
+            author:'',
             blogStatus:'draft',
             blogType:'design',
             content:'Tell a story...'
         };
-        this.saveBlog = (id, contentState, plaintext)=>this._saveBlog(id, contentState, plaintext);
+        this.saveBlog = (id, blogStatus)=>this._saveBlog(id, blogStatus);
         this.setTitle = (event)=>this._setTitle(event);
         this.setAuthor = (event)=>this._setAuthor(event);
         this.setBlogStatus = (event)=> this._setBlogStatus(event);
@@ -21,7 +21,7 @@ export default class RichEditor extends Component {
         this.getContent = ()=>this._getContent();
     }
 
-    _saveBlog(id){
+    _saveBlog(id, blogStatus){
         const {saveBlog} = this.props;
         var rowData = this.editor.$txt.html();
         var plaintext = this.editor.$txt.formatText();
@@ -32,7 +32,7 @@ export default class RichEditor extends Component {
             id:id,
             author:this.state.author,
             title: this.state.title,
-            blogStatus: this.state.blogStatus,
+            blogStatus: blogStatus,
             type:this.state.blogType,
             rowData:rowData,
             plaintext: plaintext
@@ -104,6 +104,39 @@ export default class RichEditor extends Component {
 
         // 初始化内容
         this.editor.$txt.html(this.state.content);
+
+        /*let $ = window.jQuery;
+        let $wangEditor = $('.wangEditor-container');
+        let editorTop = $wangEditor.offset().top;
+        let beforeScrollTop = document.body.scrollTop;
+        let winBeforeScrollTop = $(window).scrollTop();
+        $(window).on('scroll',function(){
+            let afterScrollTop = document.body.scrollTop;
+            let delta = afterScrollTop-beforeScrollTop;
+            console.log(beforeScrollTop);
+            console.log(winBeforeScrollTop);
+            /!*if( delta === 0 ) return false;
+            //向上滚动
+            if(delta>0&&afterScrollTop>editorTop){
+                $wangEditor.addClass('toolFixed');
+            }else {
+                if($wangEditor.hasClass('toolFixed')){
+                    $wangEditor.removeClass('toolFixed');
+                }
+            }*!/
+        });*/
+        /*scroll(function(direction) { console.log(direction) });
+        function scroll( fn ) {
+            var beforeScrollTop = document.body.scrollTop,
+                fn = fn || function() {};
+            window.addEventListener("scroll", function() {
+                var afterScrollTop = document.body.scrollTop,
+                    delta = afterScrollTop - beforeScrollTop;
+                if( delta === 0 ) return false;
+                fn( delta > 0 ? "down" : "up" );
+                beforeScrollTop = afterScrollTop;
+            }, false);
+        }*/
     }
 
     render() {
@@ -113,34 +146,35 @@ export default class RichEditor extends Component {
             id=editData['_id'];
         }
         return (
-            <div className="contentEditor" >
+            <div className="richEditor" >
                 <form className="blogInfo">
                     <div className="title">
                         <label htmlFor="title">标题：</label>
-                        <input type="text" value={this.state.title} onChange={this.setTitle}/>
+                        <input type="text" value={this.state.title} placeholder='Title' onChange={this.setTitle}/>
                     </div>
                     <div className="author">
                         <label htmlFor="title">作者：</label>
-                        <input type="text" value={this.state.author} onChange={this.setAuthor}/>
+                        <input type="text" value={this.state.author} placeholder='Author' onChange={this.setAuthor}/>
                     </div>
                     <div className="blogType">
-                        <lable htmlFor="blogType">类别：</lable>
-                        <select value={this.state.blogType} onChange={this.setBlogType}>
+                        <label htmlFor="blogType">类别：</label>
+                        <select value={this.state.blogType} placeholder={this.state.blogType} onChange={this.setBlogType}>
                             <option value="design">设计</option>
                             <option value="develop">前端</option>
                         </select>
                     </div>
-                    <div className="blogStatus">
-                        <lable htmlFor="blogStatus">状态：</lable>
-                        <select value={this.state.blogStatus} onChange={this.setBlogStatus}>
+                    {/*<div className="blogStatus">
+                        <label htmlFor="blogStatus">状态：</label>
+                        <select value={this.state.blogStatus} placeholder={this.state.blogStatus} onChange={this.setBlogStatus}>
                             <option value="draft">草稿</option>
                             <option value="publish">发布</option>
                         </select>
-                    </div>
+                    </div>*/}
                 </form>
                 <div id={this.props.id} contentEditable="true"></div>
                 <div className="bottomBar">
-                    <span className="saveButton" onClick={()=>this.saveBlog(id)}>保存</span>
+                    <span className="saveButton" onClick={()=>this.saveBlog(id, 'draft')}>草稿</span>
+                    <span className="saveButton" onClick={()=>this.saveBlog(id, 'publish')}>发布</span>
                 </div>
             </div>
         );
