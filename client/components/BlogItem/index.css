@@ -57,13 +57,9 @@
     top: auto;
     bottom: 20px; } }
 @media screen and (max-width: 420px) {
-  .listContainer {
-    width: 120px;
-    height: 54px; }
-    .listContainer svg {
-      width: 86px;
-      height: 64px;
-      margin-top: -8px;
-      margin-left: 30px; } }
+  .blogItem h1 {
+    font-size: 20px; }
+  .blogItem p.blogContent {
+    font-size: 16px; } }
 
 /*# sourceMappingURL=index.css.map */

@@ -61,7 +61,9 @@
     vertical-align: middle; }
 
 #blogContent {
-  height: auto !important; }
+  height: auto !important;
+  overflow: hidden;
+  word-break: break-all; }
 
 .DraftEditor-root {
   font-size: 18px; }
@@ -77,6 +79,9 @@
   .blogContentWrap {
     width: 90%;
     padding: 20px 0 40px; }
+    .blogContentWrap .blogTitle {
+      line-height: 1.5;
+      margin-bottom: 20px; }
     .blogContentWrap .backButton {
       position: fixed;
       left: 20px;
@@ -89,6 +94,10 @@
 @media screen and (max-width: 420px) {
   .blogContentWrap {
     width: 100%; }
+    .blogContentWrap .blogTitle {
+      font-size: 22px; }
+    .blogContentWrap #blogContent p font {
+      font-size: 16px; }
     .blogContentWrap .backButton {
       top: 27px;
       left: 10px; }

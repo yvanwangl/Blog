@@ -75,6 +75,8 @@ $white: #fff;
 }
 #blogContent {
 	height: auto !important;
+    overflow: hidden;
+    word-break: break-all;
 }
 .DraftEditor-root {
     font-size: 18px;
@@ -90,6 +92,10 @@ $white: #fff;
     .blogContentWrap {
         width: 90%;
         padding: 20px 0 40px;
+        & .blogTitle {
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
         & .backButton {
             position: fixed;
             left:20px;
@@ -106,6 +112,12 @@ $white: #fff;
 @media screen and (max-width: 420px){
     .blogContentWrap {
         width: 100%;
+        & .blogTitle {
+            font-size: 22px;
+        }
+        #blogContent p font {
+            font-size: 16px;
+        }
         & .backButton {
             top: 27px;
             left:10px;
