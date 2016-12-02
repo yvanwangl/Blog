@@ -151,9 +151,6 @@
                     margin-bottom: 20px;
                 }
             }
-            & .linkContainer .linkItem {
-                margin: 20px 30px 20px 0;
-            }
         }
     }
 }
@@ -163,9 +160,24 @@
             width: 90%;
             text-align: center;
             padding-top: 0;
+            & img {
+                width: 100px;
+                height: 100px;
+            }
             & .resumeTitle {
                 text-align: center;
+                font-size: 30px;
             }
+            & .personalInfo {
+                font-size: 16px;
+            }
+            & .skillContainer {
+                margin-bottom: 12px;
+            }
+        }
+        & .loginContainer {
+            top: 22px;
+            left: 22px;
         }
     }
 }

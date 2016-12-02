@@ -12,7 +12,7 @@
   .blogItem h1 {
     font-size: 24px;
     font-weight: normal;
-    line-height: 1;
+    line-height: 1.5;
     margin-bottom: 24px;
     color: #000; }
   .blogItem p.blogContent {
@@ -50,5 +50,20 @@
 
 .blogItem:nth-last-child(-n+1) {
   margin-bottom: 0; }
+
+@media screen and (max-width: 740px) {
+  .blogItem .editButton {
+    opacity: 1;
+    top: auto;
+    bottom: 20px; } }
+@media screen and (max-width: 420px) {
+  .listContainer {
+    width: 120px;
+    height: 54px; }
+    .listContainer svg {
+      width: 86px;
+      height: 64px;
+      margin-top: -8px;
+      margin-left: 30px; } }
 
 /*# sourceMappingURL=index.css.map */

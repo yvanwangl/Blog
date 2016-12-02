@@ -6,4 +6,8 @@
   padding-top: 20px;
   margin: 0 auto; }
 
+@media screen and (max-width: 740px) {
+  .blogsContainer {
+    width: 100%; } }
+
 /*# sourceMappingURL=index.css.map */

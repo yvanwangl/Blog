@@ -1,5 +1,6 @@
 .commentWrap {
-  margin-top: 200px; }
+  margin-top: 200px;
+  padding: 0 15px; }
   .commentWrap .commentInitInfo {
     text-align: center;
     font-size: 14px;

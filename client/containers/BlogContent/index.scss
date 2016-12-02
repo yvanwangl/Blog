@@ -86,12 +86,33 @@ $white: #fff;
 	margin-top: 30px;
 	background-color: #D4E3F3;
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 740px) {
     .blogContentWrap {
         width: 90%;
         padding: 20px 0 40px;
         & .backButton {
-            left: 0;
+            position: fixed;
+            left:20px;
+            top: 32px;
+            transform: translate(0,-50%);
+            z-index: 666;
+            color: #fff;
+            & .backIcon svg {
+                fill: #fff;
+            }
+        }
+    }
+}
+@media screen and (max-width: 420px){
+    .blogContentWrap {
+        width: 100%;
+        & .backButton {
+            top: 27px;
+            left:10px;
+        }
+        & .warning {
+            font-size: 14px;
+            padding-right: 15px;
         }
     }
 }

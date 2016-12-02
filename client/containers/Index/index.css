@@ -11,6 +11,8 @@
   background-color: #fff;
   padding: 20px 0;
   box-sizing: border-box; }
+  .indexPage .topBar {
+    display: none; }
   .indexPage .navList {
     position: fixed;
     top: 300px;
@@ -53,22 +55,38 @@
         fill: #fff; }
 
 @media screen and (max-width: 740px) {
-  .indexPage .navList {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0; }
-    .indexPage .navList .navWrap {
-      display: flex; }
-      .indexPage .navList .navWrap .navItem {
-        flex: 1;
-        margin: 0;
-        padding: 0;
-        display: inline-block;
-        border-radius: 0;
-        transform: translate(0, 0);
-        text-align: center;
-        height: 64px;
-        line-height: 64px; } }
+  .indexPage {
+    padding: 64px 0; }
+    .indexPage .topBar {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 64px;
+      line-height: 64px;
+      background-color: #3F4C58;
+      z-index: 555; }
+    .indexPage .navList {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+      .indexPage .navList .navWrap {
+        display: flex; }
+        .indexPage .navList .navWrap .navItem {
+          flex: 1;
+          margin: 0;
+          padding: 0;
+          display: inline-block;
+          border-radius: 0;
+          transform: translate(0, 0);
+          text-align: center;
+          height: 64px;
+          line-height: 64px; } }
+@media screen and (max-width: 420px) {
+  .indexPage .topBar {
+    height: 54px;
+    line-height: 54px; } }
 
 /*# sourceMappingURL=index.css.map */

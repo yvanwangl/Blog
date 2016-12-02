@@ -87,6 +87,7 @@ class Index extends Component {
         );
         return (
             <div className="indexPage">
+                <div className="topBar"></div>
                 <div className="navList">
                     <div className="navWrap">
                         {navItems}

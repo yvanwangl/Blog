@@ -126,16 +126,25 @@
     .resumeWrap .resumeContianer .skillContainer {
       text-align: center; }
       .resumeWrap .resumeContianer .skillContainer .skillItem {
-        margin-bottom: 20px; }
-    .resumeWrap .resumeContianer .linkContainer .linkItem {
-      margin: 20px 30px 20px 0; } }
+        margin-bottom: 20px; } }
 @media screen and (max-width: 420px) {
   .resumeWrap .resumeContianer {
     width: 90%;
     text-align: center;
     padding-top: 0; }
+    .resumeWrap .resumeContianer img {
+      width: 100px;
+      height: 100px; }
     .resumeWrap .resumeContianer .resumeTitle {
-      text-align: center; } }
+      text-align: center;
+      font-size: 30px; }
+    .resumeWrap .resumeContianer .personalInfo {
+      font-size: 16px; }
+    .resumeWrap .resumeContianer .skillContainer {
+      margin-bottom: 12px; }
+  .resumeWrap .loginContainer {
+    top: 22px;
+    left: 22px; } }
 .resumeContianer .currentState {
   width: 100%;
   height: 80px;

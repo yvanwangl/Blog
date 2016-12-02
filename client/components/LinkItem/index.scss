@@ -19,3 +19,15 @@ $width56: 56px;
         height: 50%;
     }
 }
+@media screen and (max-width: 560px) {
+    .linkItem {
+        margin: 20px 30px 20px 0;
+    }
+}
+@media screen and (max-width: 420px) {
+    .linkItem {
+        width: 46px;
+        height: 46px;
+        margin: 10px 10px 10px 0;
+    }
+}

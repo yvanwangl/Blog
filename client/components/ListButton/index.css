@@ -4,7 +4,7 @@
   text-align: center;
   display: inline-block;
   position: fixed;
-  right: -15px;
+  right: 0;
   top: 0;
   z-index: 1001; }
   .listContainer svg {
@@ -46,11 +46,20 @@
   stroke-dashoffset: -115px;
   stroke-dasharray: 1px 220px; }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 740px) {
+  .listContainer svg {
+    width: 120px;
+    height: 64px; }
+    .listContainer svg path {
+      stroke: #fff; } }
+@media screen and (max-width: 420px) {
   .listContainer {
-    position: absolute; } }
-@media screen and (max-width: 380px) {
-  .listContainer {
-    right: -40px; } }
+    width: 120px;
+    height: 54px; }
+    .listContainer svg {
+      width: 86px;
+      height: 64px;
+      margin-top: -8px;
+      margin-left: 30px; } }
 
 /*# sourceMappingURL=index.css.map */

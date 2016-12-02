@@ -4,7 +4,7 @@
     text-align: center;
     display: inline-block;
     position: fixed;
-    right: -15px;
+    right: 0;
     top: 0;
     z-index: 1001;
     & svg {
@@ -51,13 +51,26 @@
     stroke-dashoffset: -115px;
     stroke-dasharray: 1px 220px;
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 740px) {
     .listContainer {
-        position: absolute;
+        & svg {
+            width: 120px;
+            height: 64px;
+            & path {
+                stroke: #fff;
+            }
+        }
     }
 }
-@media screen and (max-width: 380px){
+@media screen and (max-width: 420px){
     .listContainer {
-        right: -40px;
+        width: 120px;
+        height: 54px;
+        & svg {
+            width: 86px;
+            height: 64px;
+            margin-top: -8px;
+            margin-left: 30px;
+        }
     }
 }
