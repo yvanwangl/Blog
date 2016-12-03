@@ -12,7 +12,6 @@ import NavLink from '../../components/NavLink/NavLink';
 import SkillItem from '../../components/SkillItem/SkillItem';
 import LinkItem from '../../components/LinkItem/LinkItem';
 import Icon from '../../components/Icon/Icon';
-import LoginDialog from '../../components/LoginDialog/LoginDialog';
 import {browserHistory} from 'react-router';
 require ('./index.css');
 require ('./images/logo.jpg');
@@ -63,7 +62,6 @@ class Resume extends Component {
         return (
 			<div className={rootClassName}>
                 <div className="resumeWrap">
-                    {login.showLoginDialog? <LoginDialog />:null}
                     <div className="linearContainer"></div>
                     <div className="resumeContianer" ref="resumeContianer" >
                         <img src={resumeInfo.page=='huan'?avatarHuan:avatarFei} alt="me"/>

@@ -39,6 +39,10 @@ $width90: 90%;
     & .wangEditor-container {
         width: 100%;
         margin: 0 auto;
+        border: none;
+        & .wangEditor-menu-container {
+            border: solid 1px #e5e5e5;
+        }
     }
     & .wangEditor-container.toolFixed {
         position: fixed;
@@ -86,5 +90,5 @@ $width90: 90%;
 #editor1 {
     min-height: 400px;
     height: auto !important;
-    box-shadow: 0 0 0 0.75pt #d1d1d1,0 0 3pt 0.75pt #ccc;
+    //box-shadow: 0 0 0 0.75pt #d1d1d1,0 0 3pt 0.75pt #ccc;
 }

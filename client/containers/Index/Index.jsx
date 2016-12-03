@@ -7,6 +7,7 @@ import Icon from '../../components/Icon/Icon';
 import Resume from '../Resume/Resume';
 import NavItem from '../../components/NavItem/NavItem';
 import ListButton from '../../components/ListButton/ListButton';
+import LoginDialog from '../../components/LoginDialog/LoginDialog';
 import {browserHistory} from 'react-router';
 require('./index.css');
 
@@ -105,6 +106,7 @@ class Index extends Component {
                 </div>*/}
                 <ListButton listClassName={resumeInfo.showResume?'close':'list'} onButtonClick={this.openResumeClick}/>
                 <Resume />
+                {login.showLoginDialog? <LoginDialog />:null}
                 {this.props.children}
             </div>
         );

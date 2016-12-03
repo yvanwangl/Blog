@@ -28,7 +28,10 @@
       line-height: 36px; }
   .richEditor .wangEditor-container {
     width: 100%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    border: none; }
+    .richEditor .wangEditor-container .wangEditor-menu-container {
+      border: solid 1px #e5e5e5; }
   .richEditor .wangEditor-container.toolFixed {
     position: fixed;
     overflow-y: scroll;
@@ -69,7 +72,6 @@
 
 #editor1 {
   min-height: 400px;
-  height: auto !important;
-  box-shadow: 0 0 0 0.75pt #d1d1d1,0 0 3pt 0.75pt #ccc; }
+  height: auto !important; }
 
 /*# sourceMappingURL=index.css.map */
