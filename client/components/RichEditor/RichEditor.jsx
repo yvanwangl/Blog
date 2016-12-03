@@ -11,7 +11,7 @@ export default class RichEditor extends Component {
             author:'',
             blogStatus:'draft',
             blogType:'design',
-            content:'Tell a story...'
+            content:'开始书写你的故事...'
         };
         this.saveBlog = (id, blogStatus)=>this._saveBlog(id, blogStatus);
         this.setTitle = (event)=>this._setTitle(event);
@@ -99,6 +99,41 @@ export default class RichEditor extends Component {
         this.editor.config.uploadHeaders = {
             'Accept' : 'text/x-json'
         };
+
+        this.editor.config.menus = [
+            'source',
+            '|',
+            'bold',
+            'underline',
+            'italic',
+            'strikethrough',
+            'eraser',
+            'forecolor',
+            'bgcolor',
+            '|',
+            'quote',
+            'fontfamily',
+            'fontsize',
+            'head',
+            'unorderlist',
+            'orderlist',
+            'alignleft',
+            'aligncenter',
+            'alignright',
+            '|',
+            'link',
+            'unlink',
+            'table',
+            'emotion',
+            '|',
+            'img',
+            'video',
+            'location',
+            'insertcode',
+            '|',
+            'undo',
+            'redo'
+        ];
 
         this.editor.create();
 
