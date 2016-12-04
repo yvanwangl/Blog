@@ -128,17 +128,52 @@ export default class RichEditor extends Component {
             '|',
             'img',
             'video',
-            'location',
+            //'location',
             'insertcode',
             '|',
             'undo',
-            'redo'
+            'redo',
+            /*'fullscreen'*/
         ];
+        /*this.editor.config.menuFixed = 5;*/
 
         this.editor.create();
 
         // 初始化内容
         this.editor.$txt.html(this.state.content);
+
+        $("#editor1").niceScroll({
+            cursorcolor:"#8a8a8a",
+            cursoropacitymax:1,
+            touchbehavior:false,
+            cursorwidth:"5px",
+            cursorborder:"0",
+            cursorborderradius:"5px",
+            horizrailenabled:false,
+            mousescrollstep:40
+        });
+
+        /*let $ = window.jQuery;
+        var $wangEditor = $('.wangEditor-container');
+        var editorTop = $wangEditor.offset().top;
+        var beforeScrollTop = $(window).scrollTop();
+        $(window).on("scroll", function() {
+            var afterScrollTop = $(window).scrollTop(),
+                delta = afterScrollTop - beforeScrollTop;
+            if( delta === 0 ) return false;
+            if( delta > 0){
+                if(afterScrollTop>= editorTop){
+                    $wangEditor.addClass('toolFixed');
+                }
+                console.log('down');
+            }/!*else {
+                if(afterScrollTop+20< editorTop){
+                    $wangEditor.removeClass('toolFixed');
+                }
+                console.log('up');
+            }*!/
+            beforeScrollTop = afterScrollTop;
+        });*/
 
         /*let $ = window.jQuery;
         let $wangEditor = $('.wangEditor-container');
@@ -150,7 +185,7 @@ export default class RichEditor extends Component {
             let delta = afterScrollTop-beforeScrollTop;
             console.log(beforeScrollTop);
             console.log(winBeforeScrollTop);
-            /!*if( delta === 0 ) return false;
+            if( delta === 0 ) return false;
             //向上滚动
             if(delta>0&&afterScrollTop>editorTop){
                 $wangEditor.addClass('toolFixed');
@@ -158,7 +193,7 @@ export default class RichEditor extends Component {
                 if($wangEditor.hasClass('toolFixed')){
                     $wangEditor.removeClass('toolFixed');
                 }
-            }*!/
+            }
         });*/
         /*scroll(function(direction) { console.log(direction) });
         function scroll( fn ) {

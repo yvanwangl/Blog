@@ -40,21 +40,10 @@ $width90: 90%;
         width: 100%;
         margin: 0 auto;
         border: none;
-        & .wangEditor-menu-container {
-            border: solid 1px #e5e5e5;
+        & .wangEditor-txt {
+            min-height: 800px;
+            /*height: auto !important;*/
         }
-    }
-    & .wangEditor-container.toolFixed {
-        position: fixed;
-        overflow-y: scroll;
-        /*& .wangEditor-menu-container {
-            position: fixed !important;
-            top: 0 !important;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-        & .wangEditor-drop-list {
-            position: fixed;
-        }*/
     }
     .bottomBar {
         position: relative;
@@ -87,8 +76,9 @@ $width90: 90%;
         }
     }
 }
+/*
 #editor1 {
     min-height: 400px;
     height: auto !important;
     //box-shadow: 0 0 0 0.75pt #d1d1d1,0 0 3pt 0.75pt #ccc;
-}
+}*/

@@ -30,19 +30,9 @@
     width: 100%;
     margin: 0 auto;
     border: none; }
-    .richEditor .wangEditor-container .wangEditor-menu-container {
-      border: solid 1px #e5e5e5; }
-  .richEditor .wangEditor-container.toolFixed {
-    position: fixed;
-    overflow-y: scroll;
-    /*& .wangEditor-menu-container {
-        position: fixed !important;
-        top: 0 !important;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-    & .wangEditor-drop-list {
-        position: fixed;
-    }*/ }
+    .richEditor .wangEditor-container .wangEditor-txt {
+      min-height: 800px;
+      /*height: auto !important;*/ }
   .richEditor .bottomBar {
     position: relative;
     text-align: right;
@@ -70,8 +60,11 @@
     .richEditor .bottomBar .saveButton:first-child {
       margin-right: 32px; }
 
+/*
 #editor1 {
-  min-height: 400px;
-  height: auto !important; }
+    min-height: 400px;
+    height: auto !important;
+    //box-shadow: 0 0 0 0.75pt #d1d1d1,0 0 3pt 0.75pt #ccc;
+}*/
 
 /*# sourceMappingURL=index.css.map */
