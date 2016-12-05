@@ -1,13 +1,19 @@
 /**
  * Created by wyf on 2016/11/14.
  */
-export function dateFormat(dateString){
+export function dateFormat(dateString, formatType){
     var date = new Date(dateString);
     var dateStr = '';
     var year = date.getFullYear();
     var month = preFixZeoo(date.getMonth()+1);
     var day = preFixZeoo(date.getDate()+1);
-    dateStr = `${year}年 ${month}月 ${day}日`;
+    switch (formatType){
+        case 1:
+            dateStr = `${year}年 ${month}月 ${day}日`;
+            break;
+        case 2:
+            dateStr = `${year}-${month}-${day}`
+    }
     return dateStr;
 }
 

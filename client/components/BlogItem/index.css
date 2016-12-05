@@ -31,6 +31,24 @@
     line-height: 2;
     color: #b3b3b3;
     margin-top: 24px; }
+    .blogItem p.blogInfo .spliter {
+      display: inline-block;
+      width: 20px; }
+    .blogItem p.blogInfo .icon {
+      vertical-align: middle;
+      margin-right: 3px;
+      margin-top: -2px; }
+      .blogItem p.blogInfo .icon svg {
+        fill: #9b9b9b; }
+    .blogItem p.blogInfo .scanerIcon {
+      width: 22px;
+      height: 22px; }
+    .blogItem p.blogInfo .text {
+      color: #9b9b9b;
+      display: inline-block;
+      height: 20px;
+      line-height: 20px;
+      vertical-align: middle; }
   .blogItem .editButton {
     position: absolute;
     top: 30px;
@@ -40,7 +58,7 @@
     line-height: 24px;
     font-size: 14px;
     text-align: center;
-    opacity: 1;
+    opacity: 0;
     border-radius: 12px;
     transition: all ease-in-out .2s;
     border: solid 1px #00b973;

@@ -22,6 +22,7 @@ import Scaner from '-!babel!svg-react!./images/scaner.svg?name=scaner';
 import CommentIcon from '-!babel!svg-react!./images/comment.svg?name=comment';
 import User from '-!babel!svg-react!./images/user.svg?name=user';
 import Pass from '-!babel!svg-react!./images/pass.svg?name=pass';
+import DateIcon from '-!babel!svg-react!./images/dateIcon.svg?name=dateIcon';
 require('./index.css');
 
 function getComponent(type){
@@ -95,6 +96,9 @@ function getComponent(type){
             break;
         case 'pass':
             childComponent=<Pass />;
+            break;
+        case 'dateIcon':
+            childComponent=<DateIcon />;
             break;
     }
     return childComponent;

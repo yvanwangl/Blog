@@ -44,6 +44,29 @@ $white: #fff;
 		line-height: getLineHeight(1.5);
 		color: darken(#ccc, 10%);
 		margin-top: 24px;
+		& .spliter {
+			display: inline-block;
+			width: 20px;
+		}
+        & .icon {
+            vertical-align: middle;
+            margin-right: 3px;
+            margin-top: -2px;
+            & svg {
+                fill: #9b9b9b;
+            }
+        }
+        & .scanerIcon {
+            width: 22px;
+            height: 22px;
+        }
+        & .text {
+            color:#9b9b9b;
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            vertical-align: middle;
+        }
 	}
 
 	& .editButton {
@@ -55,7 +78,7 @@ $white: #fff;
 		line-height: 24px;
 		font-size: 14px;
 		text-align: center;
-		opacity: 1;
+		opacity: 0;
 		border-radius: 12px;
 		transition: all ease-in-out .2s;
 		border: solid 1px #00b973;
