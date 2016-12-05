@@ -21,8 +21,8 @@ export default class BlogItem extends Component {
     }
 
     editButtonClick (){
-        const {blogData, loadBlogData} = this.props;
-        loadBlogData(blogData['_id'],()=>{
+        const {blogData, editBlogData} = this.props;
+        editBlogData(blogData['_id'], ()=>{
             browserHistory.push("/admin/"+blogData.id);
         });
 
@@ -31,8 +31,8 @@ export default class BlogItem extends Component {
     render() {
         const {blogData, showEdit} = this.props;
         return (
-                <li className='blogItem' onClick={this.itemClick}>
-                    <div>
+                <li className='blogItem'>
+                    <div onClick={this.itemClick}>
                         <h1>{blogData.title}</h1>
                         <p className='blogContent'>{blogData.plaintext}</p>
                         <p className='blogInfo'>

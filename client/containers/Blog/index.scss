@@ -6,7 +6,9 @@ $white: #fff;
 	min-height: 100%;
 	padding-top: 20px;
 	margin: 0 auto;
-	//background: #57c5f7;
+	ul {
+		list-style: none;
+	}
 }
 @media screen and (max-width: 740px) {
 	.blogsContainer {

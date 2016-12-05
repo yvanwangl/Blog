@@ -80,7 +80,8 @@
     height: 32px;
     background-color: #4a4a4a;
     border-radius: 50%;
-    text-align: center; }
+    text-align: center;
+    cursor: pointer; }
     .loginWrapper .closeButton .closeIcon {
       margin-top: 50%;
       transform: translate(0, -50%); }

@@ -49,17 +49,17 @@ $white: #fff;
 	& .editButton {
 		position: absolute;
 		top: 30px;
-		right:30px;
-		width: 100px;
-		height: 40px;
-		line-height: 40px;
+		right: 30px;
+		width: 60px;
+		height: 24px;
+		line-height: 24px;
 		font-size: 14px;
-		background-color: rgba(0,0,0,.4);
 		text-align: center;
-		color: #fff;
-		opacity: 0;
-		border-radius:5px;
+		opacity: 1;
+		border-radius: 12px;
 		transition: all ease-in-out .2s;
+		border: solid 1px #00b973;
+		color: #00b973;
 	}
 
 	&:hover .editButton {

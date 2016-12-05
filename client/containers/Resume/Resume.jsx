@@ -54,11 +54,20 @@ class Resume extends Component {
 
 	render(){
 		const { resumeInfo,login, actions } = this.props;
+        let $ = window.jQuery;
         let rootClassName = resumeInfo.showResume? 'rootContainer showResume':'rootContainer';
         let skillItems = [];
         let linkItems = [];
         resumeInfo.skills.map((skill, index)=>skillItems.push(<SkillItem key={index} skillName={skill.name}/>));
         resumeInfo.links.map((link, index)=>linkItems.push(<LinkItem key={index} iconType={link.name} target={link.target}/>));
+        if(resumeInfo.showResume){
+            $(window).scrollTop(0);
+            $(window).on('scroll', function(){
+                $(window).scrollTop(0);
+            });
+        }else {
+            $(window).off('scroll');
+        }
         return (
 			<div className={rootClassName}>
                 <div className="resumeWrap">

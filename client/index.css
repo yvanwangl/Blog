@@ -69,9 +69,9 @@ small {
 /* 小于 12px 的中文很难阅读，让 small 正常化 */
 
 /* 重置列表元素 */
-ul, ol {
+/*ul, ol {
     list-style: none;
-}
+}*/
 
 /* 重置文本格式元素 */
 a, s, div {

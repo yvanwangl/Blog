@@ -23,6 +23,8 @@ export default class RichEditor extends Component {
 
     _saveBlog(id, blogStatus){
         const {saveBlog} = this.props;
+        var title = this.state.title || '博客';
+        var author = this.state.author || '王亚飞';
         var rowData = this.editor.$txt.html();
         var plaintext = this.editor.$txt.formatText();
         if(plaintext.length>300){
@@ -30,8 +32,8 @@ export default class RichEditor extends Component {
         }
         let blogData = {
             id:id,
-            author:this.state.author,
-            title: this.state.title,
+            author: author,
+            title: title,
             blogStatus: blogStatus,
             type:this.state.blogType,
             rowData:rowData,
@@ -77,6 +79,8 @@ export default class RichEditor extends Component {
         if(editData){
             this.setState({
                 title:editData['title'],
+                author:editData['author'],
+                blogType:editData['type'],
                 blogStatus:editData['blogStatus'],
                 content:editData['content']
             });

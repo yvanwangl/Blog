@@ -5,6 +5,8 @@
   min-height: 100%;
   padding-top: 20px;
   margin: 0 auto; }
+  .blogsContainer ul {
+    list-style: none; }
 
 @media screen and (max-width: 740px) {
   .blogsContainer {

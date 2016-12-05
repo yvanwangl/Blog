@@ -75,7 +75,7 @@ class Blog extends Component {
         }
         blogs.map((blog, index)=>
             blogItems.push(
-                <BlogItem key={index} blogData={blog} showEdit={showEdit} loadBlogData={actions.saveBlogCount}/>
+                <BlogItem key={index} blogData={blog} showEdit={showEdit} loadBlogData={actions.saveBlogCount} editBlogData={actions.initBlogContent}/>
             )
         );
 
