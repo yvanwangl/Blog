@@ -73,6 +73,26 @@ class Index extends Component {
         console.log(blogType);
     }
 
+    componentDidMount(){
+        let deviceWidth = window.innerWidth;
+        let $ = window.jQuery;
+        let $window = $(window);
+        let $indexPage = $('.indexPage');
+        if(deviceWidth<420){
+            let beforeScrollTop = $window.scrollTop();
+            $window.on('scroll', function () {
+                let afterScrollTop = $window.scrollTop();
+                //向上滚动
+                if(afterScrollTop-beforeScrollTop>0){
+                    $indexPage.addClass('scrollUp');
+                }else {
+                    $indexPage.removeClass('scrollUp');
+                }
+                beforeScrollTop = afterScrollTop;
+            })
+        }
+    }
+
     render() {
         let {resumeInfo, login} = this.props;
         let navItems = [];

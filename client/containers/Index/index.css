@@ -12,7 +12,8 @@
   padding: 20px 0;
   box-sizing: border-box; }
   .indexPage .topBar {
-    display: none; }
+    display: none;
+    transition: all ease-in-out .4s; }
   .indexPage .navList {
     position: fixed;
     top: 300px;
@@ -53,6 +54,9 @@
       transform: translate(0, -50%); }
       .indexPage .adminButton .featherIcon svg {
         fill: #fff; }
+
+.indexPage.scrollUp .topBar, .indexPage.scrollUp .blogContentWrap .backButton, .indexPage.scrollUp .listContainer {
+  transform: translate(0, -54px); }
 
 @media screen and (max-width: 740px) {
   .indexPage {
