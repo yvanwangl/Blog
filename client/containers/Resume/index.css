@@ -117,16 +117,19 @@
     .resumeWrap .resumeContianer .skillContainer {
       margin-bottom: 60px; } }
 @media screen and (max-width: 560px) {
-  .resumeWrap .resumeContianer {
-    width: 86%;
-    text-align: center;
-    padding-top: 0; }
-    .resumeWrap .resumeContianer .resumeTitle {
-      text-align: center; }
-    .resumeWrap .resumeContianer .skillContainer {
-      text-align: center; }
-      .resumeWrap .resumeContianer .skillContainer .skillItem {
-        margin-bottom: 20px; } }
+  .resumeWrap {
+    background: url("https://blog.yvanwang.com/uploadfiles/resumebgs.png") no-repeat;
+    background-color: #6181CB; }
+    .resumeWrap .resumeContianer {
+      width: 86%;
+      text-align: center;
+      padding-top: 0; }
+      .resumeWrap .resumeContianer .resumeTitle {
+        text-align: center; }
+      .resumeWrap .resumeContianer .skillContainer {
+        text-align: center; }
+        .resumeWrap .resumeContianer .skillContainer .skillItem {
+          margin-bottom: 20px; } }
 @media screen and (max-width: 420px) {
   .resumeWrap .resumeContianer {
     width: 90%;

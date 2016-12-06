@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Icon from '../Icon/Icon';
+import LightIcon from 'lighticon';
 require('./index.css');
 
 export default class CommentInput extends Component {
@@ -94,7 +95,7 @@ export default class CommentInput extends Component {
                     <div className="commentInfo">
                         <span className="remainWords">还可以输入<span>{this.state.remainWords}</span>字</span>
                         <span className="saveComment" onClick={this.saveComment}>
-                            发布
+                            {/*<LightIcon type="check" className="publishIcon"/>*/}发布
                         </span>
                     </div>
 
