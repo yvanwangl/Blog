@@ -73,7 +73,7 @@ class Index extends Component {
         console.log(blogType);
     }
 
-    componentDidMount(){
+    /*componentDidMount(){
         let deviceWidth = window.innerWidth;
         let $ = window.jQuery;
         let $window = $(window);
@@ -91,7 +91,7 @@ class Index extends Component {
                 beforeScrollTop = afterScrollTop;
             })
         }
-    }
+    }*/
 
     render() {
         let {resumeInfo, login} = this.props;
