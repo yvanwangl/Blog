@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import {render} from 'react-dom';
 /*import { AppContainer } from 'react-hot-loader';*/
 import configureStore from './store/configureStore';
 import Root from './containers/Root';
@@ -11,21 +11,21 @@ toggle();
 const store = configureStore();
 
 render(
-  /*<AppContainer>*/
+    /*<AppContainer>*/
     <Root
-      store={ store }
+        store={ store }
     />,
-  document.getElementById('root')
+    document.getElementById('root')
 );
 
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    const RootContainer = require('./containers/Root').default;
-    render(
-        <RootContainer
-          store={ store }
-        />,
-      document.getElementById('root')
-    );
-  });
+    module.hot.accept('./containers/Root', () => {
+        const RootContainer = require('./containers/Root').default;
+        render(
+            <RootContainer
+                store={ store }
+            />,
+            document.getElementById('root')
+        );
+    });
 }
