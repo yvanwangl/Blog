@@ -52,10 +52,10 @@ class Blog extends Component {
         actions.initBlogList(login.is_login);
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps!=this.props){
+    componentWillReceiveProps(nextProps) {
+        if (nextProps != this.props) {
             let {actions, login} = nextProps;
-            if(this.props.login.is_login!=login.is_login){
+            if (this.props.login.is_login != login.is_login) {
                 actions.initBlogList(login.is_login);
             }
         }
@@ -70,12 +70,13 @@ class Blog extends Component {
         const {blogs, actions, login} = this.props;
         let blogItems = [];
         let showEdit = false;
-        if(login.is_login){
+        if (login.is_login) {
             showEdit = true;
         }
         blogs.map((blog, index)=>
             blogItems.push(
-                <BlogItem key={index} blogData={blog} showEdit={showEdit} loadBlogData={actions.saveBlogCount} editBlogData={actions.initBlogContent}/>
+                <BlogItem key={index} blogData={blog} showEdit={showEdit} loadBlogData={actions.saveBlogCount}
+                          editBlogData={actions.initBlogContent}/>
             )
         );
 

@@ -10,7 +10,7 @@ export default function toggle() {
         huanStyle.rel = "stylesheet";
         huanStyle.href = '/huanStyle.css';
         var title = document.getElementsByTagName('title');
-        title[0].innerHTML="Sunny Huan's Blog";
+        title[0].innerHTML = "Sunny Huan's Blog";
         document.head.appendChild(huanStyle);
     }
 }

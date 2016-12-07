@@ -14,12 +14,12 @@ class BlogContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            content:''
+            content: ''
         };
         this.backClick = (event)=>this._backClick(event);
     }
 
-    _backClick(event){
+    _backClick(event) {
         browserHistory.push('/');
     }
 
@@ -47,7 +47,8 @@ class BlogContent extends Component {
                     原创文章作者：{blogContent['author']} ( 如若转载，请注明出处 )
                 </p>
                 <div className="comment">
-                    <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions} isLogin={login.is_login}/>
+                    <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions}
+                             isLogin={login.is_login}/>
                 </div>
             </div>
         );
@@ -60,14 +61,14 @@ function mapStateToProps(state) {
         blogContent: state.blogs.blog,
         comments: state.comments.comments,
         login: state.login,
-        id:'blogContent'
+        id: 'blogContent'
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(Actions, dispatch),
-        commentActions:bindActionCreators(commentActions, dispatch)
+        commentActions: bindActionCreators(commentActions, dispatch)
     };
 }
 

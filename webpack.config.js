@@ -5,23 +5,23 @@ var path = require('path');
 var entry = {};
 var plugins = [];
 var devTools = '';
-if(process.env.NODE_ENV=='production') {
-    console.log(process.env.NODE_ENV+'webpack');
-    entry={
+if (process.env.NODE_ENV == 'production') {
+    console.log(process.env.NODE_ENV + 'webpack');
+    entry = {
         jsx: ['./index.js'],
         html: ['./index.html'],
         /*vendor: [
-            'react',
-            'react-dom',
-            'react-redux',
-            'react-router',
-            'react-router-redux',
-            'redux',
-            'react-router',
-            'draft-js'
-        ]*/
+         'react',
+         'react-dom',
+         'react-redux',
+         'react-router',
+         'react-router-redux',
+         'redux',
+         'react-router',
+         'draft-js'
+         ]*/
     };
-    plugins=[
+    plugins = [
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
@@ -32,25 +32,25 @@ if(process.env.NODE_ENV=='production') {
         new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.NoErrorsPlugin()
     ];
-    devTools='';
-}else {
+    devTools = '';
+} else {
     var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
-    entry={
+    entry = {
         jsx: ['./index.js', hotMiddlewareScript],
         html: ['./index.html', hotMiddlewareScript],
         /*vendor: [
-            'react',
-            'react-dom',
-            'react-redux',
-            'react-router',
-            'react-router-redux',
-            'redux',
-            'react-router',
-            'draft-js',
-            hotMiddlewareScript
-        ]*/
+         'react',
+         'react-dom',
+         'react-redux',
+         'react-router',
+         'react-router-redux',
+         'redux',
+         'react-router',
+         'draft-js',
+         hotMiddlewareScript
+         ]*/
     };
-    plugins=[
+    plugins = [
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
         new webpack.DefinePlugin({
             'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')}
@@ -58,7 +58,7 @@ if(process.env.NODE_ENV=='production') {
         new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ];
-    devTools='#source-map';
+    devTools = '#source-map';
 }
 /* baseConfig */
 var baseConfig = {
@@ -86,10 +86,10 @@ var baseConfig = {
                 loader: 'url-loader?limit=50000&name=[path][name].[ext]'
             },
             /*{
-                test: /\.(png|jpg)$/,
-                loader: 'url-loader'
-                //loader: 'url-loader?limit=8192'
-            }, // inline base64 URLs for <=8k images, direct URLs for the rest*/
+             test: /\.(png|jpg)$/,
+             loader: 'url-loader'
+             //loader: 'url-loader?limit=8192'
+             }, // inline base64 URLs for <=8k images, direct URLs for the rest*/
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
@@ -97,7 +97,7 @@ var baseConfig = {
                     'babel-loader'
                 ]
             },
-            { test: /\.svg$/, loader: 'babel?presets[]=es2015,presets[]=react!svg-react' }
+            {test: /\.svg$/, loader: 'babel?presets[]=es2015,presets[]=react!svg-react'}
         ],
     },
     resolve: {
@@ -119,7 +119,7 @@ var baseConfig = {
         'react-router': 'ReactRouter',
         'draft-js': 'Draft',
         'wangeditor': 'wangEditor',
-        'jQuery':'jQuery'
+        'jQuery': 'jQuery'
     },
 };
 /* end baseConfig */
