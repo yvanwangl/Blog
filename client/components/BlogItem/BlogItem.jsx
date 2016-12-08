@@ -14,17 +14,17 @@ export default class BlogItem extends Component {
         this.itemClick = (event)=>this._itemClick(event);
     }
 
-    _itemClick(event){
+    _itemClick(event) {
         let {loadBlogData, blogData} = this.props;
-        loadBlogData(blogData['_id'], blogData['count']+1, ()=>{
+        loadBlogData(blogData['_id'], blogData['count'] + 1, ()=> {
             browserHistory.push(`/blog/${blogData['id']}`);
         });
     }
 
-    editButtonClick (){
+    editButtonClick() {
         const {blogData, editBlogData} = this.props;
-        editBlogData(blogData['_id'], ()=>{
-            browserHistory.push("/admin/"+blogData.id);
+        editBlogData(blogData['_id'], ()=> {
+            browserHistory.push("/admin/" + blogData.id);
         });
 
     }
@@ -32,25 +32,25 @@ export default class BlogItem extends Component {
     render() {
         const {blogData, showEdit} = this.props;
         return (
-                <li className='blogItem'>
-                    <div onClick={this.itemClick}>
-                        <h1>{blogData.title}</h1>
-                        <p className='blogContent'>{blogData.plaintext}</p>
-                        <p className='blogInfo'>
-                            {/*1 的日期格式化为：2016年 12月 05日*/}
-                            {/*2 的日期格式化为：2016-12月-05*/}
-                            <Icon type="dateIcon" className="dateIcon icon"/>
-                            <span className="text">{dateFormat(blogData.publishDate, 2)}</span>
-                            <span className="spliter"></span>
-                            <Icon type="feather" className="authorIcon icon"/>
-                            <span className="text">{blogData.author}</span>
-                            <span className="spliter"></span>
-                            <Icon type="scaner" className="scanerIcon icon"/>
-                            <span className="text">{blogData.count}</span>
-                        </p>
-                    </div>
-                    { showEdit ? <span className="editButton" onClick={this.editButtonClick.bind(this)}>编辑</span> : null }
-                </li>
+            <li className='blogItem'>
+                <div onClick={this.itemClick}>
+                    <h1>{blogData.title}</h1>
+                    <p className='blogContent'>{blogData.plaintext}</p>
+                    <p className='blogInfo'>
+                        {/*1 的日期格式化为：2016年 12月 05日*/}
+                        {/*2 的日期格式化为：2016-12月-05*/}
+                        <Icon type="dateIcon" className="dateIcon icon"/>
+                        <span className="text">{dateFormat(blogData.publishDate, 2)}</span>
+                        <span className="spliter"></span>
+                        <Icon type="feather" className="authorIcon icon"/>
+                        <span className="text">{blogData.author}</span>
+                        <span className="spliter"></span>
+                        <Icon type="scaner" className="scanerIcon icon"/>
+                        <span className="text">{blogData.count}</span>
+                    </p>
+                </div>
+                { showEdit ? <span className="editButton" onClick={this.editButtonClick.bind(this)}>编辑</span> : null }
+            </li>
         );
     }
 }

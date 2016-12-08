@@ -16,17 +16,17 @@ import ImageComponent from '../ImageComponent/ImageComponent';
 require('./index.css');
 require('./Draft.css');
 /*import createRichButtonsPlugin from 'draft-js-richbuttons-plugin';
-const richButtonsPlugin = createRichButtonsPlugin();*/
+ const richButtonsPlugin = createRichButtonsPlugin();*/
 
-function getBlockStyle(contentBlock){
+function getBlockStyle(contentBlock) {
     const blockType = contentBlock.getType();
-    if(blockType==='blockquote'){
+    if (blockType === 'blockquote') {
         return 'superFancyBlockquote';
     }
 }
 
-const styleMap={
-    'CODE':{
+const styleMap = {
+    'CODE': {
         backgroundColor: 'rgba(0, 0, 0, 0.05)',
         fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
         fontSize: 16,
@@ -38,10 +38,10 @@ export default class ContentEditor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title:'博客',
-            author:'yvan',
+            title: '博客',
+            author: 'yvan',
             editorState: EditorState.createEmpty(),
-            blogStatus:'draft'
+            blogStatus: 'draft'
         };
         this.onChange = (editorState) => this.setState({editorState});
         this.handleKeyCommand = (command)=>this._handleKeyCommand(command);
@@ -77,59 +77,59 @@ export default class ContentEditor extends Component {
         return 'not-handled';
     }
 
-    _changeFontStyle(){
+    _changeFontStyle() {
         console.log('font');
     }
 
-    _toggleBlockType(blockType){
+    _toggleBlockType(blockType) {
         const {editorState} = this.state;
-        this.onChange(RichUtils.toggleBlockType(editorState,blockType));
+        this.onChange(RichUtils.toggleBlockType(editorState, blockType));
     }
 
-    _toggleInlineStyle(inlineStyle){
+    _toggleInlineStyle(inlineStyle) {
         const {editorState} = this.state;
         this.onChange(RichUtils.toggleInlineStyle(editorState, inlineStyle));
     }
 
-    _saveBlog(id, rowData, plaintext){
+    _saveBlog(id, rowData, plaintext) {
         const {saveBlog} = this.props;
         let blogData = {
-            id:id,
-            author:this.state.author,
+            id: id,
+            author: this.state.author,
             title: this.state.title,
             blogStatus: this.state.blogStatus,
-            rowData:rowData,
+            rowData: rowData,
             plaintext: plaintext
         };
-        saveBlog(blogData, ()=>{
+        saveBlog(blogData, ()=> {
             console.log('跳转首页');
             browserHistory.push('/');
         });
     }
 
-    _setTitle(event){
+    _setTitle(event) {
         this.setState({
-            title:event.target.value
+            title: event.target.value
         });
     }
 
-    _setAuthor(event){
+    _setAuthor(event) {
         this.setState({
-            author:event.target.value
+            author: event.target.value
         });
     }
 
-    _setBlogStatus(event){
+    _setBlogStatus(event) {
         this.setState({
-            blogStatus:event.target.value
+            blogStatus: event.target.value
         });
     }
 
-    _handleUploadImage(event){
+    _handleUploadImage(event) {
         this.refs.fileInput.click();
     }
 
-    _handleFileInput(event){
+    _handleFileInput(event) {
         const fileList = event.target.files;
         const file = fileList[0];
         this.insertImage(file);
@@ -144,13 +144,13 @@ export default class ContentEditor extends Component {
         ));
     }
 
-    componentWillMount(){
+    componentWillMount() {
         let {editData} = this.props;
-        if(editData){
+        if (editData) {
             this.setState({
-                title:editData['title'],
-                editorState:EditorState.createWithContent(Draft.convertFromRaw(editData['content'])),
-                blogStatus:editData['blogStatus']
+                title: editData['title'],
+                editorState: EditorState.createWithContent(Draft.convertFromRaw(editData['content'])),
+                blogStatus: editData['blogStatus']
             });
         }
     }
@@ -158,12 +158,12 @@ export default class ContentEditor extends Component {
     render() {
         const {editorState} = this.state;
         const {editData} = this.props;
-        let id='11';
+        let id = '11';
         const onToggle = {
-            changeFontStyle:this.changeFontStyle,
-            toggleBlockType:this.toggleBlockType,
-            toggleInlineStyle:this.toggleInlineStyle,
-            handleUploadImage:this.handleUploadImage
+            changeFontStyle: this.changeFontStyle,
+            toggleBlockType: this.toggleBlockType,
+            toggleInlineStyle: this.toggleInlineStyle,
+            handleUploadImage: this.handleUploadImage
         };
         // If the user changes block type before entering any text, we can
         // either style the placeholder or hide it. Let's just hide it now.
@@ -176,8 +176,8 @@ export default class ContentEditor extends Component {
                 className = `${className}+' RichEditor-hidePlaceholder'`;
             }
         }
-        if(editData){
-            id=editData['_id'];
+        if (editData) {
+            id = editData['_id'];
         }
 
 
@@ -214,10 +214,10 @@ export default class ContentEditor extends Component {
                         spellCheck={true}
                     />
                     <input type="file" ref="fileInput" style={{display: 'none'}}
-                           onChange={this.handleFileInput} />
+                           onChange={this.handleFileInput}/>
                 </div>
                 <div className="bottomBar">
-                    <span className="saveButton" onClick={()=>this.saveBlog(id,rowData,plaintext)}>保存</span>
+                    <span className="saveButton" onClick={()=>this.saveBlog(id, rowData, plaintext)}>保存</span>
                 </div>
             </div>
         );
