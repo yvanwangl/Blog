@@ -30,8 +30,8 @@ class AdminManage extends Component {
             <div className="adminContainer container">
                 {/* <div onClick={()=>actions.fetchTest()}>新增博客</div>*/}
                 {/*<div className="titleWrap">
-                    <div className="adminTitle">后台管理页面</div>
-                </div>*/}
+                 <div className="adminTitle">后台管理页面</div>
+                 </div>*/}
                 <div ref="editorContainer"></div>
                 {/*<ContentEditor saveBlog={actions.saveBlog} editData={editData}/>*/}
                 <RichEditor
