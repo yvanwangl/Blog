@@ -92,7 +92,7 @@ export default class CommentItem extends Component {
                 <div className="commentatorInfo">
                     <img src={defaultImg} alt="默认头像" className="avator"/>
                     <p className="commentatorName">{comment['name']}</p>
-                    <p className="commentTime">{dateFormat(comment['commentTime'])} {parentName==''?'如是说：':'回复：@'+parentName}</p>
+                    <p className="commentTime">{dateFormat(comment['commentTime'],1)} {parentName==''?'如是说：':'回复：@'+parentName}</p>
                 </div>
                 <p className="commentContent">
                     {comment['commentContent']}
