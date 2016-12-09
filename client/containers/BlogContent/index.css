@@ -28,6 +28,10 @@
     width: 20px; }
   .blogContentWrap .wangEditor-container, .blogContentWrap .wangEditor-menu-container {
     border: none; }
+  .blogContentWrap .wangEditor-container pre, .blogContentWrap .wangEditor-container code {
+    background-color: #263238;
+    color: #6DC2B8;
+    font-size: 16px; }
   .blogContentWrap .warning {
     border-top: 1px dashed #000;
     line-height: 1.8;
