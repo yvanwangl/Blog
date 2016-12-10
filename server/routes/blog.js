@@ -104,6 +104,61 @@ router.route('/')
                 sendBlogs(err, blogs);
             });
         }
+    })
+    .post(function (req, res, next) {           //新增一篇博客
+        Blog.find(function(err, blogList){
+            var blogData = req.body;
+            var id;
+            if(blogList.length==0){
+                id = 1;
+            }else {
+                id = blogList[blogList.length-1]['id']+1;
+            }
+            var blog = new Blog({
+                id:id,
+                title:blogData['title'],
+                author:blogData['author'],
+                content:JSON.stringify(blogData['rowData']),
+                plaintext:blogData['plaintext'],
+                publishDate:new Date(),
+                blogStatus:blogData['blogStatus'],
+                type:blogData['type'],
+                count:1
+            });
+            saveBlog(blog, res);
+        });
+    });
+
+
+function sendBlog(err, blog) {
+    if(err){
+        res.send(err);
+    }else {
+        res.send({
+            is_success:true,
+            blog:blog
+        });
+    }
+}
+router.route('/:blog_id')
+    .get(function(req, res, next){              //根据id查询博客
+        var blogId = req.params.blog_id;
+        Blog.findById(blogId, function(err, blog){
+            sendBlog(err, blog);
+        });
+    })
+    .put(function(req, res, next){              //修改博客
+        var blogId = req.params.blog_id;
+        var blogData = req.body;
+        Blog.findAndModify(blogId, blogData, function(err, blog){
+            sendBlog(err, blog);
+        });
+    })
+    .delete(function(req, res, next){           //删除博客
+        var blogId = req.params.blog_id;
+        Blog.remove({_id:blogId}, function(err, blog){
+            sendBlog(err, blog);
+        });
     });
 
 router.post('/',function(req, res, next){
