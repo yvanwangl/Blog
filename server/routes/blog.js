@@ -78,6 +78,34 @@ router.post('/save',function(req, res, next){
     });
 });
 
+function sendBlogs(err, blogs) {
+    if(err){
+        res.send(err);
+    }else {
+        res.send({
+            is_success:true,
+            blogs:blogs
+        });
+    }
+}
+
+router.route('/')
+    .get(function(req, res, next){          //根据状态和分页查询blog列表数据
+        var queryData = res.query;
+        var is_login = queryData.is_login;
+        var page = queryData.page;
+        var limit = page*10;
+        if(is_login == 'true'){
+            Blog.find(function (err, blogs) {
+                sendBlogs(err, blogs);
+            })
+        }else {
+            Blog.findByStatys('publish', function(err, blogs){
+                sendBlogs(err, blogs);
+            });
+        }
+    });
+
 router.post('/',function(req, res, next){
     var blogId = req.body.blogId;
     console.log(blogId);

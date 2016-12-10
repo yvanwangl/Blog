@@ -19,7 +19,7 @@ var users = require('./routes/users');
 var test = require('./routes/test');
 var login = require('./routes/login');
 var blogList = require('./routes/blogList');
-var blogContent = require('./routes/blogContent');
+var blog = require('./routes/blog');
 var comment = require('./routes/comment');
 var upload = require('./routes/upload');
 
@@ -80,7 +80,7 @@ app.use('/bloglist', blogList);
 app.use('/users', users);
 app.use('/test', test);
 app.use('/login',login);
-app.use('/blog',blogContent);
+app.use('/blog',blog);
 app.use('/comment',comment);
 app.use('/upload',upload);
 app.get('*', function (request, response){
