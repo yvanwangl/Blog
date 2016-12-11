@@ -1,4 +1,4 @@
-import { INIT_BLOG_LIST_SUCCESS, INIT_BLOG_LIST_FAIL, SHOW_BLOG_CONTENT, SAVE_BLOG_SUCCESS, DELETE_BLOG, SAVE_BLOG_COUNTER } from '../constants/ActionTypes';
+import { INIT_BLOG_LIST_SUCCESS, INIT_BLOG_LIST_FAIL, SHOW_BLOG_CONTENT, SAVE_BLOG_SUCCESS, DELETE_BLOG, SAVE_BLOG_COUNTER, PAGINATE } from '../constants/ActionTypes';
 import { FILTER_BLOG } from '../constants/NavActions';
 
 const initState = {
@@ -34,11 +34,17 @@ const initState = {
 	]
 };
 
-function initBlogListSuccess(state, blogs) {
-	blogs = blogs.sort(function(blogA, blogB){
+function initBlogListSuccess(state, blogs, type, page, totalBlogs) {
+/*	blogs = blogs.sort(function(blogA, blogB){
 		return new Date(blogB['publishDate']).getTime()-new Date(blogA['publishDate']).getTime();
-	});
-	return Object.assign({},state,{blogs:blogs});
+	});*/
+	let hasNextPage = state['hasNextPage'];
+	if(totalBlogs>page*10){
+		hasNextPage = true;
+	}else {
+		hasNextPage = false;
+	}
+	return Object.assign({},state,{blogs:blogs, type:type, page:parseInt(page), hasNextPage:hasNextPage});
 }
 
 function initBlogListFail() {
@@ -99,10 +105,20 @@ function filterBlogs(state, blogType) {
     return Object.assign({}, state, {blogs: newBlogs, originBlogs: originBlogs});
 }
 
-export default function blogs(state={blogs:[],blog:{}}, action){
+function paginate(state, direction) {
+    let page = state['page'];
+    if(direction>0){
+        page+=1;
+    }else {
+        page-=1;
+    }
+    return Object.assign({}, state, {page: page});
+}
+
+export default function blogs(state={blogs:[],blog:{},type:'all',page:1,hasNextPage:false}, action){
 	switch(action.type){
 		case INIT_BLOG_LIST_SUCCESS:
-			return initBlogListSuccess(state, action['blogs']);
+			return initBlogListSuccess(state, action['blogs'], action['blogType'], action['page'], action['totalBlogs']);
 		case INIT_BLOG_LIST_FAIL:
 			return initBlogListFail(state);
         case SHOW_BLOG_CONTENT:

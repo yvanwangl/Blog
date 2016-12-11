@@ -10,6 +10,7 @@ require('./index.css');
 class Blog extends Component {
     constructor(props) {
         super(props);
+        this.pageChangeClick = (direction)=> this._pageChangeClick(direction);
     }
 
     fetchTest() {
@@ -47,27 +48,32 @@ class Blog extends Component {
             });
     }
 
-    componentWillMount() {
-        let {actions, login} = this.props;
-        actions.initBlogList(login.is_login);
+   /* componentWillMount() {
+        let {actions, login, page} = this.props;
+        actions.initBlogList(login.is_login,  page);
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps != this.props) {
-            let {actions, login} = nextProps;
+            let {actions, login, page} = nextProps;
             if (this.props.login.is_login != login.is_login) {
-                actions.initBlogList(login.is_login);
+                actions.initBlogList(login.is_login, page);
             }
         }
-    }
+    }*/
 
-    fetchBlogContent(blogId) {
+/*    fetchBlogContent(blogId) {
         let {actions} = this.props;
         actions.initBlogContent(blogId);
+    }*/
+
+    _pageChangeClick(direction){
+        let {login, type, page, actions} = this.props;
+        actions.initBlogList(login.is_login, type ,page+direction);
     }
 
     render() {
-        const {blogs, actions, login} = this.props;
+        const {blogs, actions, login, page, hasNextPage} = this.props;
         let blogItems = [];
         let showEdit = false;
         if (login.is_login) {
@@ -85,6 +91,11 @@ class Blog extends Component {
                 <ul>
                     {blogItems}
                 </ul>
+                {
+                    page==1&&hasNextPage?<div className="paginate"><span className="pageButton next" onClick={this.pageChangeClick.bind(this, 1)}>下一页</span></div>:
+                        page!=1&&hasNextPage?<div className="paginate"><span className="pageButton prev" onClick={this.pageChangeClick.bind(this, -1)}>上一页</span><span className="pageButton next" onClick={this.pageChangeClick.bind(this, 1)}>下一页</span></div>:
+                            page!=1&&!hasNextPage?<div className="paginate"><span className="pageButton prev" onClick={this.pageChangeClick.bind(this, -1)}>上一页</span></div>:null
+                }
                 {/*<ListSortContainer/>*/}
                 {/*<LoginDialog onLogin={this.submitLoginInfo.bind(this)}/>*/}
 
@@ -96,7 +107,10 @@ class Blog extends Component {
 function mapStateToProps(state) {
     return {
         blogs: state.blogs.blogs,
-        login: state.login
+        login: state.login,
+        type: state.blogs.type,
+        page: state.blogs.page,
+        hasNextPage: state.blogs.hasNextPage
     };
 }
 

@@ -29,9 +29,9 @@ export function fetchTest(){
 
 //查询所有博客
 //return {is_success:true, blogs:blogs}
-export function initBlogList(is_login=false){
+export function initBlogList(is_login=false, type='all', page=1){
 	return (dispatch)=>{
-		fetch(`/blog?is_login=${is_login}&page=${1}`,{
+		fetch(`/blog?is_login=${is_login}&type=${type}&page=${page}`,{
 			method:'GET',
 			mode:'cors',
 			Origin:'*',
@@ -42,7 +42,7 @@ export function initBlogList(is_login=false){
 			.then(response=>response.json())
 			.then(json=>{
 				if(json.is_success){
-					dispatch(initBlogListSuccess(json.blogs));
+					dispatch(initBlogListSuccess(json.blogs, json.type, json.page, json.totalBlogs));
 				}else {
 					dispatch(initBlogListFail())
 				}
@@ -159,10 +159,13 @@ export function saveBlogCount(blogId, count, callback) {
     }
 }
 
-export function initBlogListSuccess(blogs) {
+export function initBlogListSuccess(blogs, blogType, page, totalBlogs) {
     return {
         type:INIT_BLOG_LIST_SUCCESS,
-        blogs
+        blogs,
+        blogType,
+        page,
+        totalBlogs
     }
 }
 

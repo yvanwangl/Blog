@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as Actions from '../../actions/Resume';
 import * as NavActions from '../../actions/Nav';
+import {initBlogList} from '../../actions/Blogs';
 import Icon from '../../components/Icon/Icon';
 import Resume from '../Resume/Resume';
 import NavItem from '../../components/NavItem/NavItem';
@@ -63,8 +64,9 @@ class Index extends Component {
     }
 
     _navItemClick(blogType) {
-        let {navActions} = this.props;
-        navActions.filterBlog(blogType);
+        let {navActions, login , initBlogList} = this.props;
+        /*navActions.filterBlog(blogType);*/
+        initBlogList(login.is_login, blogType, 1);
         this.setState({
             filter: blogType,
             currentPage: 'index'
@@ -92,9 +94,13 @@ class Index extends Component {
      })
      }
      }*/
+    componentWillMount(){
+        let {login, type, page, initBlogList} = this.props;
+        initBlogList(login.is_login, type, page);
+    }
 
     render() {
-        let {resumeInfo, login} = this.props;
+        let {resumeInfo, login } = this.props;
         let navItems = [];
         NavItems.map((nav, index)=>
             navItems.push(
@@ -140,14 +146,17 @@ class Index extends Component {
 function mapStateToProps(state) {
     return {
         resumeInfo: state.resume,
-        login: state.login
+        login: state.login,
+        type: state.blogs.type,
+        page: state.blogs.page
     };
 }
 
 function mapActionsToProps(dispatch) {
     return {
         actions: bindActionCreators(Actions, dispatch),
-        navActions: bindActionCreators(NavActions, dispatch)
+        navActions: bindActionCreators(NavActions, dispatch),
+        initBlogList: bindActionCreators(initBlogList, dispatch)
     };
 }
 

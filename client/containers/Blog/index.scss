@@ -9,6 +9,38 @@ $white: #fff;
 	ul {
 		list-style: none;
 	}
+	& .paginate {
+		text-align: center;
+		margin:30px auto;
+		& .pageButton {
+			display: inline-block;
+			padding: 12px 30px;
+			font-size: 14px;
+			color: #666;
+			border: 1px solid #ddd;
+			background-color: #fff;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+			transition: background-color .3s ease-out, box-shadow .5s ease-out;
+			transition-delay: .1s;
+			border-radius: 5px;
+			cursor: pointer;
+            margin: 0 20px;
+		}
+        & .pageButton.next,
+        & .pageButton.prev {
+            &:hover {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+        }
+		& .pageButton.next:after {
+			content: ' \00bb';
+			font-size: 16px;
+		}
+		& .pageButton.prev:before {
+			content: '\00ab ';
+			font-size: 16px;
+		}
+	}
 }
 @media screen and (max-width: 740px) {
 	.blogsContainer {

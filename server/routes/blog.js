@@ -21,13 +21,16 @@ function sendBlog(res, err, blog) {
     }
 }
 
-function sendBlogs(res, err, blogs) {
+function sendBlogs(res, err, blogs, type, page, totalBlogs) {
     if(err){
         res.send(err);
     }else {
         res.send({
             is_success:true,
-            blogs:blogs
+            blogs:blogs,
+            type:type,
+            page:page,
+            totalBlogs:totalBlogs
         });
     }
 }
@@ -38,14 +41,28 @@ router.route('/')
         console.log(reqData);
         var is_login = reqData.is_login;
         var page = reqData.page;
-        var limit = page*10;
+        var type = reqData.type;
+        var limit = 10;
+        var skip = (page-1)*10;
         if(is_login == 'true'){
-            Blog.find(function (err, blogs) {
-                sendBlogs(res, err, blogs);
-            })
+            Blog.count({type:type=='all'?{$in:['design','develop']}:type},function(err, count){
+                Blog.find({type:type=='all'?{$in:['design','develop']}:type})
+                    .sort('-publishDate')
+                    .limit(limit)
+                    .skip(skip)
+                    .exec(function (err, blogs) {
+                        sendBlogs(res, err, blogs, type, page, count);
+                    })
+            });
         }else {
-            Blog.findByStatus('publish', function(err, blogs){
-                sendBlogs(res, err, blogs);
+            Blog.count({blogStatus:'publish', type:type=='all'?{$in:['design','develop']}:type},function(err, count){
+                Blog.find({blogStatus:'publish', type:type=='all'?{$in:['design','develop']}:type})
+                    .sort('-publishDate')
+                    .limit(limit)
+                    .skip(skip)
+                    .exec(function (err, blogs) {
+                        sendBlogs(res, err, blogs, type, page, count);
+                    });
             });
         }
     })
@@ -81,7 +98,9 @@ router.route('/:blog_id')
         var count = req.query.count;
         console.log(count);
         if(count){                              //浏览时加载博客数据
-            Blog.findOneAndUpdate({_id:blogId}, {count:count}, function(err, blog){
+            Blog.findOneAndUpdate({_id:blogId}, {count:count},{upsert: true, 'new': true} ,function(err, blog){
+                console.log(count);
+                console.log(blog);
                 Comment.findByBlogId(blogId, function(err, comments){
                     if(err){
                         res.send(err);
