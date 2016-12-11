@@ -59,36 +59,46 @@ router.route('/')
         });
     })
     .post(function (req, res, next) {           //新增一篇博客
-        Blog.find(function(err, blogList){
-            var blogData = req.body;
-            var id;
-            if(blogList.length==0){
-                id = 1;
-            }else {
-                id = blogList[blogList.length-1]['id']+1;
-            }
-            var blog = new Blog({
-                id:id,
-                title:blogData['title'],
-                author:blogData['author'],
-                content:JSON.stringify(blogData['rowData']),
-                plaintext:blogData['plaintext'],
-                publishDate:new Date(),
-                blogStatus:blogData['blogStatus'],
-                type:blogData['type'],
-                count:1
+        var blogData = req.body;
+        var authCookie = blogData['authCookie'];
+        var authToken = global[Symbol.for('authCookie')];
+        /*console.log(`authCookie:${authCookie}`);
+        console.log(`authToken:${authToken}`);*/
+        if(authCookie&&authToken&&authCookie==authToken){
+            Blog.find(function(err, blogList){
+                var id;
+                if(blogList.length==0){
+                    id = 1;
+                }else {
+                    id = blogList[blogList.length-1]['id']+1;
+                }
+                var blog = new Blog({
+                    id:id,
+                    title:blogData['title'],
+                    author:blogData['author'],
+                    content:JSON.stringify(blogData['rowData']),
+                    plaintext:blogData['plaintext'],
+                    publishDate:new Date(),
+                    blogStatus:blogData['blogStatus'],
+                    type:blogData['type'],
+                    count:1
+                });
+                blog.save(function(err, blog){
+                    sendBlog(res, err, blog);
+                });
             });
-            blog.save(function(err, blog){
-                sendBlog(res, err, blog);
+        }else {
+            res.send({
+                is_success:false,
+                reason:'Access Denied!!'
             });
-        });
+        }
     });
 
 router.route('/:blog_id')
     .get(function(req, res, next){              //根据id查询博客
         var blogId = req.params.blog_id;
         var count = req.query.count;
-        console.log(count);
         if(count){                              //浏览时加载博客数据
             Blog.findOneAndUpdate({_id:blogId}, {count:count},{upsert: true, 'new': true} ,function(err, blog){
                 console.log(count);
@@ -114,24 +124,39 @@ router.route('/:blog_id')
     .put(function(req, res, next){              //修改博客
         var blogId = req.params.blog_id;
         var blogData = req.body;
-        var saveData = {
-            title: blogData['title'],
-            author: blogData['author'],
-            content: JSON.stringify(blogData['rowData']),
-            plaintext: blogData['plaintext'],
-            publishDate: new Date(),
-            blogStatus: blogData['blogStatus'],
-            type: blogData['type'],
-        };
-        Blog.findOneAndUpdate({_id:blogId}, saveData, function(err, blog){
-            sendBlog(res, err, blog);
-        });
+        var authCookie = blogData['authCookie'];
+        var authToken = global[Symbol.for('authCookie')];
+        console.log(`authCookie:${authCookie}`);
+        console.log(`authToken:${authToken}`);
+        if(authCookie&&authToken&&authCookie==authToken){
+            var saveData = {
+                title: blogData['title'],
+                author: blogData['author'],
+                content: JSON.stringify(blogData['rowData']),
+                plaintext: blogData['plaintext'],
+                publishDate: new Date(),
+                blogStatus: blogData['blogStatus'],
+                type: blogData['type'],
+            };
+            Blog.findOneAndUpdate({_id:blogId}, saveData, function(err, blog){
+                sendBlog(res, err, blog);
+            });
+        }else {
+            res.send({
+                is_success:false,
+                reason:'Access Denied!!'
+            });
+        }
     })
     .delete(function(req, res, next){           //删除博客
         var blogId = req.params.blog_id;
-        Blog.remove({_id:blogId}, function(err, blog){
-            sendBlog(res, err, blog);
+        res.send({
+            is_success:false,
+            reason:'Access Denied!!'
         });
+/*        Blog.remove({_id:blogId}, function(err, blog){
+            sendBlog(res, err, blog);
+        });*/
     });
 
 module.exports = router;

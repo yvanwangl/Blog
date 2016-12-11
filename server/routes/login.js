@@ -6,6 +6,15 @@ var router = express.Router();
 var User = require('../models/user');
 //var dbConnect = require('../db/dbConnect');
 
+function getAuthToken(len){
+    var tokenStr = '0123456789abcdefghijklmnopqrstuvwxy';
+    var token ='';
+    for(var i=0; i<len; i++){
+        token += tokenStr[Math.floor(Math.random()*tokenStr.length)];
+    }
+    return token;
+}
+
 router.post('/',function(req, res){
     var data = req.body;
 /*   var user = new User({
@@ -25,10 +34,12 @@ router.post('/',function(req, res){
         }else {
             if(userList.length>0){
                 if(data['pass']==userList[0]['password']){
+                    var authToken = getAuthToken(10);
                     res.send({
                         is_success:true,
-                        authCookie:'029093'
+                        authCookie:authToken
                     });
+                    global[Symbol.for('authCookie')] = authToken;
                 }else {
                     res.send({
                         is_success:false

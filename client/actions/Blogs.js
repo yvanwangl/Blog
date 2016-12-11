@@ -53,7 +53,7 @@ export function initBlogList(is_login=false, type='all', page=1){
 
 //新增博客和修改博客
 //return {is_success:true, blog:blog}
-export function saveBlog(blogData,callback){
+export function saveBlog(blogData, callback){
     let id = blogData['id'];
     if(id=='11'){           //新增
         return (dispatch)=>{

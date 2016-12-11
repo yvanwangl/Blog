@@ -22,7 +22,7 @@ export default class RichEditor extends Component {
     }
 
     _saveBlog(id, blogStatus) {
-        const {saveBlog} = this.props;
+        const {saveBlog, authCookie} = this.props;
         var title = this.state.title || '博客';
         var author = this.state.author || '王亚飞';
         var rowData = this.editor.$txt.html();
@@ -37,9 +37,10 @@ export default class RichEditor extends Component {
             blogStatus: blogStatus,
             type: this.state.blogType,
             rowData: rowData,
-            plaintext: plaintext
+            plaintext: plaintext,
+            authCookie: authCookie
         };
-        saveBlog(blogData, ()=> {
+        saveBlog(blogData , ()=> {
             console.log('跳转首页');
             browserHistory.push('/');
         });

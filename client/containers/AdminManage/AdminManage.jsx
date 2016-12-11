@@ -21,7 +21,7 @@ class AdminManage extends Component {
     }
 
     render() {
-        let {actions, blogContent} = this.props;
+        let {actions, blogContent, login} = this.props;
         let editData = null;
         if (this.props.params.id) {
             editData = blogContent;
@@ -37,6 +37,7 @@ class AdminManage extends Component {
                 <RichEditor
                     id="editor1"
                     saveBlog={actions.saveBlog}
+                    authCookie={login.authCookie}
                     editData={editData}
                     readOnly={false}
                 />
