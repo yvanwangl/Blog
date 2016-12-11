@@ -27,9 +27,11 @@ export function fetchTest(){
 	}
 }
 
+//查询所有博客
+//return {is_success:true, blogs:blogs}
 export function initBlogList(is_login=false){
 	return (dispatch)=>{
-		fetch('/bloglist?is_login='+is_login,{
+		fetch(`/blog?is_login=${is_login}&page=${1}`,{
 			method:'GET',
 			mode:'cors',
 			Origin:'*',
@@ -49,18 +51,69 @@ export function initBlogList(is_login=false){
 	}
 }
 
+//新增博客和修改博客
+//return {is_success:true, blog:blog}
+export function saveBlog(blogData,callback){
+    let id = blogData['id'];
+    if(id=='11'){           //新增
+        return (dispatch)=>{
+            fetch('/blog',{
+                method:'POST',
+                mode:'cors',
+                Origin:'*',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify(blogData)
+            })
+                .then(response=>response.json())
+                .then(json=>{
+                    if(json.is_success){
+                        dispatch(saveBlogSuccess(json.blog));
+                        callback();
+                    }else {
+                        console.log('save fail');
+                    }
+                })
+                .catch(e=>console.log(e));
+        }
+    }else {                 //修改
+        return (dispatch)=>{
+            fetch(`/blog/${id}`,{
+                method:'PUT',
+                mode:'cors',
+                Origin:'*',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify(blogData)
+            })
+                .then(response=>response.json())
+                .then(json=>{
+                    if(json.is_success){
+                        dispatch(saveBlogSuccess(json.blog));
+                        callback();
+                    }else {
+                        console.log('save fail');
+                    }
+                })
+                .catch(e=>console.log(e));
+        }
+    }
+
+}
+
+//修改时：根据id查询博客
+//return {is_success:true, blog:blog}
 export function initBlogContent(blogId,callback) {
     return (dispatch)=>{
-        fetch('/blog',{
-            method:'POST',
+        fetch(`/blog/${blogId}`,{
+            method:'GET',
             mode: 'cors',
             Origin: '*',
             headers: { // headers: fetch事实标准中可以通过Header相关api进行设置
                 'Content-Type': 'application/json' // default: 'application/json'
-            },
-            body:JSON.stringify({
-                blogId:blogId
-            })
+            }
         })
             .then(response=>response.json())
             .then(json=>{
@@ -78,47 +131,21 @@ export function initBlogContent(blogId,callback) {
     }
 }
 
-export function saveBlog(blogData,callback){
-    return (dispatch)=>{
-        fetch('/blog/save',{
-            method:'POST',
-            mode:'cors',
-            Origin:'*',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify(blogData)
-        })
-            .then(response=>response.json())
-            .then(json=>{
-                if(json.save_success){
-                    dispatch(saveBlogSuccess(json.blog));
-                    callback();
-                }else {
-                    console.log('save fail');
-                }
-            })
-            .catch(e=>console.log(e));
-    }
-}
-
+//浏览时：根据id查询博客并保存浏览量数据,
+//return {is_success:true, blog:blog, comments:comments}
 export function saveBlogCount(blogId, count, callback) {
     return (dispatch)=>{
-        fetch('/blog/saveCount',{
-            method:'POST',
+        fetch(`/blog/${blogId}?count=${count}`,{
+            method:'GET',
             mode:'cors',
             Origin:'*',
             headers:{
                 'Content-Type':'application/json'
-            },
-            body:JSON.stringify({
-                blogId:blogId,
-                count:count
-            })
+            }
         })
             .then(response=>response.json())
             .then(json=>{
-                if(json.save_success){
+                if(json.is_success){
                     dispatch(saveBlogCounterSuccess(json.blog));
                     dispatch(initCommentListSuccess(json.comments));
                     if(callback){

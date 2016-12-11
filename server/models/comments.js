@@ -21,4 +21,8 @@ commentSchema.statics.findByParentId = function (parentId, callback) {
     return this.find({parentId:parentId}, callback);
 };
 
+commentSchema.statics.findByBlogId = function (blogId, callback) {
+    return this.find({blogId:blogId}, callback);
+};
+
 module.exports = mongoose.model('Comment', commentSchema);

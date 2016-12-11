@@ -18,7 +18,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var test = require('./routes/test');
 var login = require('./routes/login');
-var blogList = require('./routes/blogList');
 var blog = require('./routes/blog');
 var comment = require('./routes/comment');
 var upload = require('./routes/upload');
@@ -76,7 +75,6 @@ app.use(webpackHotMiddleware(compiler));*/
 console.log(app.get('env'));
 
 //set routers
-app.use('/bloglist', blogList);
 app.use('/users', users);
 app.use('/test', test);
 app.use('/login',login);
