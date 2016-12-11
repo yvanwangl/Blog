@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as Actions from '../../actions/Login';
 import * as ResumeActions from '../../actions/Resume';
+import {initBlogList} from '../../actions/Blogs';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
@@ -35,7 +36,7 @@ class LoginDialog extends Component {
 
     _handleSubmit(e){
         "use strict";
-        let {login, actions, resumeActions} = this.props;
+        let {login, actions, resumeActions, initBlogList} = this.props;
         var values = {
             userName:this.state.userName,
             pass:this.state.pass
@@ -47,6 +48,7 @@ class LoginDialog extends Component {
                 console.log('callback 成功');
                 actions.hideLoginDialog();
                 resumeActions.hideResume();
+                initBlogList(true, 'all', 1);
                 browserHistory.push('/');
             });
         }
@@ -95,7 +97,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return {
         actions:bindActionCreators(Actions,dispatch),
-        resumeActions:bindActionCreators(ResumeActions,dispatch)
+        resumeActions:bindActionCreators(ResumeActions,dispatch),
+        initBlogList:bindActionCreators(initBlogList, dispatch)
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoginDialog);

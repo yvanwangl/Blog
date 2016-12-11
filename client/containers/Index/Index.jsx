@@ -32,7 +32,6 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            filter: 'all',
             currentPage: 'index'
         };
         this.openResumeClick = (event)=> this._openResumeClick(event);
@@ -68,11 +67,9 @@ class Index extends Component {
         /*navActions.filterBlog(blogType);*/
         initBlogList(login.is_login, blogType, 1);
         this.setState({
-            filter: blogType,
             currentPage: 'index'
         });
         browserHistory.push('/');
-        console.log(blogType);
     }
 
     /*componentDidMount(){
@@ -100,7 +97,7 @@ class Index extends Component {
     }
 
     render() {
-        let {resumeInfo, login } = this.props;
+        let {resumeInfo, login, type } = this.props;
         let navItems = [];
         NavItems.map((nav, index)=>
             navItems.push(
@@ -110,7 +107,7 @@ class Index extends Component {
                     itemClick={()=> {
                         this.navItemClick(nav.blogType)
                     }}
-                    navClassName={this.state.filter == nav.blogType ? 'show' : ''}
+                    navClassName={type == nav.blogType ? 'show' : ''}
                 />
             )
         );

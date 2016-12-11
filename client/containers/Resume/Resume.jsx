@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as Actions from '../../actions/Resume';
 import * as LogActions from '../../actions/Login';
+import {initBlogList} from '../../actions/Blogs';
 import avatarFei  from './images/fei.png';
 import avatarHuan  from './images/huanimg.jpg';
 import NavLink from '../../components/NavLink/NavLink';
@@ -32,9 +33,11 @@ class Resume extends Component {
     }
 
     _logClick(event) {
-        const {login, logActions} = this.props;
+        const {actions, login, logActions, initBlogList} = this.props;
         if (login.is_login) {
             logActions.logOut();
+            initBlogList(false, 'all', 1);
+            actions.hideResume();
             browserHistory.push('/');
         } else {
             logActions.showLoginDialog();
@@ -70,7 +73,7 @@ class Resume extends Component {
      }*/
 
     render() {
-        const {resumeInfo, login, actions} = this.props;
+        const {resumeInfo, login} = this.props;
         let rootClassName = resumeInfo.showResume ? 'rootContainer showResume' : 'rootContainer';
         let skillItems = [];
         let linkItems = [];
@@ -121,7 +124,8 @@ function mapStateToProps(state) {
 function mapActionsToProps(dispatch) {
     return {
         actions: bindActionCreators(Actions, dispatch),
-        logActions: bindActionCreators(LogActions, dispatch)
+        logActions: bindActionCreators(LogActions, dispatch),
+        initBlogList: bindActionCreators(initBlogList, dispatch)
     };
 }
 

@@ -44,27 +44,19 @@ router.route('/')
         var type = reqData.type;
         var limit = 10;
         var skip = (page-1)*10;
-        if(is_login == 'true'){
-            Blog.count({type:type=='all'?{$in:['design','develop']}:type},function(err, count){
-                Blog.find({type:type=='all'?{$in:['design','develop']}:type})
-                    .sort('-publishDate')
-                    .limit(limit)
-                    .skip(skip)
-                    .exec(function (err, blogs) {
-                        sendBlogs(res, err, blogs, type, page, count);
-                    })
-            });
-        }else {
-            Blog.count({blogStatus:'publish', type:type=='all'?{$in:['design','develop']}:type},function(err, count){
-                Blog.find({blogStatus:'publish', type:type=='all'?{$in:['design','develop']}:type})
-                    .sort('-publishDate')
-                    .limit(limit)
-                    .skip(skip)
-                    .exec(function (err, blogs) {
-                        sendBlogs(res, err, blogs, type, page, count);
-                    });
-            });
-        }
+        var queryCondition ={
+            blogStatus:is_login=='true'?{$in:['draft','publish']}:'publish',
+            type:type=='all'?{$in:['design','develop']}:type
+        };
+        Blog.count(queryCondition,function(err, count){
+            Blog.find(queryCondition)
+                .sort('-publishDate')
+                .limit(limit)
+                .skip(skip)
+                .exec(function (err, blogs) {
+                    sendBlogs(res, err, blogs, type, page, count);
+                });
+        });
     })
     .post(function (req, res, next) {           //新增一篇博客
         Blog.find(function(err, blogList){
