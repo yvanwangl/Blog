@@ -138,7 +138,7 @@ router.route('/:blog_id')
                 blogStatus: blogData['blogStatus'],
                 type: blogData['type'],
             };
-            Blog.findOneAndUpdate({_id:blogId}, saveData, function(err, blog){
+            Blog.findOneAndUpdate({_id:blogId}, saveData,{new:true}, function(err, blog){
                 sendBlog(res, err, blog);
             });
         }else {

@@ -45,6 +45,8 @@ export default class CommentInput extends Component {
         if(commentContent.length>200){
             return this.refs.contentError.innerHTML='留言最多说200字 :)';
         }
+        commentContent = commentContent.replace(/<[^><]*script[^><]*>/ig,'');
+        commentContent = commentContent.replace(/<[\/\d\w]*>/ig,'');
         if(name==''){
             name='匿名者';
         }

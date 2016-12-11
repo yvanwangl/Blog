@@ -57,9 +57,17 @@ function showBlogContent(state, blog) {
     return Object.assign({},state,{blog:blogData});
 }
 
-function saveBlogSuccess(state, blog){
+function saveBlogSuccess(state, blog, action){
 	let blogs = state['blogs'];
-	blogs = [...blogs, blog];
+    if(action=='add'){
+        blogs = [ blog, ...blogs];
+    }else {
+        blogs = blogs.map(blogData=>
+            blogData['_id']==blog['_id']?
+            {...blogData,...blog}
+            :blogData
+        );
+    }
 	return Object.assign({}, state, {blogs: blogs});
 }
 
@@ -124,7 +132,7 @@ export default function blogs(state={blogs:[],blog:{},type:'all',page:1,hasNextP
         case SHOW_BLOG_CONTENT:
             return showBlogContent(state, action['blog']);
 		case SAVE_BLOG_SUCCESS:
-			return saveBlogSuccess(state, action['blog']);
+			return saveBlogSuccess(state, action['blog'], action['action']);
 		case DELETE_BLOG:
 			return deleteBlog(state, action['blog']);
 		case SAVE_BLOG_COUNTER:

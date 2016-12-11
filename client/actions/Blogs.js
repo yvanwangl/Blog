@@ -69,7 +69,7 @@ export function saveBlog(blogData, callback){
                 .then(response=>response.json())
                 .then(json=>{
                     if(json.is_success){
-                        dispatch(saveBlogSuccess(json.blog));
+                        dispatch(saveBlogSuccess(json.blog, 'add'));
                         callback();
                     }else {
                         console.log('save fail');
@@ -91,7 +91,7 @@ export function saveBlog(blogData, callback){
                 .then(response=>response.json())
                 .then(json=>{
                     if(json.is_success){
-                        dispatch(saveBlogSuccess(json.blog));
+                        dispatch(saveBlogSuccess(json.blog, 'modify'));
                         callback();
                     }else {
                         console.log('save fail');
@@ -182,10 +182,11 @@ export function showBlogContent(blog) {
     }
 }
 
-export function saveBlogSuccess(blog){
+export function saveBlogSuccess(blog, action){
 	return {
 		type:SAVE_BLOG_SUCCESS,
-		blog
+		blog,
+        action
 	}
 }
 
