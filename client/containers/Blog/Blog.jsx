@@ -13,7 +13,7 @@ class Blog extends Component {
 
     _pageChangeClick(direction){
         let {login, type, page, actions} = this.props;
-        actions.initBlogList(login.is_login, type ,page+direction);
+        actions.initBlogList(login.is_login, type ,page+direction, login.authCookie);
     }
 
     render() {

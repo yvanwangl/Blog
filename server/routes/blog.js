@@ -37,9 +37,11 @@ function sendBlogs(res, err, blogs, type, page, totalBlogs) {
 
 router.route('/')
     .get(function(req, res, next){          //根据状态和分页查询blog列表数据
+        var authToken = global[Symbol.for('authCookie')];
         var reqData = req.query;
         console.log(reqData);
         var is_login = reqData.is_login;
+        var authCookie = reqData.authCookie;
         var page = reqData.page;
         var type = reqData.type;
         var limit = 10;
@@ -48,6 +50,15 @@ router.route('/')
             blogStatus:is_login=='true'?{$in:['draft','publish']}:'publish',
             type:type=='all'?{$in:['design','develop']}:type
         };
+        //如果为登录状态则需验证token
+        if(is_login=='true'){
+            if(!(authCookie&&authToken&&authCookie==authToken)){
+                res.send({
+                    is_success:false,
+                    reason:'Access Denied!!'
+                });
+            }
+        }
         Blog.count(queryCondition,function(err, count){
             Blog.find(queryCondition)
                 .sort('-publishDate')

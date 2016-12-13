@@ -65,7 +65,7 @@ class Index extends Component {
     _navItemClick(blogType) {
         let {navActions, login , initBlogList} = this.props;
         /*navActions.filterBlog(blogType);*/
-        initBlogList(login.is_login, blogType, 1);
+        initBlogList(login.is_login, blogType, 1, login.authCookie);
         this.setState({
             currentPage: 'index'
         });
@@ -93,7 +93,7 @@ class Index extends Component {
      }*/
     componentWillMount(){
         let {login, type, page, initBlogList} = this.props;
-        initBlogList(login.is_login, type, page);
+        initBlogList(login.is_login, type, page, login.authCookie);
     }
 
     render() {

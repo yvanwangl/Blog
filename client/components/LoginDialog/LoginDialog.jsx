@@ -48,7 +48,7 @@ class LoginDialog extends Component {
                 console.log('callback 成功');
                 actions.hideLoginDialog();
                 resumeActions.hideResume();
-                initBlogList(true, 'all', 1);
+                initBlogList(true, 'all', 1, login.authCookie);
                 browserHistory.push('/');
             });
         }

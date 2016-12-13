@@ -29,9 +29,9 @@ export function fetchTest(){
 
 //查询所有博客
 //return {is_success:true, blogs:blogs}
-export function initBlogList(is_login=false, type='all', page=1){
+export function initBlogList(is_login=false, type='all', page=1, authCookie){
 	return (dispatch)=>{
-		fetch(`/blog?is_login=${is_login}&type=${type}&page=${page}`,{
+		fetch(`/blog?is_login=${is_login}&type=${type}&page=${page}&authCookie=${authCookie}`,{
 			method:'GET',
 			mode:'cors',
 			Origin:'*',

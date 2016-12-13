@@ -36,7 +36,7 @@ class Resume extends Component {
         const {actions, login, logActions, initBlogList} = this.props;
         if (login.is_login) {
             logActions.logOut();
-            initBlogList(false, 'all', 1);
+            initBlogList(false, 'all', 1, '');
             actions.hideResume();
             browserHistory.push('/');
         } else {
