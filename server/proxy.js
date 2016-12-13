@@ -26,6 +26,19 @@ var httpsServer = https.createServer(options, function (req, res) {
     // 在这里可以自定义你的路由分发
     var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log("client ip:" + ip + ", host:" + host);
+    // Add headers
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'https://yvanwang.com');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
     switch (host) {
         case 'yvanwang.com':
             proxy.web(req, res, {target: 'http://localhost:3000'});
@@ -51,6 +64,19 @@ var httpServer = http.createServer(function (req, res) {
     // 在这里可以自定义你的路由分发
     var host = req.headers.host, ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log("client ip:" + ip + ", host:" + host);
+    // Add headers
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'https://yvanwang.com');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
     switch (host) {
         case 'yvanwang.com':
             res.writeHead(302, {
