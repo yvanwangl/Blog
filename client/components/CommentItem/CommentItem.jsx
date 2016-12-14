@@ -66,8 +66,8 @@ export default class CommentItem extends Component {
     }
 
     _deleteClick(event){
-        let {comment, commentActions} = this.props;
-        commentActions.deleteComment(comment['_id']);
+        let {comment, commentActions, authCookie} = this.props;
+        commentActions.deleteComment(comment['_id'], authCookie);
     }
 
     closeInput(is_success) {
@@ -83,7 +83,7 @@ export default class CommentItem extends Component {
     }
 
     render() {
-        let {comment, blogId, commentActions, parentName, showDeleteButton} = this.props;
+        let {comment, blogId, commentActions, parentName, showDeleteButton, authCookie} = this.props;
         var agreeClick = !this.state.agreeClick ? this.agreeClick : null;
         var disAgreeClick = !this.state.disAgreeClick ? this.disAgreeClick : null;
         var commentItem = comment['parentId']==''?'commentItem':'commentItem childComment';

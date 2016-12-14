@@ -27,7 +27,7 @@ export function saveComment(comment,callback){
     }
 }
 
-export function deleteComment(commentId) {
+export function deleteComment(commentId, authCookie) {
     return (dispatch)=>{
         fetch('/comment/'+commentId,{
             method:'DELETE',
@@ -37,13 +37,14 @@ export function deleteComment(commentId) {
                 'Content-Type':'application/json'
             },
             body:JSON.stringify({
-                commentId:commentId
+                commentId:commentId,
+                authCookie:authCookie
             })
         })
             .then(response=>response.json())
             .then(json=>{
                 if(json.is_success){
-                    dispatch(deleteCommentSuccess(commentId));
+                    dispatch(deleteCommentSuccess(json.commentIds));
                 }else {
                     console.log('save fail');
                 }
@@ -89,10 +90,10 @@ export function addCommentSuccess(comment) {
     }
 }
 
-export function deleteCommentSuccess(commentId){
+export function deleteCommentSuccess(commentIds){
 	return {
 		type:DELETE_COMMENT,
-        commentId
+        commentIds
 	}
 }
 

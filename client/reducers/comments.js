@@ -10,9 +10,9 @@ function addComment(state, comment) {
     return Object.assign({},state, {comments:newComments});
 }
 
-function deleteComment(state, commentId) {
+function deleteComment(state, commentIds) {
     let comments = state['comments'];
-    let newComments = comments.filter(comment=>comment['_id']!=commentId);
+    let newComments = comments.filter(comment=>commentIds.indexOf(comment['_id'])==-1);
     return Object.assign({}, state, {comments:newComments});
 }
 
@@ -35,7 +35,7 @@ export default function comments (state = {comments:[]}, action){
 		case ADD_COMMENT:
 			return addComment(state, action['comment']);
 		case DELETE_COMMENT:
-			return deleteComment(state, action['commentId']);
+			return deleteComment(state, action['commentIds']);
         case LIKE_RESULT:
             return likeCommentSuccess(state, action['likeResult']);
 		default:
