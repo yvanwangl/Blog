@@ -20,7 +20,7 @@ export function login(values, callback) {
             .then(json=>{
                 if(json.is_success){
                     dispatch(loginSuccess(json.authCookie));
-                    callback();
+                    callback(json.authCookie);
                 }else {
                     dispatch(loginFail());
                 }

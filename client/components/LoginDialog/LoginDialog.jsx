@@ -44,11 +44,11 @@ class LoginDialog extends Component {
         e.preventDefault();
         console.log('React form of values:', values);
         if(!login.is_login){
-            actions.login(values, ()=>{
+            actions.login(values, (authCookie)=>{
                 console.log('callback 成功');
                 actions.hideLoginDialog();
                 resumeActions.hideResume();
-                initBlogList(true, 'all', 1, login.authCookie);
+                initBlogList(true, 'all', 1, authCookie);
                 browserHistory.push('/');
             });
         }
