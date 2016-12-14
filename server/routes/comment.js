@@ -67,32 +67,46 @@ router.route('/:comment_id')
              * 删除评论
              */
             var parentId = req.body.commentId;
-            /**
-             * 删除子评论
-             */
-            Comment.findByParentId(parentId, function (err, comments) {
-                if(err){
-                    res.send(err);
-                }
-                comments.forEach(function (comment) {
-                    comment.remove();
-                });
-            });
-            /**
-             * 删除当前评论
-             */
-            Comment.remove({
-                _id:parentId
-            }, function(err, comment){
-                if(err){
-                    res.send(err);
-                }else {
-                    res.send({
-                        is_success:true,
-                        commentId:comment['_id']
+            var authCookie = req.body.authCookie;
+            var authToken = global[Symbol.for('authCookie')];
+            var commentIds = [];
+            console.log(authCookie);
+            console.log(authToken);
+            if(authCookie&&authToken&&authCookie==authToken){
+                /**
+                 * 删除子评论
+                 */
+                Comment.findByParentId(parentId, function (err, comments) {
+                    if(err){
+                        res.send(err);
+                    }
+                    comments.forEach(function (comment) {
+                        commentIds.push(comment['_id']);
+                        comment.remove();
                     });
-                }
-            })
+                    /**
+                     * 删除当前评论
+                     */
+                    Comment.remove({
+                        _id:parentId
+                    }, function(err, comment){
+                        if(err){
+                            res.send(err);
+                        }else {
+                            commentIds.push(parentId);
+                            res.send({
+                                is_success:true,
+                                commentIds:commentIds
+                            });
+                        }
+                    })
+                });
+            }else {
+                res.send({
+                    is_success:false,
+                    reason:'Access Denied!!'
+                });
+            }
         });
 
 module.exports = router;

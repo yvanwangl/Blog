@@ -48,7 +48,7 @@ class BlogContent extends Component {
                 </p>
                 <div className="comment">
                     <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions}
-                             isLogin={login.is_login}/>
+                             isLogin={login.is_login} authCookie={login.authCookie}/>
                 </div>
             </div>
         );
