@@ -42,10 +42,10 @@ class LoginDialog extends Component {
             pass:this.state.pass
         };
         e.preventDefault();
-        console.log('React form of values:', values);
+        //console.log('React form of values:', values);
         if(!login.is_login){
             actions.login(values, (authCookie)=>{
-                console.log('callback 成功');
+                //console.log('callback 成功');
                 actions.hideLoginDialog();
                 resumeActions.hideResume();
                 initBlogList(true, 'all', 1, authCookie);
