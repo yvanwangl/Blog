@@ -158,16 +158,16 @@ router.route('/:blog_id')
                 reason:'Access Denied!!'
             });
         }
-    })
-    .delete(function(req, res, next){           //删除博客
+    });
+    /*.delete(function(req, res, next){           //删除博客
         var blogId = req.params.blog_id;
         res.send({
             is_success:false,
             reason:'Access Denied!!'
         });
-/*        Blog.remove({_id:blogId}, function(err, blog){
+/!*        Blog.remove({_id:blogId}, function(err, blog){
             sendBlog(res, err, blog);
-        });*/
-    });
+        });*!/
+    });*/
 
 module.exports = router;
