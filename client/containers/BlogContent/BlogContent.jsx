@@ -20,6 +20,8 @@ class BlogContent extends Component {
     }
 
     _backClick(event) {
+        let {login, type, page, actions} = this.props;
+        actions.initBlogList(login.is_login, type, page, login.authCookie);
         browserHistory.push('/');
     }
 
@@ -59,6 +61,8 @@ function mapStateToProps(state) {
     return {
         blogs: state.blogs.blogs,
         blogContent: state.blogs.blog,
+        type: state.blogs.type,
+        page: state.blogs.page,
         comments: state.comments.comments,
         login: state.login,
         id: 'blogContent'

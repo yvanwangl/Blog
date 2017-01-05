@@ -96,11 +96,6 @@ class Index extends Component {
         initBlogList(login.is_login, type, page, login.authCookie);
     }
 
-    componentWillReceiveProps(){
-        let {login, type, page, initBlogList} = this.props;
-        initBlogList(login.is_login, type, page, login.authCookie);
-    }
-
     render() {
         let {resumeInfo, login, type } = this.props;
         let navItems = [];
