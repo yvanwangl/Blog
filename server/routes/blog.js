@@ -145,10 +145,12 @@ router.route('/:blog_id')
                 author: blogData['author'],
                 content: JSON.stringify(blogData['rowData']),
                 plaintext: blogData['plaintext'],
-                publishDate: new Date(),
                 blogStatus: blogData['blogStatus'],
                 type: blogData['type'],
             };
+            if(blogData['updateDate']=="true"){
+                saveData["publishDate"] = new Date();
+            }
             Blog.findOneAndUpdate({_id:blogId}, saveData,{new:true}, function(err, blog){
                 sendBlog(res, err, blog);
             });

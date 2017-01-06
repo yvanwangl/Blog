@@ -11,13 +11,15 @@ export default class RichEditor extends Component {
             author: '',
             blogStatus: 'draft',
             blogType: 'design',
-            content: '开始书写你的故事...'
+            content: '开始书写你的故事...',
+            updateDate: 'true'
         };
         this.saveBlog = (id, blogStatus)=>this._saveBlog(id, blogStatus);
         this.setTitle = (event)=>this._setTitle(event);
         this.setAuthor = (event)=>this._setAuthor(event);
         this.setBlogStatus = (event)=> this._setBlogStatus(event);
         this.setBlogType = (event)=> this._setBlogType(event);
+        this.setUpdateDate = (event)=> this._setUpdateDate(event);
         this.getContent = ()=>this._getContent();
     }
 
@@ -26,6 +28,7 @@ export default class RichEditor extends Component {
         var title = this.state.title || '博客';
         var author = this.state.author || '王亚飞';
         var rowData = this.editor.$txt.html();
+        var updateDate = this.state.updateDate;
         var plaintext = this.editor.$txt.formatText();
         if (plaintext.length > 300) {
             plaintext = plaintext.substring(0, 300);
@@ -38,6 +41,7 @@ export default class RichEditor extends Component {
             type: this.state.blogType,
             rowData: rowData,
             plaintext: plaintext,
+            updateDate: updateDate,
             authCookie: authCookie
         };
         saveBlog(blogData , ()=> {
@@ -70,6 +74,13 @@ export default class RichEditor extends Component {
         });
     }
 
+    _setUpdateDate(event) {
+        console.log(typeof event.target.value);
+        this.setState({
+            updateDate: event.target.value
+        });
+    }
+
     // 获取内容
     _getContent() {
         var content = this.editor.$txt.html();
@@ -84,7 +95,8 @@ export default class RichEditor extends Component {
                 author: editData['author'],
                 blogType: editData['type'],
                 blogStatus: editData['blogStatus'],
-                content: editData['content']
+                content: editData['content'],
+                updateDate: 'false'
             });
         }
     }
@@ -238,6 +250,14 @@ export default class RichEditor extends Component {
                                 onChange={this.setBlogType}>
                             <option value="design">设计</option>
                             <option value="develop">前端</option>
+                        </select>
+                    </div>
+                    <div className="updateDate">
+                        <label htmlFor="updateDate">更新日期：</label>
+                        <select value={this.state.updateDate} placeholder={this.state.updateDate}
+                                onChange={this.setUpdateDate}>
+                            <option value="true">更新</option>
+                            <option value="false">不更新</option>
                         </select>
                     </div>
                     {/*<div className="blogStatus">
