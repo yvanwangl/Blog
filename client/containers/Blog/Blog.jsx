@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as Actions from '../../actions/Blogs';
 import BlogItem from '../../components/BlogItem/BlogItem';
+import BlogLinks from '../../components/BlogLinks/BlogLinks';
 require('./index.css');
 
 class Blog extends Component {
@@ -40,6 +41,7 @@ class Blog extends Component {
                         page!=1&&hasNextPage?<div className="paginate"><span className="pageButton prev" onClick={this.pageChangeClick.bind(this, -1)}>上一页</span><span className="pageButton next" onClick={this.pageChangeClick.bind(this, 1)}>下一页</span></div>:
                             page!=1&&!hasNextPage?<div className="paginate"><span className="pageButton prev" onClick={this.pageChangeClick.bind(this, -1)}>上一页</span></div>:null
                 }
+                <BlogLinks/>
             </div>
         );
     }
