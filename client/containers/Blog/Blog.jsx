@@ -41,7 +41,9 @@ class Blog extends Component {
                         page!=1&&hasNextPage?<div className="paginate"><span className="pageButton prev" onClick={this.pageChangeClick.bind(this, -1)}>上一页</span><span className="pageButton next" onClick={this.pageChangeClick.bind(this, 1)}>下一页</span></div>:
                             page!=1&&!hasNextPage?<div className="paginate"><span className="pageButton prev" onClick={this.pageChangeClick.bind(this, -1)}>上一页</span></div>:null
                 }
-                <BlogLinks/>
+                {
+                    blogItems.length>0?<BlogLinks/>:null
+                }
             </div>
         );
     }
