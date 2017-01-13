@@ -9,6 +9,10 @@ const LINKS =[
     {
         name:'赛冷思个人博客',
         link:'https://www.sailengsi.com'
+    },
+    {
+        name:'小食星球',
+        link:'http://chixiaoshi.com'
     }
 ];
 export default LINKS;
