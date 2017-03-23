@@ -69,7 +69,7 @@ var httpServer = http.createServer(function (req, res) {
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', 'https://yvanwang.com');
     res.setHeader('access-control-allow-origin', 'https://yvanwang.com');
-    res.setHeader('access-control-allow-origin', 'http://yvanwang.com');
+    res.setHeader('Access-control-allow-origin', 'http://yvanwang.com');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -106,7 +106,7 @@ var httpServer = http.createServer(function (req, res) {
             res.end();
             break;
 		case 'mingdi.yvanwang.com':
-			proxy.web(req, res, {target: 'http://localhost:8080'});
+			proxy.web(req, res, {target: 'http://localhost:4000'});
 			break;
         default:
             res.writeHead(200, {
