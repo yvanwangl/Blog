@@ -1,29 +1,30 @@
-var express = require('express');
-var compression = require('compression');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-mongoose.connect("mongodb://lihuan:lihuan0215@localhost:29019/blog");
-//mongoose.connect("mongodb://localhost:27017/blog");
+let express = require('express');
+let compression = require('compression');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let mongoose = require('mongoose');
+let systemConfig = require('../system.config');
+mongoose.connect(systemConfig.mongooseConnect);
+
 require('./proxy');
-/*var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-var config = require('../webpack.config');
-var compiler = webpack(config);*/
+/*let webpack = require('webpack');
+ let webpackDevMiddleware = require('webpack-dev-middleware');
+ let webpackHotMiddleware = require('webpack-hot-middleware');
+ let config = require('../webpack.config');
+ let compiler = webpack(config);*/
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var test = require('./routes/test');
-var login = require('./routes/login');
-var blog = require('./routes/blog');
-var comment = require('./routes/comment');
-var upload = require('./routes/upload');
+let routes = require('./routes/index');
+let users = require('./routes/users');
+let test = require('./routes/test');
+let login = require('./routes/login');
+let blog = require('./routes/blog');
+let comment = require('./routes/comment');
+let upload = require('./routes/upload');
 
-var app = express();
+let app = express();
 
 app.use(compression());
 //set staticResource resource
@@ -36,61 +37,61 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 //app.use(express.staticResource(path.join(__dirname, 'public')));
 
 /*//set webpack dev
-app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath,
-    hot: true,
-    historyApiFallback: true,
-    stats: {
-        colors: true
-    }
-}));
+ app.use(webpackDevMiddleware(compiler, {
+ noInfo: true,
+ publicPath: config.output.publicPath,
+ hot: true,
+ historyApiFallback: true,
+ stats: {
+ colors: true
+ }
+ }));
 
-app.use(webpackHotMiddleware(compiler));*/
+ app.use(webpackHotMiddleware(compiler));*/
 
 // ************************************
 // This is the real meat of the example
 // ************************************
-(function() {
+if (app.get('env') === 'development') {
+	// Step 1: Create & configure a webpack compiler
+	let webpack = require('webpack');
+	let webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : '../webpack.config');
+	let compiler = webpack(webpackConfig);
 
-    // Step 1: Create & configure a webpack compiler
-    var webpack = require('webpack');
-    var webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : '../webpack.config');
-    var compiler = webpack(webpackConfig);
+	// Step 2: Attach the dev middleware to the compiler & the server
+	app.use(require("webpack-dev-middleware")(compiler, {
+		noInfo: true, publicPath: webpackConfig.output.publicPath
+	}));
 
-    // Step 2: Attach the dev middleware to the compiler & the server
-    app.use(require("webpack-dev-middleware")(compiler, {
-        noInfo: true, publicPath: webpackConfig.output.publicPath
-    }));
+	// Step 3: Attach the hot middleware to the compiler & the server
+	app.use(require("webpack-hot-middleware")(compiler, {
+		log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
+	}));
+}
 
-    // Step 3: Attach the hot middleware to the compiler & the server
-    app.use(require("webpack-hot-middleware")(compiler, {
-        log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
-    }));
-})();
 console.log(app.get('env'));
 
 //set routers
 app.use('/users', users);
 app.use('/test', test);
-app.use('/login',login);
-app.use('/blog',blog);
-app.use('/comment',comment);
-app.use('/upload',upload);
-app.get('*', function (request, response){
-    response.sendFile(path.resolve(__dirname,'../client','index.html'));
+app.use('/login', login);
+app.use('/blog', blog);
+app.use('/comment', comment);
+app.use('/upload', upload);
+app.get('*', function (request, response) {
+	response.sendFile(path.resolve(__dirname, '../client', 'index.html'));
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+	let err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
 // error handlers
@@ -98,23 +99,23 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-      res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
+	app.use(function (err, req, res, next) {
+		res.status(err.status || 500);
+		res.render('error', {
+			message: err.message,
+			error: err
+		});
+	});
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-    res.render('error', {
-    message: err.message,
-    error: {}
-  });
+app.use(function (err, req, res, next) {
+	res.status(err.status || 500);
+	res.render('error', {
+		message: err.message,
+		error: {}
+	});
 });
 
 

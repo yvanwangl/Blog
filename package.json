@@ -7,8 +7,9 @@
     "clean": "rm -rf static/*",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "pm2 start ./server/bin/www",
+    "build": "webpack -p --config ./webpack.config.js --progress --colors",
     "start:prod": "NODE_ENV=production pm2 start ./server/bin/www --name 'blog'",
-    "build": "NODE_ENV=production webpack -p --config ./webpack.config.js --progress --colors"
+    "build:prod": "NODE_ENV=production webpack -p --config ./webpack.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
