@@ -28,7 +28,8 @@ let app = express();
 
 app.use(compression());
 //set staticResource resource
-app.use(express.static(path.join(__dirname, '../client')));
+//打包之后的静态资源文件
+app.use(express.static(path.join(__dirname, '../static')));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -84,7 +85,7 @@ app.use('/blog', blog);
 app.use('/comment', comment);
 app.use('/upload', upload);
 app.get('*', function (request, response) {
-	response.sendFile(path.resolve(__dirname, '../client', 'index.html'));
+	response.sendFile(path.resolve(__dirname, '../static', 'index.html'));
 });
 
 // catch 404 and forward to error handler

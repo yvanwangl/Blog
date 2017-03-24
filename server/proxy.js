@@ -53,6 +53,9 @@ var httpsServer = https.createServer(options, function (req, res) {
         case 'sunnyhuan.yvanwang.com':
             proxy.web(req, res, {target: 'http://localhost:3000'});
             break;
+		case 'mingdi.yvanwang.com':
+			proxy.web(req, res, {target: 'http://localhost:4000'});
+			break;
         default:
             res.writeHead(200, {
                 'Content-Type': 'text/plain'

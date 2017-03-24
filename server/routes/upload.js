@@ -12,7 +12,7 @@ var server = 'blog.yvanwang.com';
 var port = 3000;
 // 文件将要上传到哪个文件夹下面
 var uploadfoldername = 'uploadfiles';
-var uploadfolderpath = path.join(__dirname, '../../client/',uploadfoldername);
+var uploadfolderpath = path.join(__dirname, '../../static/',uploadfoldername);
 
 router.route('/')
     .post(function (req, res, next) {
