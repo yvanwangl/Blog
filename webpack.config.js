@@ -67,8 +67,7 @@ var baseConfig = {
     output: {
         path: path.join(__dirname, './static'),
         filename: '[name].js',
-        chunkFilename: '[id].[chunkhash:5].chunk.js',
-        publicPath: '/__build__/'
+        chunkFilename: '[id].[chunkhash:5].chunk.js'
     },
     devtool: devTools,
     module: {
@@ -82,7 +81,7 @@ var baseConfig = {
                 loader: 'style-loader!css-loader'
             },
             {
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf|ico)\??.*$/,
                 loader: 'url-loader?limit=50000&name=[path][name].[ext]'
             },
             /*{

@@ -3,6 +3,9 @@ import {render} from 'react-dom';
 /*import { AppContainer } from 'react-hot-loader';*/
 import configureStore from './store/configureStore';
 import Root from './containers/Root';
+require('./index.css');
+require('./common.css');
+require('./staticResource/favicon.ico');
 import toggle from './toggle';
 
 //切换皮肤

@@ -58,7 +58,7 @@ app.use(cookieParser());
 // ************************************
 // This is the real meat of the example
 // ************************************
-if (app.get('env') === 'development') {
+/*if (app.get('env') === 'development') {
 	// Step 1: Create & configure a webpack compiler
 	let webpack = require('webpack');
 	let webpackConfig = require(process.env.WEBPACK_CONFIG ? process.env.WEBPACK_CONFIG : '../webpack.config');
@@ -73,7 +73,7 @@ if (app.get('env') === 'development') {
 	app.use(require("webpack-hot-middleware")(compiler, {
 		log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
 	}));
-}
+}*/
 
 console.log(app.get('env'));
 

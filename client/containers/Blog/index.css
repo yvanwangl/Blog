@@ -1,16 +1,16 @@
-.blogsContainer {
+.blogsContainer.container {
   width: 80%;
   max-width: 1024px;
   height: auto;
   min-height: 100%;
   padding-top: 20px;
   margin: 0 auto; }
-  .blogsContainer ul {
+  .blogsContainer.container ul {
     list-style: none; }
-  .blogsContainer .paginate {
+  .blogsContainer.container .paginate {
     text-align: center;
     margin: 30px auto; }
-    .blogsContainer .paginate .pageButton {
+    .blogsContainer.container .paginate .pageButton {
       display: inline-block;
       padding: 12px 30px;
       font-size: 14px;
@@ -23,17 +23,17 @@
       border-radius: 5px;
       cursor: pointer;
       margin: 0 20px; }
-    .blogsContainer .paginate .pageButton.next:hover, .blogsContainer .paginate .pageButton.prev:hover {
+    .blogsContainer.container .paginate .pageButton.next:hover, .blogsContainer.container .paginate .pageButton.prev:hover {
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
-    .blogsContainer .paginate .pageButton.next:after {
+    .blogsContainer.container .paginate .pageButton.next:after {
       content: ' \00bb';
       font-size: 16px; }
-    .blogsContainer .paginate .pageButton.prev:before {
+    .blogsContainer.container .paginate .pageButton.prev:before {
       content: '\00ab ';
       font-size: 16px; }
 
 @media screen and (max-width: 740px) {
-  .blogsContainer {
+  .blogsContainer.container {
     width: 100%; } }
 
 /*# sourceMappingURL=index.css.map */

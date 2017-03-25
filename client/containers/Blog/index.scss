@@ -1,5 +1,5 @@
 $white: #fff;
-.blogsContainer {
+.blogsContainer.container {
 	width: 80%;
     max-width: 1024px;
 	height: auto;
@@ -43,7 +43,7 @@ $white: #fff;
 	}
 }
 @media screen and (max-width: 740px) {
-	.blogsContainer {
+	.blogsContainer.container {
 		width: 100%;
 	}
 }
