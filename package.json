@@ -64,7 +64,6 @@
     "rucksack-css": "^0.8.5",
     "style-loader": "^0.13.0",
     "url-loader": "latest",
-    "webpack": "^1.12.14",
     "webpack-dev-middleware": "latest",
     "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.7.1"
@@ -77,10 +76,10 @@
     "draft-js-plugins-editor": "^2.0.0-beta1",
     "draft-js-richbuttons-plugin": "^1.1.0",
     "express": "~4.13.4",
+    "extract-text-webpack-plugin": "^2.1.0",
     "jade": "~1.11.0",
     "jasmine": "^2.5.2",
     "less": "^2.7.1",
-    "lighticon": "^1.0.2",
     "lodash": "^4.17.2",
     "mongoose": "^4.6.6",
     "morgan": "~1.7.0",
@@ -90,6 +89,7 @@
     "redux-form": "^6.2.0",
     "serve-favicon": "~2.3.0",
     "svg-react-loader": "^0.3.7",
-    "wangeditor": "^2.1.22"
+    "wangeditor": "^2.1.22",
+    "webpack": "^2.3.2"
   }
 }

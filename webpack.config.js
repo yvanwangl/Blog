@@ -1,6 +1,7 @@
 var rucksack = require('rucksack-css');
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var entry = {};
 var plugins = [];
@@ -29,7 +30,8 @@ if (process.env.NODE_ENV == 'production') {
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin (),
+		new ExtractTextPlugin('style.css')
     ];
     devTools = '';
 } else {
@@ -54,8 +56,9 @@ if (process.env.NODE_ENV == 'production') {
         new webpack.DefinePlugin({
             'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')}
         }),
-        new webpack.NoErrorsPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+		new ExtractTextPlugin('style.css')
     ];
     devTools = '#source-map';
 }
@@ -71,14 +74,16 @@ var baseConfig = {
     },
     devtool: devTools,
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.html$/,
-                loader: 'file?name=[name].[ext]'
+                loader: 'file-loader?name=[name].[ext]'
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                use: ExtractTextPlugin.extract({
+					use: 'css-loader'
+				})
             },
             {
                 test: /\.(gif|jpg|png|woff|svg|eot|ttf|ico)\??.*$/,
@@ -96,17 +101,17 @@ var baseConfig = {
                     'babel-loader'
                 ]
             },
-            {test: /\.svg$/, loader: 'babel?presets[]=es2015,presets[]=react!svg-react'}
+            {test: /\.svg$/, loader: 'babel-loader?presets[]=es2015,presets[]=react!svg-react-loader'}
         ],
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
-    postcss: [
+    /*postcss: [
         rucksack({
             autoprefixer: true
         })
-    ],
+    ],*/
     plugins: plugins,
     externals: {
         'react': 'React',

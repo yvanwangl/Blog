@@ -27,7 +27,7 @@ let NavItems = [
     }
 ];
 
-class Index extends Component {
+class IndexPage extends Component {
 
     constructor(props) {
         super(props);
@@ -157,4 +157,4 @@ function mapActionsToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(Index);
+export default connect(mapStateToProps, mapActionsToProps)(IndexPage);

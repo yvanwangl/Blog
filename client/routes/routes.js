@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import IndexPage from '../containers/IndexPage/IndexPage';
 import Blog from '../containers/Blog/Blog';
 import Resume from '../containers/Resume/Resume';
 import BlogContent from '../containers/BlogContent/BlogContent';
@@ -27,7 +28,7 @@ const rootRoute = {
     /*匹配/路由的页面*/
     getComponent(nextState, callback) {
         require.ensure([], function (require) {
-            callback(null, require('../containers/Index/Index').default)
+            callback(null, require('../containers/IndexPage/IndexPage').default)
         })
     },
 
