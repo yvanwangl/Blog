@@ -31,7 +31,7 @@ export function fetchTest(){
 //return {is_success:true, blogs:blogs}
 export function initBlogList(is_login=false, type='all', page=1, authCookie){
 	return (dispatch)=>{
-		fetch(`/blog?is_login=${is_login}&type=${type}&page=${page}&authCookie=${authCookie}`,{
+		fetch(`/blog-api?is_login=${is_login}&type=${type}&page=${page}&authCookie=${authCookie}`,{
 			method:'GET',
 			mode:'cors',
 			Origin:'*',
@@ -57,7 +57,7 @@ export function saveBlog(blogData, callback){
     let id = blogData['id'];
     if(id=='11'){           //新增
         return (dispatch)=>{
-            fetch('/blog',{
+            fetch('/blog-api',{
                 method:'POST',
                 mode:'cors',
                 Origin:'*',
@@ -79,7 +79,7 @@ export function saveBlog(blogData, callback){
         }
     }else {                 //修改
         return (dispatch)=>{
-            fetch(`/blog/${id}`,{
+            fetch(`/blog-api/${id}`,{
                 method:'PUT',
                 mode:'cors',
                 Origin:'*',
@@ -107,7 +107,7 @@ export function saveBlog(blogData, callback){
 //return {is_success:true, blog:blog}
 export function initBlogContent(blogId,callback) {
     return (dispatch)=>{
-        fetch(`/blog/${blogId}`,{
+        fetch(`/blog-api/${blogId}`,{
             method:'GET',
             mode: 'cors',
             Origin: '*',
@@ -135,7 +135,7 @@ export function initBlogContent(blogId,callback) {
 //return {is_success:true, blog:blog, comments:comments}
 export function saveBlogCount(blogId, count, callback) {
     return (dispatch)=>{
-        fetch(`/blog/${blogId}?count=${count}`,{
+        fetch(`/blog-api/${blogId}?count=${count}`,{
             method:'GET',
             mode:'cors',
             Origin:'*',

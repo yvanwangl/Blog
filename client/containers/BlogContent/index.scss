@@ -1,5 +1,5 @@
 $white: #fff;
-.blogContentWrap {
+.blogContentWrap.container {
 	width: 80%;
 	max-width: 1024px;
 	padding: 20px 40px 40px;
@@ -118,7 +118,7 @@ $white: #fff;
     }
 }
 @media screen and (max-width: 420px){
-    .blogContentWrap {
+    .blogContentWrap.container {
         width: 100%;
         & .blogTitle {
             font-size: 22px;

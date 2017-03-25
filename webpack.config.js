@@ -6,7 +6,6 @@ var entry = {};
 var plugins = [];
 var devTools = '';
 if (process.env.NODE_ENV == 'production') {
-    console.log(process.env.NODE_ENV + 'webpack');
     entry = {
         jsx: ['./index.js'],
         html: ['./index.html'],
@@ -34,10 +33,10 @@ if (process.env.NODE_ENV == 'production') {
     ];
     devTools = '';
 } else {
-    var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
+    //var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
     entry = {
-        jsx: ['./index.js', hotMiddlewareScript],
-        html: ['./index.html', hotMiddlewareScript],
+        jsx: ['./index.js', ],
+        html: ['./index.html', ],
         /*vendor: [
          'react',
          'react-dom',
@@ -65,9 +64,10 @@ var baseConfig = {
     context: path.join(__dirname, './client'),
     entry: entry,
     output: {
-        path: path.join(__dirname, './static'),
+        path: path.join(__dirname, './dist'),
         filename: '[name].js',
-        chunkFilename: '[id].[chunkhash:5].chunk.js'
+        chunkFilename: '[id].[chunkhash:5].chunk.js',
+		publicPath:'/'
     },
     devtool: devTools,
     module: {

@@ -33,20 +33,20 @@ class BlogContent extends Component {
                     <Icon type="back" className="backIcon"/>
                     <span className="backText">返回</span>
                 </div>
-                <h1 className="blogTitle">{blogContent['title']}</h1>
+                <h1 className="blogTitle">{blogContent['title'] || '内容丢失'}</h1>
                 <p className="authorInfo">
                     <Icon type="feather" className="authorIcon icon"/>
-                    <span className="author text">{blogContent['author']}</span>
+                    <span className="author text">{blogContent['author'] || '王亚飞'}</span>
                     <span className="spliter"></span>
                     <Icon type="scaner" className="scanerIcon icon"/>
-                    <span className="scaner text">{blogContent['count']}</span>
+                    <span className="scaner text">{blogContent['count'] || 0 }</span>
                     <span className="spliter"></span>
                     <Icon type="comment" className="commentIcon icon"/>
-                    <span className="commentCount text">{comments.length}</span>
+                    <span className="commentCount text">{comments.length || 0}</span>
                 </p>
-                <ReadEditor id={this.props.id} content={blogContent['content']}/>
+                <ReadEditor id={this.props.id} content={blogContent['content'] || '您访问的内容被外星人劫持了:(，请点击返回按钮'}/>
                 <p className="warning">
-                    原创文章作者：{blogContent['author']} ( 如若转载，请注明出处 )
+                    原创文章作者：{blogContent['author'] || '王亚飞'} ( 如若转载，请注明出处 )
                 </p>
                 <div className="comment">
                     <Comment comments={comments} blogId={blogContent['_id']} commentActions={commentActions}

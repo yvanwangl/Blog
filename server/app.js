@@ -29,7 +29,7 @@ let app = express();
 app.use(compression());
 //set staticResource resource
 //打包之后的静态资源文件
-app.use(express.static(path.join(__dirname, '../static')));
+app.use(express.static(path.join(__dirname, '../dist')));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -81,11 +81,11 @@ console.log(app.get('env'));
 app.use('/users', users);
 app.use('/test', test);
 app.use('/login', login);
-app.use('/blog', blog);
+app.use('/blog-api', blog);
 app.use('/comment', comment);
 app.use('/upload', upload);
 app.get('*', function (request, response) {
-	response.sendFile(path.resolve(__dirname, '../static', 'index.html'));
+	response.sendFile(path.resolve(__dirname, '../dist', 'index.html'));
 });
 
 // catch 404 and forward to error handler
