@@ -1,23 +1,24 @@
  /**
  * Created by wyf on 2016/11/23.
  */
-var express = require('express');
-var router = express.Router();
-var formidable = require('formidable');
-var fs = require('fs');
-var path = require('path');
+let express = require('express');
+let router = express.Router();
+let formidable = require('formidable');
+let fs = require('fs');
+let path = require('path');
+let systemConfig = require('../../system.config');
 
 //139.224.195.74
-var server = 'blog.yvanwang.com';
-var port = 3000;
+let server = 'blog.yvanwang.com';
+let port = 3000;
 // 文件将要上传到哪个文件夹下面
-var uploadfoldername = 'uploadfiles';
-var uploadfolderpath = path.join(__dirname, '../../static/',uploadfoldername);
+let uploadfoldername = 'uploadfiles';
+let uploadfolderpath = path.join(__dirname, `../../${systemConfig.publicDir}/`,uploadfoldername);
 
 router.route('/')
     .post(function (req, res, next) {
         // 使用第三方的 formidable 插件初始化一个 form 对象
-        var form = new formidable.IncomingForm();
+        let form = new formidable.IncomingForm();
         form.uploadDir=path.join(__dirname, '../','tmp');
 
         form.parse(req, function (err, fields, files) {
@@ -31,9 +32,9 @@ router.route('/')
             console.log(fields);
             console.log('显示上传时的参数 end');
 
-            var item;
+            let item;
             // 计算 files 长度
-            var length = 0;
+            let length = 0;
             for (item in files) {
                 length++;
             }
@@ -42,15 +43,15 @@ router.route('/')
             }
 
             for (item in files) {
-                var file = files[item];
+                let file = files[item];
                 // formidable 会将上传的文件存储为一个临时文件，现在获取这个文件的目录
-                var tempfilepath = file.path;
+                let tempfilepath = file.path;
                 // 获取文件类型
-                var type = file.type;
+                let type = file.type;
 
                 // 获取文件名，并根据文件名获取扩展名
-                var filename = file.name;
-                var extname = filename.lastIndexOf('.') >= 0
+                let filename = file.name;
+                let extname = filename.lastIndexOf('.') >= 0
                     ? filename.slice(filename.lastIndexOf('.') - filename.length)
                     : '';
                 // 文件名没有扩展名时候，则从文件类型中取扩展名
@@ -61,12 +62,12 @@ router.route('/')
                 filename = Math.random().toString().slice(2) + extname;
 
                 // 构建将要存储的文件的路径
-                var filenewpath = path.join(uploadfolderpath, filename);
+                let filenewpath = path.join(uploadfolderpath, filename);
 
                 // 将临时文件保存为正式的文件
                 fs.rename(tempfilepath, filenewpath, function (err) {
                     // 存储结果
-                    var result = '';
+                    let result = '';
                     console.log(tempfilepath);
                     console.log(filenewpath);
 
