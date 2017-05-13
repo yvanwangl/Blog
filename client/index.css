@@ -230,3 +230,7 @@ body {
     width: 100%;
     height: 100%;
 }
+
+#root .wangEditor-container .wangEditor-txt img {
+    height: auto !important;
+}
