@@ -27,7 +27,7 @@ class AdminManage extends Component {
             editData = blogContent;
         }
         return (
-            <div className="adminContainer container">
+            <div className="adminContainer">
                 {/* <div onClick={()=>actions.fetchTest()}>新增博客</div>*/}
                 {/*<div className="titleWrap">
                  <div className="adminTitle">后台管理页面</div>
