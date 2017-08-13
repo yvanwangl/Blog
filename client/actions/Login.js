@@ -2,21 +2,15 @@
  * Created by wyf on 2016/10/29.
  */
 import {LOGIN_SUCCESS, LOGIN_FAIL,LOG_OUT, SHOW_LOGIN_DIALOG, HIDE_LOGIN_DIALOG} from '../constants/LoginActions';
-import fetch from 'isomorphic-fetch';
+import request from '../utils/request';
 
 export function login(values, callback) {
     return (dispatch)=>{
         "use strict";
-        fetch('/login',{
-            method:'POST',
-            mode:'cors',
-            Origin:'*',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify(values)
-        })
-            .then(response=>response.json())
+            request('/login', {
+                method:'POST',
+                body:JSON.stringify(values)
+            })
             .then(json=>{
                 if(json.is_success){
                     dispatch(loginSuccess(json.authCookie));
@@ -24,8 +18,7 @@ export function login(values, callback) {
                 }else {
                     dispatch(loginFail());
                 }
-            })
-            .catch(e=>console.log(e));
+            });
     }
 }
 

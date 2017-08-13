@@ -32,7 +32,7 @@
     border: none; }
     .richEditor .wangEditor-container .wangEditor-txt {
       min-height: 800px;
-      /*height: auto !important;*/ }
+      height: auto !important; }
   .richEditor .bottomBar {
     position: relative;
     text-align: right;
@@ -60,11 +60,8 @@
     .richEditor .bottomBar .saveButton:first-child {
       margin-right: 32px; }
 
-/*
 #editor1 {
-    min-height: 400px;
-    height: auto !important;
-    //box-shadow: 0 0 0 0.75pt #d1d1d1,0 0 3pt 0.75pt #ccc;
-}*/
+  min-height: 400px;
+  height: auto !important; }
 
 /*# sourceMappingURL=index.css.map */

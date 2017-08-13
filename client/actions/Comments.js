@@ -1,18 +1,12 @@
 import { INIT_COMMENT_LIST_SUCCESS, ADD_COMMENT, DELETE_COMMENT, LIKE_RESULT} from '../constants/CommentActions';
-import fetch from 'isomorphic-fetch';
+import request from '../utils/request';
 
 export function saveComment(comment,callback){
     return (dispatch)=>{
-        fetch('/comment',{
+        request('/comment', {
             method:'POST',
-            mode:'cors',
-            Origin:'*',
-            headers:{
-                'Content-Type':'application/json'
-            },
             body:JSON.stringify(comment)
         })
-            .then(response=>response.json())
             .then(json=>{
                 if(json.is_success){
                     dispatch(addCommentSuccess(json.comment));
@@ -22,57 +16,42 @@ export function saveComment(comment,callback){
                 }else {
                     console.log('save fail');
                 }
-            })
-            .catch(e=>console.log(e));
+            });
     }
 }
 
 export function deleteComment(commentId, authCookie) {
     return (dispatch)=>{
-        fetch('/comment/'+commentId,{
-            method:'DELETE',
-            mode:'cors',
-            Origin:'*',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify({
-                commentId:commentId,
-                authCookie:authCookie
+            request(`/comment/${commentId}`,{
+                method:'DELETE',
+                body:JSON.stringify({
+                    commentId:commentId,
+                    authCookie:authCookie
+                })
             })
-        })
-            .then(response=>response.json())
             .then(json=>{
                 if(json.is_success){
                     dispatch(deleteCommentSuccess(json.commentIds));
                 }else {
                     console.log('save fail');
                 }
-            })
-            .catch(e=>console.log(e));
+            });
     }
 }
 
 export function likeComment(commentAction) {
     return (dispatch)=>{
-        fetch('/comment/'+commentAction['commentId'],{
-            method:'POST',
-            mode:'cors',
-            Origin:'*',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify(commentAction)
-        })
-            .then(response=>response.json())
+            request(`/comment/${commentAction['commentId']}`, {
+                method:'POST',
+                body:JSON.stringify(commentAction)
+            })
             .then(json=>{
                 if(json.is_success){
                     dispatch(likeCommentSuccess(json.likeResult));
                 }else {
                     console.log('save fail');
                 }
-            })
-            .catch(e=>console.log(e));
+            });
     }
 }
 

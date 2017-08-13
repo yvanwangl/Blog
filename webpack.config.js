@@ -33,7 +33,7 @@ if (process.env.NODE_ENV == 'production') {
         new webpack.NoEmitOnErrorsPlugin (),
 		new ExtractTextPlugin('style.css')
     ];
-    devTools = '';
+    devTools = null;
 } else {
     //var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
     entry = {
@@ -71,6 +71,15 @@ var baseConfig = {
         filename: '[name].js',
         chunkFilename: '[id].[chunkhash:5].chunk.js',
 		publicPath:'/'
+    },
+    devServer: {
+        inline: true,
+        hot: true,
+        open: true,
+        contentBase: '/dict',
+        historyApiFallback: {
+            index: '/index.html'
+        }
     },
     devtool: devTools,
     module: {

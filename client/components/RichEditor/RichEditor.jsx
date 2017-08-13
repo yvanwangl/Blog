@@ -12,9 +12,10 @@ export default class RichEditor extends Component {
             blogStatus: 'draft',
             blogType: 'design',
             content: '开始书写你的故事...',
-            updateDate: 'true'
+            updateDate: 'true',
+            timer: null
         };
-        this.saveBlog = (id, blogStatus)=>this._saveBlog(id, blogStatus);
+        this.saveBlog = (id, blogStatus, callback)=>this._saveBlog(id, blogStatus, callback);
         this.setTitle = (event)=>this._setTitle(event);
         this.setAuthor = (event)=>this._setAuthor(event);
         this.setBlogStatus = (event)=> this._setBlogStatus(event);
@@ -23,7 +24,7 @@ export default class RichEditor extends Component {
         this.getContent = ()=>this._getContent();
     }
 
-    _saveBlog(id, blogStatus) {
+    _saveBlog(id, blogStatus, callback) {
         const {saveBlog, authCookie} = this.props;
         var title = this.state.title || '博客';
         var author = this.state.author || '王亚飞';
@@ -44,10 +45,11 @@ export default class RichEditor extends Component {
             updateDate: updateDate,
             authCookie: authCookie
         };
-        saveBlog(blogData , ()=> {
-            console.log('跳转首页');
-            browserHistory.push('/');
-        });
+        let callbackFn = callback ? callback:()=> {
+                console.log('跳转首页');
+                browserHistory.push('/');
+            };
+        saveBlog(blogData , callbackFn);
     }
 
     _setTitle(event) {
@@ -103,6 +105,7 @@ export default class RichEditor extends Component {
 
     componentDidMount() {
         var id = this.props.id;
+        let me = this;
         this.editor = new WangEditor(id);
         // 上传图片（举例）
         this.editor.config.uploadImgUrl = '/upload';
@@ -160,71 +163,25 @@ export default class RichEditor extends Component {
         // 初始化内容
         this.editor.$txt.html(this.state.content);
 
-        $("#editor1").niceScroll({
-            cursorcolor: "#8a8a8a",
-            cursoropacitymax: 1,
-            touchbehavior: false,
-            cursorwidth: "5px",
-            cursorborder: "0",
-            cursorborderradius: "5px",
-            horizrailenabled: false,
-            mousescrollstep: 40
+        const {editData} = this.props;
+        let dataId = '11';
+        if (editData) {
+            dataId = editData['_id'];
+        }
+        let timer = setInterval(()=>{
+            me.saveBlog(dataId, 'draft', ()=> {console.log('Auto Save Success!')})
+        }, 60*1000);
+
+        this.setState({
+            timer: timer
         });
+    }
 
-        /*let $ = window.jQuery;
-         var $wangEditor = $('.wangEditor-container');
-         var editorTop = $wangEditor.offset().top;
-         var beforeScrollTop = $(window).scrollTop();
-         $(window).on("scroll", function() {
-         var afterScrollTop = $(window).scrollTop(),
-         delta = afterScrollTop - beforeScrollTop;
-         if( delta === 0 ) return false;
-         if( delta > 0){
-         if(afterScrollTop>= editorTop){
-         $wangEditor.addClass('toolFixed');
-         }
-         console.log('down');
-         }/!*else {
-         if(afterScrollTop+20< editorTop){
-         $wangEditor.removeClass('toolFixed');
-         }
-         console.log('up');
-         }*!/
-         beforeScrollTop = afterScrollTop;
-         });*/
-
-        /*let $ = window.jQuery;
-         let $wangEditor = $('.wangEditor-container');
-         let editorTop = $wangEditor.offset().top;
-         let beforeScrollTop = document.body.scrollTop;
-         let winBeforeScrollTop = $(window).scrollTop();
-         $(window).on('scroll',function(){
-         let afterScrollTop = document.body.scrollTop;
-         let delta = afterScrollTop-beforeScrollTop;
-         console.log(beforeScrollTop);
-         console.log(winBeforeScrollTop);
-         if( delta === 0 ) return false;
-         //向上滚动
-         if(delta>0&&afterScrollTop>editorTop){
-         $wangEditor.addClass('toolFixed');
-         }else {
-         if($wangEditor.hasClass('toolFixed')){
-         $wangEditor.removeClass('toolFixed');
-         }
-         }
-         });*/
-        /*scroll(function(direction) { console.log(direction) });
-         function scroll( fn ) {
-         var beforeScrollTop = document.body.scrollTop,
-         fn = fn || function() {};
-         window.addEventListener("scroll", function() {
-         var afterScrollTop = document.body.scrollTop,
-         delta = afterScrollTop - beforeScrollTop;
-         if( delta === 0 ) return false;
-         fn( delta > 0 ? "down" : "up" );
-         beforeScrollTop = afterScrollTop;
-         }, false);
-         }*/
+    componentWillUnmount(){
+        const {timer} = this.state;
+        if(timer){
+            clearInterval(timer);
+        }
     }
 
     render() {

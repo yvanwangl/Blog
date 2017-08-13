@@ -71,7 +71,7 @@ var httpServer = http.createServer(function (req, res) {
     // Add headers
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', 'https://yvanwang.com');
-    res.setHeader('access-control-allow-origin', 'https://yvanwang.com');
+    res.setHeader('access-control-allow-origin', 'http://localhost:8080');
     res.setHeader('Access-control-allow-origin', 'http://yvanwang.com');
 
     // Request methods you wish to allow

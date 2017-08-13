@@ -1,29 +1,21 @@
 import { INIT_BLOG_LIST_SUCCESS,INIT_BLOG_LIST_FAIL, SHOW_BLOG_CONTENT, SAVE_BLOG_SUCCESS, DELETE_BLOG, SAVE_BLOG_COUNTER } from '../constants/ActionTypes';
 import {initCommentListSuccess} from './Comments';
 import fetch from 'isomorphic-fetch';
+import request from '../utils/request';
 
 export function fetchTest(){
 	return (dispatch)=>{
-		fetch('/test',{
-			method:'POST',
-			mode: 'cors',
-            Origin: '*',
-            headers: { // headers: fetch事实标准中可以通过Header相关api进行设置
-		        'Content-Type': 'application/json' // default: 'application/json'
-		    },
-			body:JSON.stringify({
-				name:'wangyafei',
-				content:'前台post数据'
-			})
-		})
-		.then(response=>response.json())
+        request('/test', {
+            method:'POST',
+            body:JSON.stringify({
+                name:'wangyafei',
+                content:'前台post数据'
+            })
+        })
 		.then(json=>{
 			console.log(JSON.stringify(json));
 			dispatch(addBlog(json));
-		})
-		.catch(e=>{
-			console.log(e);
-		})
+		});
 	}
 }
 
@@ -31,23 +23,14 @@ export function fetchTest(){
 //return {is_success:true, blogs:blogs}
 export function initBlogList(is_login=false, type='all', page=1, authCookie){
 	return (dispatch)=>{
-		fetch(`/blog-api?is_login=${is_login}&type=${type}&page=${page}&authCookie=${authCookie}`,{
-			method:'GET',
-			mode:'cors',
-			Origin:'*',
-            headers: { // headers: fetch事实标准中可以通过Header相关api进行设置
-                'Content-Type': 'application/json' // default: 'application/json'
-            }
-		})
-			.then(response=>response.json())
+            request(`/blog-api?is_login=${is_login}&type=${type}&page=${page}&authCookie=${authCookie}`)
 			.then(json=>{
 				if(json.is_success){
 					dispatch(initBlogListSuccess(json.blogs, json.type, json.page, json.totalBlogs));
 				}else {
 					dispatch(initBlogListFail())
 				}
-			})
-			.catch(e=>console.log(e));
+			});
 	}
 }
 
@@ -57,47 +40,33 @@ export function saveBlog(blogData, callback){
     let id = blogData['id'];
     if(id=='11'){           //新增
         return (dispatch)=>{
-            fetch('/blog-api',{
-                method:'POST',
-                mode:'cors',
-                Origin:'*',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body:JSON.stringify(blogData)
-            })
-                .then(response=>response.json())
+                request('/blog-api', {
+                    method:'POST',
+                    body:JSON.stringify(blogData)
+                })
                 .then(json=>{
                     if(json.is_success){
                         dispatch(saveBlogSuccess(json.blog, 'add'));
-                        callback();
+                        callback && callback();
                     }else {
                         console.log('save fail');
                     }
-                })
-                .catch(e=>console.log(e));
+                });
         }
     }else {                 //修改
         return (dispatch)=>{
-            fetch(`/blog-api/${id}`,{
-                method:'PUT',
-                mode:'cors',
-                Origin:'*',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body:JSON.stringify(blogData)
-            })
-                .then(response=>response.json())
+                request(`/blog-api/${id}`, {
+                    method:'PUT',
+                    body:JSON.stringify(blogData)
+                })
                 .then(json=>{
                     if(json.is_success){
                         dispatch(saveBlogSuccess(json.blog, 'modify'));
-                        callback();
+                        callback && callback();
                     }else {
                         console.log('save fail');
                     }
-                })
-                .catch(e=>console.log(e));
+                });
         }
     }
 
@@ -107,15 +76,7 @@ export function saveBlog(blogData, callback){
 //return {is_success:true, blog:blog}
 export function initBlogContent(blogId,callback) {
     return (dispatch)=>{
-        fetch(`/blog-api/${blogId}`,{
-            method:'GET',
-            mode: 'cors',
-            Origin: '*',
-            headers: { // headers: fetch事实标准中可以通过Header相关api进行设置
-                'Content-Type': 'application/json' // default: 'application/json'
-            }
-        })
-            .then(response=>response.json())
+            request(`/blog-api/${blogId}`)
             .then(json=>{
                 if(json.is_success){
                     //console.log(JSON.stringify(json.blogContent));
@@ -124,10 +85,7 @@ export function initBlogContent(blogId,callback) {
                         callback();
                     }
                 }
-            })
-            .catch(e=>{
-                console.log(e);
-            })
+            });
     }
 }
 
@@ -135,15 +93,7 @@ export function initBlogContent(blogId,callback) {
 //return {is_success:true, blog:blog, comments:comments}
 export function saveBlogCount(blogId, count, callback) {
     return (dispatch)=>{
-        fetch(`/blog-api/${blogId}?count=${count}`,{
-            method:'GET',
-            mode:'cors',
-            Origin:'*',
-            headers:{
-                'Content-Type':'application/json'
-            }
-        })
-            .then(response=>response.json())
+            request(`/blog-api/${blogId}?count=${count}`)
             .then(json=>{
                 if(json.is_success){
                     dispatch(saveBlogCounterSuccess(json.blog));
@@ -154,8 +104,7 @@ export function saveBlogCount(blogId, count, callback) {
                 }else {
                     console.log('save fail');
                 }
-            })
-            .catch(e=>console.log(e));
+            });
     }
 }
 
