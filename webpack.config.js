@@ -33,7 +33,7 @@ if (process.env.NODE_ENV == 'production') {
         new webpack.NoEmitOnErrorsPlugin (),
 		new ExtractTextPlugin('style.css')
     ];
-    devTools = null;
+    devTools = '';
 } else {
     //var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
     entry = {
