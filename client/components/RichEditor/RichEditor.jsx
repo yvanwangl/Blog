@@ -13,7 +13,8 @@ export default class RichEditor extends Component {
             blogType: 'design',
             content: '开始书写你的故事...',
             updateDate: 'true',
-            timer: null
+            timeOutTimer: null,
+            intervalTimer: null
         };
         this.saveBlog = (id, blogStatus, callback)=>this._saveBlog(id, blogStatus, callback);
         this.setTitle = (event)=>this._setTitle(event);
@@ -46,8 +47,7 @@ export default class RichEditor extends Component {
             authCookie: authCookie
         };
         let callbackFn = callback ? callback:()=> {
-                console.log('跳转首页');
-                browserHistory.push('/');
+                console.log('保存成功！');
             };
         saveBlog(blogData , callbackFn);
     }
@@ -163,26 +163,49 @@ export default class RichEditor extends Component {
         // 初始化内容
         this.editor.$txt.html(this.state.content);
 
-        const {editData} = this.props;
+        /*const {editData} = this.props;
         let dataId = '11';
         if (editData) {
             dataId = editData['_id'];
         }
-        let timer = setInterval(()=>{
+        let timeOutTimer = setTimeout(()=>{
             me.saveBlog(dataId, 'draft', ()=> {console.log('Auto Save Success!')})
-        }, 60*1000);
+        }, 5000);
 
         this.setState({
-            timer: timer
-        });
+            timeOutTimer: timeOutTimer
+        });*/
     }
 
-    componentWillUnmount(){
-        const {timer} = this.state;
-        if(timer){
-            clearInterval(timer);
+    /*componentWillReceiveProps(nextProps) {
+        const {editData} = nextProps;
+        const {intervalTimer} = this.state;
+        let me = this;
+        let dataId = '11';
+        if (editData) {
+            dataId = editData['_id'];
         }
-    }
+        if(!intervalTimer){
+            let intervalTimer = setInterval(()=>{
+                me.saveBlog(dataId, 'draft', ()=> {console.log('Auto Save Success!')})
+            }, 5000);
+
+            this.setState({
+                intervalTimer: intervalTimer
+            });
+        }
+
+    }*/
+
+    /*componentWillUnmount(){
+        const {timeOutTimer, intervalTimer} = this.state;
+        if(timeOutTimer){
+            clearTimeout(timeOutTimer);
+        }
+        if(intervalTimer){
+            clearInterval(intervalTimer);
+        }
+    }*/
 
     render() {
         const {editData} = this.props;

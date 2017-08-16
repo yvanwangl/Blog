@@ -1,5 +1,6 @@
 import { INIT_BLOG_LIST_SUCCESS,INIT_BLOG_LIST_FAIL, SHOW_BLOG_CONTENT, SAVE_BLOG_SUCCESS, DELETE_BLOG, SAVE_BLOG_COUNTER } from '../constants/ActionTypes';
 import {initCommentListSuccess} from './Comments';
+import {browserHistory} from 'react-router';
 import fetch from 'isomorphic-fetch';
 import request from '../utils/request';
 
@@ -46,7 +47,9 @@ export function saveBlog(blogData, callback){
                 })
                 .then(json=>{
                     if(json.is_success){
+                        //browserHistory.push("/admin/" + json.blog.id);
                         dispatch(saveBlogSuccess(json.blog, 'add'));
+                        //dispatch(showBlogContent(json.blog));
                         callback && callback();
                     }else {
                         console.log('save fail');
