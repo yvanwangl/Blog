@@ -29,10 +29,11 @@
   .richEditor .wangEditor-container {
     width: 100%;
     margin: 0 auto;
-    border: none; }
-    .richEditor .wangEditor-container .wangEditor-txt {
-      min-height: 800px;
-      height: auto !important; }
+    border: none;
+    /*& .wangEditor-txt {
+        min-height: 800px;
+        height: auto !important;
+    }*/ }
   .richEditor .bottomBar {
     position: relative;
     text-align: right;

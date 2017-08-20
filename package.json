@@ -92,7 +92,7 @@
     "redux-form": "^6.2.0",
     "serve-favicon": "~2.3.0",
     "svg-react-loader": "^0.3.7",
-    "wangeditor": "^2.1.22",
+    "wangeditor": "^3.0.8",
     "webpack": "^2.3.2"
   }
 }

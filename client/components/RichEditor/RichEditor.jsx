@@ -156,12 +156,22 @@ export default class RichEditor extends Component {
             'redo',
             /*'fullscreen'*/
         ];
-        /*this.editor.config.menuFixed = 5;*/
+        this.editor.config.menuFixed = true;
+        this.editor.config.menuFixed = 5;
 
         this.editor.create();
 
         // 初始化内容
         this.editor.$txt.html(this.state.content);
+
+        $(window).on("scroll", function(){
+            var menuContainer = $('.wangEditor-menu-container');
+            if($(window).scrollTop()>=menuContainer.offset().top){
+                menuContainer.css({
+                    position: 'inherit'
+                });
+            }
+        });
 
         /*const {editData} = this.props;
         let dataId = '11';
