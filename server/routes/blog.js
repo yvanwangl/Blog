@@ -110,7 +110,7 @@ router.route('/:blog_id')
     .get(function(req, res, next){              //根据id查询博客
         var blogId = req.params.blog_id;
         var count = req.query.count;
-        if(count){                              //浏览时加载博客数据
+        if(count>0){                              //浏览时加载博客数据
             Blog.findOneAndUpdate({_id:blogId}, {count:count},{upsert: true, 'new': true} ,function(err, blog){
                 console.log(count);
                 console.log(blog);
@@ -127,7 +127,16 @@ router.route('/:blog_id')
             });
         }else {
             Blog.findById(blogId, function(err, blog){
-                sendBlog(res, err, blog);
+                Comment.findByBlogId(blogId, function(err, comments){
+                    if(err){
+                        res.send(err);
+                    }
+                    res.send({
+                        is_success:true,
+                        blog:blog,
+                        comments:comments
+                    });
+                });
             });
         }
 
