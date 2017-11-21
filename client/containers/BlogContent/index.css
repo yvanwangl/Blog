@@ -28,10 +28,10 @@
     width: 20px; }
   .blogContentWrap.container .wangEditor-container, .blogContentWrap.container .wangEditor-menu-container {
     border: none; }
-  .blogContentWrap.container .wangEditor-container pre, .blogContentWrap.container .wangEditor-container code {
+/*   .blogContentWrap.container .wangEditor-container pre, .blogContentWrap.container .wangEditor-container code {
     background-color: #263238;
     color: #6DC2B8;
-    font-size: 16px; }
+    font-size: 16px; } */
   .blogContentWrap.container .warning {
     border-top: 1px dashed #000;
     line-height: 1.8;
