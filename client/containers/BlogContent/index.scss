@@ -36,14 +36,14 @@ $white: #fff;
 	& .wangEditor-menu-container {
 		border: none;
 	}
-    & .wangEditor-container {
-        & pre,
-        & code {
-            background-color: rgba(38,50,56,1);
-            color: #6DC2B8;
-            font-size: 16px;
-        }
-    }
+//     & .wangEditor-container {
+//         & pre,
+//         & code {
+//             background-color: rgba(38,50,56,1);
+//             color: #6DC2B8;
+//             font-size: 16px;
+//         }
+//     }
     & .warning {
         border-top: 1px dashed #000;
         line-height: 1.8;
