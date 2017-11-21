@@ -24,6 +24,14 @@ class BlogContent extends Component {
         actions.initBlogList(login.is_login, type, page, login.authCookie);
         browserHistory.push('/');
     }
+    
+    componentDidMount(){
+        let {blogContent, actions} = this.props;
+        if(!blogContent._id){
+            let blogId = window.location.href.match(/\/blog\/([0-9]+)$/)[1];
+            actions.saveBlogCount(blogId, 0);
+        }
+    }
 
     render() {
         let {blogContent, comments, commentActions, login} = this.props;
