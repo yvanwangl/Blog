@@ -110,31 +110,26 @@ router.route('/:blog_id')
     .get(function(req, res, next){              //根据id查询博客
         var blogId = req.params.blog_id;
         var count = req.query.count;
-        Blog.findByCustomId(blogId, function(err, blogs){
-            if(blogs.length == 1) {
-                blogId = blogs[0]._id;
-            }
-            if(count){                              //浏览时加载博客数据
-                Blog.findOneAndUpdate({_id:blogId}, {count:count},{upsert: true, 'new': true} ,function(err, blog){
-                    console.log(count);
-                    console.log(blog);
-                    Comment.findByBlogId(blogId, function(err, comments){
-                        if(err){
-                            res.send(err);
-                        }
-                        res.send({
-                            is_success:true,
-                            blog:blog,
-                            comments:comments
-                        });
+        if(count){                              //浏览时加载博客数据
+            Blog.findOneAndUpdate({_id:blogId}, {count:count},{upsert: true, 'new': true} ,function(err, blog){
+                console.log(count);
+                console.log(blog);
+                Comment.findByBlogId(blogId, function(err, comments){
+                    if(err){
+                        res.send(err);
+                    }
+                    res.send({
+                        is_success:true,
+                        blog:blog,
+                        comments:comments
                     });
                 });
-            }else {
-                Blog.findById(blogId, function(err, blog){
-                    sendBlog(res, err, blog);
-                });
-            }
-        });
+            });
+        }else {
+            Blog.findById(blogId, function(err, blog){
+                sendBlog(res, err, blog);
+            });
+        }
 
     })
     .put(function(req, res, next){              //修改博客
