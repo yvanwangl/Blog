@@ -17,14 +17,14 @@ export default class BlogItem extends Component {
     _itemClick(event) {
         let {loadBlogData, blogData} = this.props;
         loadBlogData(blogData['_id'], blogData['count'] + 1, ()=> {
-            browserHistory.push(`/blog/${blogData['id']}`);
+            browserHistory.push(`/blog/${blogData['_id']}`);
         });
     }
 
     editButtonClick() {
         const {blogData, editBlogData} = this.props;
         editBlogData(blogData['_id'], ()=> {
-            browserHistory.push("/admin/" + blogData.id);
+            browserHistory.push("/admin/" + blogData['_id']);
         });
 
     }
