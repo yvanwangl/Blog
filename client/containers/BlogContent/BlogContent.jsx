@@ -29,7 +29,7 @@ class BlogContent extends Component {
         let {blogContent, actions} = this.props;
         if(!blogContent._id){
             let blogId = window.location.href.match(/\/blog\/([\w]+)$/)[1];
-            actions.saveBlogCount(blogId, 0);
+            actions.saveBlogCount(blogId, null);
         }
     }
 
