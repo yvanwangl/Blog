@@ -25,4 +25,8 @@ blogSchema.statics.findByStatus=function(blogStatus, cb){
     return this.find({blogStatus:new RegExp(blogStatus, 'i')}, cb);
 };
 
+blogSchema.statics.findByCustomId=function(blogId, cb){
+    return this.find({id:blogId}, cb);
+};
+
 module.exports = mongoose.model('Blog',blogSchema);
