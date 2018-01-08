@@ -9,7 +9,8 @@ let mongoose = require('mongoose');
 let systemConfig = require('../system.config');
 mongoose.connect(systemConfig.mongooseConnect, {useMongoClient: true});
 
-require('./proxy');
+//转用nginx代理
+//require('./proxy');
 /*let webpack = require('webpack');
  let webpackDevMiddleware = require('webpack-dev-middleware');
  let webpackHotMiddleware = require('webpack-hot-middleware');
