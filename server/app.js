@@ -31,6 +31,8 @@ app.use(compression());
 //set staticResource resource
 //打包之后的静态资源文件
 app.use(express.static(path.join(__dirname, `../${systemConfig.publicDir}`)));
+//ssl验证文件
+app.use(express.static(path.join(__dirname, '../public')));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
