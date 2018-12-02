@@ -5,7 +5,7 @@ export default function toggle() {
     var currentHost = window.location.href;
     var sunnyhuanPage = 'https://sunnyhuan.yvanwang.com/';   //'http://localhost:3000/'
     //console.log(currentHost == sunnyhuanPage);
-    if (currentHost == sunnyhuanPage) {
+    if (currentHost.indexOf(sunnyhuanPage) > -1) {
         var huanStyle = document.createElement('link');
         huanStyle.rel = "stylesheet";
         huanStyle.href = '/huanStyle.css';
